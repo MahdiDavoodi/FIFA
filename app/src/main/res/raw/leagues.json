@@ -1,0 +1,27 @@
+[
+  {
+    "leagueID": 1,
+    "leagueName": "MT",
+    "leagueNumber": 0
+  },
+  {
+    "leagueID": 2,
+    "leagueName": "TM",
+    "leagueNumber": 0
+  },
+  {
+    "leagueID": 3,
+    "leagueName": "Champions",
+    "leagueNumber": 0
+  },
+  {
+    "leagueID": 4,
+    "leagueName": "Europe",
+    "leagueNumber": 0
+  },
+  {
+    "leagueID": 5,
+    "leagueName": "Golden",
+    "leagueNumber": 0
+  }
+]

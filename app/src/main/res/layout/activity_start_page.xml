@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".pages.StartPage">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/welcomeToFIFA"
+        android:textAlignment="center"
+        android:textColor="@color/mainTextColor"
+        android:textDirection="ltr"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/startDescriptionText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/mainButtonColor"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/startMainButton"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@color/mainTextColor"
+        android:textDirection="ltr"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="startOnClick"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
