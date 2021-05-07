@@ -1,5 +1,7 @@
 package davoodi.mahdi.fifa.components;
 
+import android.content.ContentValues;
+
 public class League {
     public static final String KEY_ID = "leagueID";
     public static final String KEY_NAME = "leagueName";
@@ -8,6 +10,14 @@ public class League {
     private int leagueID;
     private String leagueName;
     private int leagueNumber;
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, getLeagueID());
+        values.put(KEY_NAME, getLeagueName());
+        values.put(KEY_NUMBER, getLeagueNumber());
+        return values;
+    }
 
     public int getLeagueID() {
         return leagueID;

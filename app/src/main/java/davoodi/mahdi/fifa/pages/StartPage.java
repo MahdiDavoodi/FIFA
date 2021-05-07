@@ -33,7 +33,7 @@ public class StartPage extends AppCompatActivity {
 
     // OnClickListener for start button.
     public void startOnClick(View view) {
-        createDatabase();
+        new Thread(this::createDatabase).start();
 
         startActivity(new Intent(StartPage.this, CreateOwnersPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);

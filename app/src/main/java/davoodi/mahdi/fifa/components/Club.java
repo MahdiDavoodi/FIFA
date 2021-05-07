@@ -1,5 +1,7 @@
 package davoodi.mahdi.fifa.components;
 
+import android.content.ContentValues;
+
 public class Club {
     public static final String KEY_ID = "clubID";
     public static final String KEY_NAME = "clubName";
@@ -19,6 +21,20 @@ public class Club {
     private int clubMT, clubTM, clubChampions, clubEurope, clubGolden;
     private String clubClass;
     private int clubOwner;
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, getClubID());
+        values.put(KEY_NAME, getClubName());
+        values.put(KEY_WEALTH, getClubWealth());
+        values.put(KEY_MT, getClubMT());
+        values.put(KEY_TM, getClubTM());
+        values.put(KEY_CHAMPIONS, getClubChampions());
+        values.put(KEY_EUROPE, getClubEurope());
+        values.put(KEY_GOLDEN, getClubGolden());
+        values.put(KEY_CLASS, getClubClass());
+        return values;
+    }
 
     public int getClubID() {
         return clubID;

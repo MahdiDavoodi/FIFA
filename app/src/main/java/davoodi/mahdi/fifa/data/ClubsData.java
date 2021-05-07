@@ -1,6 +1,5 @@
 package davoodi.mahdi.fifa.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -47,20 +46,10 @@ public class ClubsData extends SQLiteOpenHelper {
     }
 
     public void insertClub(Club club) {
-        ContentValues values = new ContentValues();
-        values.put(Club.KEY_ID, club.getClubID());
-        values.put(Club.KEY_NAME, club.getClubName());
-        values.put(Club.KEY_WEALTH, club.getClubWealth());
-        values.put(Club.KEY_MT, club.getClubMT());
-        values.put(Club.KEY_TM, club.getClubTM());
-        values.put(Club.KEY_CHAMPIONS, club.getClubChampions());
-        values.put(Club.KEY_EUROPE, club.getClubEurope());
-        values.put(Club.KEY_GOLDEN, club.getClubGolden());
-        values.put(Club.KEY_CLASS, club.getClubClass());
 
         // Now we work with our database.
         SQLiteDatabase database = getWritableDatabase();
-        long insertID = database.insert(TABLE_CLUBS, null, values);
+        long insertID = database.insert(TABLE_CLUBS, null, club.getContentValues());
 
         if (insertID == -1)
             Log.i("database", "Club data insertion failed. (Club: " + club.toString() + " ) ");
