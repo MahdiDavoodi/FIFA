@@ -13,4 +13,5 @@
     <color name="mainDescriptionTextColor">#A0AEA0</color>
     <color name="mainTextColor">#FF000000</color>
     <color name="mainButtonColor">#448546</color>
+    <color name="mainDefaultIconColor">#448546</color>
 </resources>

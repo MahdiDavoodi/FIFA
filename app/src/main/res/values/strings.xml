@@ -9,6 +9,18 @@
     <string name="startDescriptionText">You can create owners and then select teams for them to start the competition.</string>
     <string name="startStartButton">Start</string>
 
+    // Create Owners Page.
+    <string name="createOwnersDescriptionText">Now, you have to create your local account to manage your clubs.</string>
+    <string name="createOwnersFirstOwnerText">Owner 1</string>
+    <string name="createOwnersSecondOwnerText">Owner 2</string>
+
+
     // Objects Descriptions
     <string name="imageView">Image View</string>
+
+    // Hints.
+    <string name="nameHint">Name</string>
+    <string name="passwordHint">Password</string>
+    <string name="confirmPasswordHint">Confirm Password</string>
+
 </resources>

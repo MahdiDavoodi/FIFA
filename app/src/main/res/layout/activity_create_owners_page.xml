@@ -7,19 +7,57 @@
     tools:context=".pages.CreateOwnersPage">
 
     <TextView
+        android:id="@+id/createOwnersDescriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/createOwnersDescriptionText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/createOwnersText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/raleway_semibold"
-        android:text="@string/welcomeToFIFA"
+        android:text="@string/createOwnersFirstOwnerText"
         android:textAlignment="center"
         android:textColor="@color/mainTextColor"
         android:textDirection="ltr"
-        android:textSize="35sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/createOwnersDescriptionText" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:autoSizeTextType="uniform"
+        android:autofillHints="@string/nameHint"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/raleway_semibold"
+        android:hint="@string/nameHint"
+        android:inputType="textPersonName"
+        android:textColor="@color/mainTextColor"
+        android:textColorHint="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/createOwnersText"
+        app:layout_constraintStart_toStartOf="@+id/createOwnersText"
+        app:layout_constraintTop_toBottomOf="@+id/createOwnersText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
