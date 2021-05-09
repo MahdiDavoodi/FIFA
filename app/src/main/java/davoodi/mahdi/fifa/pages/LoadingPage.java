@@ -26,10 +26,15 @@ public class LoadingPage extends AppCompatActivity {
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         } finally {
-            if (sharedPreferences.contains("Visited"))
+            if (sharedPreferences.contains("Visited")) {
                 // User visited this app before.
-                intent = new Intent(LoadingPage.this, MainPage.class);
-            else
+                String lastSituationSaved = sharedPreferences.getString("Visited", "NOT-FOUND");
+
+                if (lastSituationSaved.equals("CreateOwnersPage"))
+                    intent = new Intent(LoadingPage.this, SelectClubsPage.class);
+                else
+                    intent = new Intent(LoadingPage.this, MainPage.class);
+            } else
                 // User did not visit this app before.(Preference is NULL or it does not have "Visited" key)
                 intent = new Intent(LoadingPage.this, StartPage.class);
 

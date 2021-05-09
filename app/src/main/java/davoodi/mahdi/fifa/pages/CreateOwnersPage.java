@@ -74,7 +74,7 @@ public class CreateOwnersPage extends AppCompatActivity {
         ownersData.insertOwner(owner2);
         SharedPreferences sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("Visited", "Owners Created");
+        editor.putString("Visited", "CreateOwnersPage");
         editor.apply();
         Toast.makeText(this, R.string.createOwnersToast4, Toast.LENGTH_SHORT).show();
     }
