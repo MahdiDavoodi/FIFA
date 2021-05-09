@@ -14,4 +14,6 @@
     <color name="mainTextColor">#FFFFFFFF</color>
     <color name="mainButtonColor">#5109F3</color>
     <color name="mainDefaultIconColor">#5109F3</color>
+    <color name="mainDefaultEditTextColor">#A0AEA0</color>
+    <color name="mainDefaultEditTextFocusedColor">#5109F3</color>
 </resources>
