@@ -7,7 +7,7 @@
     tools:context=".pages.StartPage">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/startWelcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/descriptionText"
+        android:id="@+id/startDescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -39,17 +39,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/startWelcomeText" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startStartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:autoSizeTextType="uniform"
         android:backgroundTint="@color/mainButtonColor"
         android:fontFamily="@font/raleway_semibold"
-        android:text="@string/startMainButton"
+        android:text="@string/startStartButton"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/mainTextColor"
@@ -59,5 +59,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="startOnClick"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+        app:layout_constraintTop_toBottomOf="@+id/startDescriptionText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

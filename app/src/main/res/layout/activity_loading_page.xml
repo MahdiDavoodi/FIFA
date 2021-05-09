@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/appName"
+        android:id="@+id/loadingAppNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/developerName"
+        android:id="@+id/loadingdeveloperNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -41,11 +41,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appName"
+        app:layout_constraintTop_toBottomOf="@+id/loadingAppNameText"
         app:layout_constraintVertical_bias="0.961" />
 
     <TextView
-        android:id="@+id/appDescription"
+        android:id="@+id/loadingAppDescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -56,7 +56,7 @@
         android:textColor="@color/mainTextColor"
         android:textDirection="ltr"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/appName"
-        app:layout_constraintStart_toStartOf="@+id/appName"
-        app:layout_constraintTop_toBottomOf="@+id/appName" />
+        app:layout_constraintEnd_toEndOf="@+id/loadingAppNameText"
+        app:layout_constraintStart_toStartOf="@+id/loadingAppNameText"
+        app:layout_constraintTop_toBottomOf="@+id/loadingAppNameText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

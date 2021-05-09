@@ -1,4 +1,5 @@
 <resources>
+    // Total
     <string name="appName">FIFA</string>
     <string name="developerName">Mahdi Davoodi</string>
     <string name="appDescription">There is no limit for football.</string>
@@ -6,7 +7,8 @@
 
     // Start Page.
     <string name="startDescriptionText">You can create owners and then select teams for them to start the competition.</string>
-    <string name="startMainButton">Start</string>
+    <string name="startStartButton">Start</string>
 
+    // Objects Descriptions
     <string name="imageView">Image View</string>
 </resources>
