@@ -3,6 +3,7 @@ package davoodi.mahdi.fifa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -34,11 +35,11 @@ public class CreateOwnersPage extends AppCompatActivity {
         ownerText = findViewById(R.id.createOwnersText);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
-    }
+    }*/
 
     // Save button onClick.
     public void saveButtonOnClick(View view) {
@@ -59,8 +60,10 @@ public class CreateOwnersPage extends AppCompatActivity {
                 owner2 = new Owner(saveButtonStage,
                         nameEditText.getText().toString().trim(),
                         passwordEditText.getText().toString().trim());
-                new Thread(this::saveOwnersData).start();
-
+                saveOwnersData();
+                startActivity(new Intent(CreateOwnersPage.this, SelectClubsPage.class));
+                overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+                finish();
             }
         }
     }

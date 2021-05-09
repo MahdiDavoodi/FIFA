@@ -37,6 +37,7 @@ public class StartPage extends AppCompatActivity {
 
         startActivity(new Intent(StartPage.this, CreateOwnersPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+        finish();
     }
 
     // Create app database.
