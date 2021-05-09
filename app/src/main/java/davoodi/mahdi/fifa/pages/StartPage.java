@@ -66,6 +66,7 @@ public class StartPage extends AppCompatActivity {
         // Transfers
         TransfersData transfersData = new TransfersData(this);
         transfersData.getWritableDatabase();
+
     }
 
     // Import json files into database.
