@@ -124,7 +124,7 @@
         android:backgroundTint="@color/mainButtonColor"
         android:fontFamily="@font/raleway_semibold"
         android:onClick="saveButtonOnClick"
-        android:text="@string/createOwnersSaveButton"
+        android:text="@string/createOwnersSaveButtonStage1"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/mainTextColor"

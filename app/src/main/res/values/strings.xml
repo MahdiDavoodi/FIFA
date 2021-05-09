@@ -13,8 +13,14 @@
     <string name="createOwnersDescriptionText">Now, you have to create your local account to manage your clubs.</string>
     <string name="createOwnersFirstOwnerText">Owner 1</string>
     <string name="createOwnersSecondOwnerText">Owner 2</string>
-    <string name="createOwnersSaveButton">Next</string>
+    <string name="createOwnersSaveButtonStage1">Next</string>
+    <string name="createOwnersSaveButtonStage2">Done</string>
 
+    // Toasts.
+    <string name="createOwnersToast1">Please input your information!</string>
+    <string name="createOwnersToast2">Password does not match!</string>
+    <string name="createOwnersToast3">Now, lets create second owner!</string>
+    <string name="createOwnersToast4">Owners Created.</string>
 
     // Objects Descriptions
     <string name="imageView">Image View</string>

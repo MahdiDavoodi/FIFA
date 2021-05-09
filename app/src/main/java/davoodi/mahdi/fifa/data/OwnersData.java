@@ -1,11 +1,13 @@
 package davoodi.mahdi.fifa.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import davoodi.mahdi.fifa.components.Owner;
+
 
 public class OwnersData extends SQLiteOpenHelper {
 
@@ -41,5 +43,23 @@ public class OwnersData extends SQLiteOpenHelper {
         Log.i("database", "Table '" + TABLE_OWNERS + "' dropped!");
         onCreate(database);
         // We should restore database.
+    }
+
+    public void insertOwner(Owner owner) {
+        ContentValues values = new ContentValues();
+        values.put(Owner.KEY_ID, owner.getOwnerID());
+        values.put(Owner.KEY_NAME, owner.getOwnerName());
+        values.put(Owner.KEY_PASSWORD, owner.getOwnerPasswordHash());
+
+        // Now we work with our database.
+        SQLiteDatabase database = getWritableDatabase();
+        long insertID = database.insert(TABLE_OWNERS, null, values);
+
+        if (insertID == -1)
+            Log.i("database", "Owner data insertion failed. (Season: " + owner.toString() + " ) ");
+        else
+            Log.i("database", "Owner data inserted with id: " + insertID);
+        if (database.isOpen()) database.close();
+        Log.i("database", "Owners database closed");
     }
 }

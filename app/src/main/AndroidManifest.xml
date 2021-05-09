@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIFA">
-        <activity android:name=".pages.CreateOwnersPage"></activity>
+        <activity android:name=".pages.SelectClubsPage"></activity>
+        <activity android:name=".pages.CreateOwnersPage" />
         <activity android:name=".pages.StartPage" />
         <activity android:name=".pages.LoadingPage">
             <intent-filter>

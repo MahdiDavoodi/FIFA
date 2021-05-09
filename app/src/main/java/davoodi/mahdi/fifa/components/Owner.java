@@ -18,6 +18,20 @@ public class Owner {
     private long ownerTotalWin, ownerTotalLoss, ownerTotalDraw;
     private int ownerTotalCups;
 
+    public Owner(int ownerID, String ownerName, String password) {
+        this.ownerID = ownerID;
+        this.ownerName = ownerName;
+        this.ownerPasswordHash = passwordHash(password);
+    }
+
+    public static long passwordHash(String passwordTemp) {
+        long passwordSign = 1;
+        for (int i = 0; i < passwordTemp.length(); i++) {
+            passwordSign = (passwordSign * 255 + passwordTemp.charAt(i)) % 1000000;
+        }
+        return passwordSign;
+    }
+
     public int getOwnerID() {
         return ownerID;
     }
