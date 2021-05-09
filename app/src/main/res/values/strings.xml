@@ -13,6 +13,7 @@
     <string name="createOwnersDescriptionText">Now, you have to create your local account to manage your clubs.</string>
     <string name="createOwnersFirstOwnerText">Owner 1</string>
     <string name="createOwnersSecondOwnerText">Owner 2</string>
+    <string name="createOwnersSaveButton">Next</string>
 
 
     // Objects Descriptions
