@@ -16,6 +16,10 @@
     <string name="createOwnersSaveButtonStage1">Next</string>
     <string name="createOwnersSaveButtonStage2">Done</string>
 
+    // Select Clubs Page.
+    <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
+    <string name="selectClubsOfTenText">/10</string>
+
     // Toasts.
     <string name="createOwnersToast1">Please input your information!</string>
     <string name="createOwnersToast2">Password does not match!</string>
@@ -24,6 +28,7 @@
 
     // Objects Descriptions
     <string name="imageView">Image View</string>
+    <string name="TextView">Text View</string>
 
     // Hints.
     <string name="nameHint">Name</string>
