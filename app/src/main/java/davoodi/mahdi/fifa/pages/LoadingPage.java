@@ -22,7 +22,7 @@ public class LoadingPage extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
         Intent intent;
         try {
-            Thread.sleep(200);
+            Thread.sleep(3000);
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         } finally {
