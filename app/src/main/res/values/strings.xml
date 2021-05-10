@@ -29,6 +29,7 @@
     // Objects Descriptions
     <string name="imageView">Image View</string>
     <string name="TextView">Text View</string>
+    <string name="ImageButton">Image Button</string>
 
     // Hints.
     <string name="nameHint">Name</string>

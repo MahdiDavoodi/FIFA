@@ -6,6 +6,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_green">#88FD01</color>
     <color name="green">#448546</color>
+    <color name="transparent">#00FFFFFF</color>
 
     // Main objects(Main Theme)
     <color name="mainColor">#FFFFFF</color>
