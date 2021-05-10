@@ -22,7 +22,7 @@ public class Owner {
 
     public Owner(int ownerID,
                  String ownerName,
-                 String password,
+                 long ownerPasswordHash,
                  long ownerTotalWealth,
                  long ownerTotalWin,
                  long ownerTotalLoss,
@@ -30,7 +30,7 @@ public class Owner {
                  int ownerTotalCups) {
         this.ownerID = ownerID;
         this.ownerName = ownerName;
-        this.ownerPasswordHash = passwordHash(password);
+        this.ownerPasswordHash = ownerPasswordHash;
         this.ownerTotalWealth = ownerTotalWealth;
         this.ownerTotalWin = ownerTotalWin;
         this.ownerTotalLoss = ownerTotalLoss;

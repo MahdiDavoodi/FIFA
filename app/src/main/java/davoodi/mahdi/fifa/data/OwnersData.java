@@ -2,10 +2,14 @@ package davoodi.mahdi.fifa.data;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
+import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Owner;
 
 
@@ -56,5 +60,29 @@ public class OwnersData extends SQLiteOpenHelper {
             Log.i("database", "Owner data inserted with id: " + insertID);
         if (database.isOpen()) database.close();
         Log.i("database", "Owners database closed");
+    }
+
+    public ArrayList<Owner> getAllOwners() {
+        SQLiteDatabase database = getReadableDatabase();
+        ArrayList<Owner> owners = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_OWNERS + "'", null);
+        if (cursor.moveToFirst()) {
+            do {
+
+                Owner owner = new Owner(
+                        cursor.getInt(cursor.getColumnIndex(Owner.KEY_ID)),
+                        cursor.getString(cursor.getColumnIndex(Owner.KEY_NAME)),
+                        cursor.getLong(cursor.getColumnIndex(Owner.KEY_PASSWORD)),
+                        cursor.getLong(cursor.getColumnIndex(Owner.KEY_WEALTH)),
+                        cursor.getLong(cursor.getColumnIndex(Owner.KEY_WIN)),
+                        cursor.getLong(cursor.getColumnIndex(Owner.KEY_LOSS)),
+                        cursor.getLong(cursor.getColumnIndex(Owner.KEY_DRAW)),
+                        cursor.getInt(cursor.getColumnIndex(Owner.KEY_CUPS)));
+                owners.add(owner);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return owners;
     }
 }
