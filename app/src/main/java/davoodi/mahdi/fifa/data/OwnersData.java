@@ -9,7 +9,6 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Owner;
 
 
