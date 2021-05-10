@@ -23,11 +23,79 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/selectClubsListText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/TextView"
+        android:textAlignment="textStart"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner2NameText" />
+
+    <TextView
+        android:id="@+id/selectClubsListText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/TextView"
+        android:textAlignment="textStart"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner1NameText" />
+
+    <TextView
+        android:id="@+id/selectClubsCounterText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/selectClubsOfTenText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectClubsDescriptionText" />
+
+    <TextView
+        android:id="@+id/selectClubsCounterText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:padding="20dp"
+        android:text="@string/selectClubsOfTenText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectClubsListText1" />
+
+    <TextView
         android:id="@+id/selectClubsOwner1NameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/raleway_semibold"
         android:text="@string/TextView"
@@ -37,4 +105,20 @@
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsDescriptionText" />
+
+    <TextView
+        android:id="@+id/selectClubsOwner2NameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/TextView"
+        android:textAlignment="center"
+        android:textColor="@color/mainTextColor"
+        android:textDirection="ltr"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectClubsListText1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
