@@ -207,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
                     android:fontFamily="@font/raleway_semibold"
-                    android:padding="10dp"
+                    android:paddingBottom="10dp"
                     android:text="@string/TextView"
                     android:textAlignment="center"
                     android:textColor="@color/mainDescriptionTextColor"

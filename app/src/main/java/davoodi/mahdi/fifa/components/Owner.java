@@ -1,5 +1,7 @@
 package davoodi.mahdi.fifa.components;
 
+import android.content.ContentValues;
+
 public class Owner {
     public static final String KEY_ID = "ownerID";
     public static final String KEY_NAME = "ownerName";
@@ -18,10 +20,35 @@ public class Owner {
     private long ownerTotalWin, ownerTotalLoss, ownerTotalDraw;
     private int ownerTotalCups;
 
-    public Owner(int ownerID, String ownerName, String password) {
+    public Owner(int ownerID,
+                 String ownerName,
+                 String password,
+                 long ownerTotalWealth,
+                 long ownerTotalWin,
+                 long ownerTotalLoss,
+                 long ownerTotalDraw,
+                 int ownerTotalCups) {
         this.ownerID = ownerID;
         this.ownerName = ownerName;
         this.ownerPasswordHash = passwordHash(password);
+        this.ownerTotalWealth = ownerTotalWealth;
+        this.ownerTotalWin = ownerTotalWin;
+        this.ownerTotalLoss = ownerTotalLoss;
+        this.ownerTotalDraw = ownerTotalDraw;
+        this.ownerTotalCups = ownerTotalCups;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, getOwnerID());
+        values.put(KEY_NAME, getOwnerName());
+        values.put(KEY_PASSWORD, getOwnerPasswordHash());
+        values.put(KEY_WEALTH, getOwnerTotalWealth());
+        values.put(KEY_WIN, getOwnerTotalWin());
+        values.put(KEY_LOSS, getOwnerTotalLoss());
+        values.put(KEY_DRAW, getOwnerTotalDraw());
+        values.put(KEY_CUPS, getOwnerTotalCups());
+        return values;
     }
 
     public static long passwordHash(String passwordTemp) {

@@ -1,9 +1,12 @@
 package davoodi.mahdi.fifa.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.components.Club;
 
@@ -57,5 +60,31 @@ public class ClubsData extends SQLiteOpenHelper {
             Log.i("database", "Club data inserted with id: " + insertID);
         if (database.isOpen()) database.close();
         Log.i("database", "Clubs database closed");
+    }
+
+    public ArrayList<Club> getAllClubs() {
+        SQLiteDatabase database = getReadableDatabase();
+        ArrayList<Club> clubs = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_CLUBS + "'", null);
+        if (cursor.moveToFirst()) {
+            do {
+
+                Club club = new Club(
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_ID)),
+                        cursor.getString(cursor.getColumnIndex(Club.KEY_NAME)),
+                        cursor.getLong(cursor.getColumnIndex(Club.KEY_WEALTH)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_MT)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_TM)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_CHAMPIONS)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_EUROPE)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_GOLDEN)),
+                        cursor.getString(cursor.getColumnIndex(Club.KEY_CLASS)),
+                        cursor.getInt(cursor.getColumnIndex(Club.KEY_OWNER)));
+                clubs.add(club);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return clubs;
     }
 }

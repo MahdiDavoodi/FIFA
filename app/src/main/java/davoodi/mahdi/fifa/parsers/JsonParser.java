@@ -49,6 +49,8 @@ public class JsonParser {
                 club.setClubEurope(jsonObject.getInt(Club.KEY_EUROPE));
                 club.setClubGolden(jsonObject.getInt(Club.KEY_GOLDEN));
                 club.setClubClass(jsonObject.getString(Club.KEY_CLASS));
+                // Zero means it does not have any owner!
+                club.setClubOwner(0);
                 clubs.add(club);
             }
         } catch (JSONException exception) {

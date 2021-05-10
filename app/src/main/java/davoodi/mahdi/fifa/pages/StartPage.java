@@ -55,7 +55,13 @@ public class StartPage extends AppCompatActivity {
 
         // Seasons
         SeasonsData seasonsData = new SeasonsData(this);
-        Season firstSeason = new Season(2021, 0);
+        Season firstSeason = new Season(2021,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0);
         seasonsData.insertSeason(firstSeason);
         seasonsData.getWritableDatabase();
 

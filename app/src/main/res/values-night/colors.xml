@@ -11,7 +11,7 @@
     // Main objects(Main Dark Theme)
     <color name="mainColor">#FF000000</color>
     <color name="mainBigTextColor">#5109F3</color>
-    <color name="mainDescriptionTextColor">#A0AEA0</color>
+    <color name="mainDescriptionTextColor">#B1B3B6</color>
     <color name="mainTextColor">#FFFFFFFF</color>
     <color name="mainButtonColor">#5109F3</color>
     <color name="mainDefaultIconColor">#5109F3</color>

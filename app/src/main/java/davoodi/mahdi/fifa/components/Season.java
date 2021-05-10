@@ -1,5 +1,7 @@
 package davoodi.mahdi.fifa.components;
 
+import android.content.ContentValues;
+
 public class Season {
 
     public static final String KEY_ID = "seasonID";
@@ -18,9 +20,32 @@ public class Season {
             seasonGoldenWinnerID,
             seasonMatchesPlayed;
 
-    public Season(int seasonID, int seasonMatchesPlayed) {
+    public Season(int seasonID,
+                  int seasonMTWinnerID,
+                  int seasonTMWinnerID,
+                  int seasonChampionsWinnerID,
+                  int seasonEuropeWinnerID,
+                  int seasonGoldenWinnerID,
+                  int seasonMatchesPlayed) {
         this.seasonID = seasonID;
+        this.seasonMTWinnerID = seasonMTWinnerID;
+        this.seasonTMWinnerID = seasonTMWinnerID;
+        this.seasonChampionsWinnerID = seasonChampionsWinnerID;
+        this.seasonEuropeWinnerID = seasonEuropeWinnerID;
+        this.seasonGoldenWinnerID = seasonGoldenWinnerID;
         this.seasonMatchesPlayed = seasonMatchesPlayed;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, getSeasonID());
+        values.put(KEY_MT, getSeasonMTWinnerID());
+        values.put(KEY_TM, getSeasonTMWinnerID());
+        values.put(KEY_CHAMPIONS, getSeasonChampionsWinnerID());
+        values.put(KEY_EUROPE, getSeasonEuropeWinnerID());
+        values.put(KEY_GOLDEN, getSeasonGoldenWinnerID());
+        values.put(KEY_MATCHES, getSeasonMatchesPlayed());
+        return values;
     }
 
     public int getSeasonID() {

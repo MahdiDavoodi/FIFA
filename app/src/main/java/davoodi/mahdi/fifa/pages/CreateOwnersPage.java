@@ -47,7 +47,12 @@ public class CreateOwnersPage extends AppCompatActivity {
             if (saveButtonStage == 1) {
                 owner1 = new Owner(saveButtonStage,
                         nameEditText.getText().toString().trim(),
-                        passwordEditText.getText().toString().trim());
+                        passwordEditText.getText().toString().trim(),
+                        0,
+                        0,
+                        0,
+                        0,
+                        0);
 
                 nameEditText.setText("");
                 passwordEditText.setText("");
@@ -59,7 +64,12 @@ public class CreateOwnersPage extends AppCompatActivity {
             } else if (saveButtonStage == 2) {
                 owner2 = new Owner(saveButtonStage,
                         nameEditText.getText().toString().trim(),
-                        passwordEditText.getText().toString().trim());
+                        passwordEditText.getText().toString().trim(),
+                        0,
+                        0,
+                        0,
+                        0,
+                        0);
                 saveOwnersData();
                 startActivity(new Intent(CreateOwnersPage.this, SelectClubsPage.class));
                 overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);

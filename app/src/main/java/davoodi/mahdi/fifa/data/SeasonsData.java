@@ -1,6 +1,5 @@
 package davoodi.mahdi.fifa.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -42,13 +41,9 @@ public class SeasonsData extends SQLiteOpenHelper {
     }
 
     public void insertSeason(Season season) {
-        ContentValues values = new ContentValues();
-        values.put(Season.KEY_ID, season.getSeasonID());
-        values.put(Season.KEY_MATCHES, season.getSeasonMatchesPlayed());
-
         // Now we work with our database.
         SQLiteDatabase database = getWritableDatabase();
-        long insertID = database.insert(TABLE_SEASONS, null, values);
+        long insertID = database.insert(TABLE_SEASONS, null, season.getContentValues());
 
         if (insertID == -1)
             Log.i("database", "Season data insertion failed. (Season: " + season.toString() + " ) ");

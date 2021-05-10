@@ -20,7 +20,32 @@ public class Club {
     private long clubWealth;
     private int clubMT, clubTM, clubChampions, clubEurope, clubGolden;
     private String clubClass;
-    private int clubOwner;
+    private Integer clubOwner;
+
+    public Club() {
+    }
+
+    public Club(int clubID,
+                String clubName,
+                long clubWealth,
+                int clubMT,
+                int clubTM,
+                int clubChampions,
+                int clubEurope,
+                int clubGolden,
+                String clubClass,
+                Integer clubOwner) {
+        this.clubID = clubID;
+        this.clubName = clubName;
+        this.clubWealth = clubWealth;
+        this.clubMT = clubMT;
+        this.clubTM = clubTM;
+        this.clubChampions = clubChampions;
+        this.clubEurope = clubEurope;
+        this.clubGolden = clubGolden;
+        this.clubClass = clubClass;
+        this.clubOwner = clubOwner;
+    }
 
     public ContentValues getContentValues() {
         ContentValues values = new ContentValues();
@@ -33,6 +58,7 @@ public class Club {
         values.put(KEY_EUROPE, getClubEurope());
         values.put(KEY_GOLDEN, getClubGolden());
         values.put(KEY_CLASS, getClubClass());
+        values.put(KEY_OWNER, getClubOwner());
         return values;
     }
 
