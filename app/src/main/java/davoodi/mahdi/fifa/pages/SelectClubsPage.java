@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
@@ -25,8 +27,12 @@ public class SelectClubsPage extends AppCompatActivity {
 
     ArrayList<Club> clubs, firstOwnerSelected, secondOwnerSelected;
     ArrayList<Owner> owners;
+    Club currentClub;
+    int currentIndex = 0, indexTemp, maxIndex;
 
     private void refreshPage() {
+        clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
+        maxIndex = clubs.size() - 2;
         int firstOwnerSelectedSize = firstOwnerSelected.size();
         int secondOwnerSelectedSize = secondOwnerSelected.size();
 
@@ -51,6 +57,17 @@ public class SelectClubsPage extends AppCompatActivity {
         secondOwnerClubsNumber.setText(secondOwnerSelectedSize + "/10");
         firstOwnerClubs.setText(list_1.toString());
         secondOwnerClubs.setText(list_2.toString());
+    }
+
+    private void refreshCardView() {
+        currentClub = clubs.get(currentIndex);
+        int imageRes = getResources().getIdentifier("club" + currentClub.getClubID(),
+                "drawable",
+                getPackageName());
+        clubButton.setImageResource(imageRes);
+        clubName.setText(currentClub.getClubName());
+        clubBudget.setText("Budget: " + currentClub.getClubWealth() + " million $");
+        clubClass.setText("Class: " + currentClub.getClubClass());
     }
 
     private void initializeWidgets() {
@@ -91,14 +108,27 @@ public class SelectClubsPage extends AppCompatActivity {
         firstOwnerName.setText(owners.get(0).getOwnerName());
         secondOwnerName.setText(owners.get(1).getOwnerName());
         refreshPage();
+        currentClub = clubs.get(currentIndex);
+        refreshCardView();
     }
 
     // Back Image Button OnClick.
     public void backButtonOnClick(View view) {
+        if (currentIndex == 0)
+            currentIndex = maxIndex;
+        else
+            currentIndex--;
+
+        refreshCardView();
     }
 
     // Next Image Button OnClick.
     public void nextButtonOnClick(View view) {
+        if (currentIndex == maxIndex)
+            currentIndex = 0;
+        else
+            currentIndex++;
+        refreshCardView();
     }
 
     // Club Image Button OnClick.
