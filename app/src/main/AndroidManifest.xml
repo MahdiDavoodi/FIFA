@@ -9,17 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIFA">
-        <activity android:name=".pages.SelectClubsPage"></activity>
-        <activity android:name=".pages.CreateOwnersPage" />
-        <activity android:name=".pages.StartPage" />
-        <activity android:name=".pages.LoadingPage">
+        <activity
+            android:name=".pages.SelectClubsPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pages.CreateOwnersPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pages.StartPage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".pages.LoadingPage"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pages.MainPage" />
+        <activity
+            android:name=".pages.MainPage"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
