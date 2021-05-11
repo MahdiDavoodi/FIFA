@@ -1,5 +1,6 @@
 package davoodi.mahdi.fifa.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -55,7 +56,7 @@ public class ClubsData extends SQLiteOpenHelper {
         long insertID = database.insert(TABLE_CLUBS, null, club.getContentValues());
 
         if (insertID == -1)
-            Log.i("database", "Club data insertion failed. (Club: " + club.toString() + " ) ");
+            Log.i("database", "Club data insertion failed. (Club: " + club.getClubName() + " ) ");
         else
             Log.i("database", "Club data inserted with id: " + insertID);
         if (database.isOpen()) database.close();
@@ -86,5 +87,12 @@ public class ClubsData extends SQLiteOpenHelper {
         cursor.close();
         if (database.isOpen()) database.close();
         return clubs;
+    }
+
+    public void updateClub(int ID, ContentValues changedValues) {
+        SQLiteDatabase database = getWritableDatabase();
+        int count = database.update(TABLE_CLUBS, changedValues, Club.KEY_ID + " = " + ID, null);
+        if (count != 1) Log.e("ClubsData", "Error in update method");
+        if (database.isOpen()) database.close();
     }
 }

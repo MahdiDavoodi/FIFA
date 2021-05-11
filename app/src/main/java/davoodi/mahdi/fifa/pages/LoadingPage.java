@@ -32,6 +32,8 @@ public class LoadingPage extends AppCompatActivity {
 
                 if (lastSituationSaved.equals("CreateOwnersPage"))
                     intent = new Intent(LoadingPage.this, SelectClubsPage.class);
+                else if (lastSituationSaved.equals("SelectClubsPage"))
+                    intent = new Intent(LoadingPage.this, SlidesPage.class);
                 else
                     intent = new Intent(LoadingPage.this, MainPage.class);
             } else

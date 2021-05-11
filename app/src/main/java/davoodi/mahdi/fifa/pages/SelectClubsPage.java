@@ -2,6 +2,9 @@ package davoodi.mahdi.fifa.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,18 +30,19 @@ public class SelectClubsPage extends AppCompatActivity {
             firstOwnerClubs, secondOwnerClubs;
 
     ArrayList<Club> clubs, firstOwnerSelected, secondOwnerSelected;
-    ArrayList<Owner> owners;
+    Owner firstOwner, secondOwner;
     Club currentClub;
     int currentIndex = 0, maxIndex;
     int turn = 1;
+    ClubsData clubsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_clubs_page);
         initializeWidgets();
-        firstOwnerName.setText(owners.get(0).getOwnerName());
-        secondOwnerName.setText(owners.get(1).getOwnerName());
+        firstOwnerName.setText(firstOwner.getOwnerName());
+        secondOwnerName.setText(secondOwner.getOwnerName());
         firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
         refreshPage();
         refreshCardView();
@@ -67,10 +71,10 @@ public class SelectClubsPage extends AppCompatActivity {
         secondOwnerClubs = findViewById(R.id.selectClubsListText2);
 
         // Read Saved Data.
-        ClubsData clubsData = new ClubsData(this);
+        clubsData = new ClubsData(this);
         OwnersData ownersData = new OwnersData(this);
         clubs = clubsData.getAllClubs();
-        owners = ownersData.getAllOwners();
+        ArrayList<Owner> owners = ownersData.getAllOwners();
 
         // Containers.
         firstOwnerSelected = new ArrayList<>();
@@ -78,6 +82,10 @@ public class SelectClubsPage extends AppCompatActivity {
 
         // Sort Clubs.
         clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
+
+        // Set owners.
+        firstOwner = owners.get(0);
+        secondOwner = owners.get(1);
     }
 
     private void refreshPage() {
@@ -152,14 +160,14 @@ public class SelectClubsPage extends AppCompatActivity {
                 firstOwnerSelected.add(currentClub);
                 firstOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
                 secondOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
-                Toast.makeText(this, "Its " + owners.get(1).getOwnerName()
+                Toast.makeText(this, "Its " + secondOwner.getOwnerName()
                         + " 's turn!", Toast.LENGTH_SHORT).show();
                 turn = 2;
             } else {
                 secondOwnerSelected.add(currentClub);
                 secondOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
                 firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
-                Toast.makeText(this, "Its " + owners.get(0).getOwnerName()
+                Toast.makeText(this, "Its " + firstOwner.getOwnerName()
                         + " 's turn!", Toast.LENGTH_SHORT).show();
                 turn = 1;
             }
@@ -173,5 +181,40 @@ public class SelectClubsPage extends AppCompatActivity {
 
     // Done Button OnClick.
     public void doneOnClick(View view) {
+        updateData();
+        startActivity(new Intent(SelectClubsPage.this, SlidesPage.class));
+        overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+        finish();
+    }
+
+    private void updateData() {
+        // Update Clubs ID.
+        updateClubsID(firstOwnerSelected, firstOwner.getOwnerID());
+        updateClubsID(secondOwnerSelected, secondOwner.getOwnerID());
+
+        // Edit Database.
+        updateClubsDatabaseID(firstOwnerSelected);
+        updateClubsDatabaseID(secondOwnerSelected);
+
+        // Edit Preferences.
+        SharedPreferences sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("Visited", "SelectClubsPage");
+        editor.apply();
+        Toast.makeText(this, "Data saved!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void updateClubsID(ArrayList<Club> clubs, int newID) {
+        for (Club club : clubs)
+            club.setClubOwner(newID);
+    }
+
+    private void updateClubsDatabaseID(ArrayList<Club> clubs) {
+        for (Club club :
+                clubs) {
+            ContentValues newValues = new ContentValues();
+            newValues.put(Club.KEY_OWNER, club.getClubOwner());
+            clubsData.updateClub(club.getClubID(), newValues);
+        }
     }
 }

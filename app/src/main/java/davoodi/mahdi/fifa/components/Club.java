@@ -20,7 +20,7 @@ public class Club {
     private long clubWealth;
     private int clubMT, clubTM, clubChampions, clubEurope, clubGolden;
     private String clubClass;
-    private Integer clubOwner;
+    private int clubOwner;
 
     public Club() {
     }
@@ -34,7 +34,7 @@ public class Club {
                 int clubEurope,
                 int clubGolden,
                 String clubClass,
-                Integer clubOwner) {
+                int clubOwner) {
         this.clubID = clubID;
         this.clubName = clubName;
         this.clubWealth = clubWealth;
@@ -142,8 +142,4 @@ public class Club {
         this.clubOwner = clubOwner;
     }
 
-    @Override
-    public String toString() {
-        return clubName;
-    }
 }
