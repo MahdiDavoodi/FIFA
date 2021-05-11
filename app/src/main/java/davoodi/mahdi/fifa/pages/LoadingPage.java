@@ -3,13 +3,13 @@ package davoodi.mahdi.fifa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import davoodi.mahdi.fifa.R;
+import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class LoadingPage extends AppCompatActivity {
-    SharedPreferences sharedPreferences;
+    AppPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,26 +19,33 @@ public class LoadingPage extends AppCompatActivity {
     }
 
     public void nextActivity() {
-        sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
+        preferences = new AppPreferences(this);
         Intent intent;
         try {
             Thread.sleep(3000);
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         } finally {
-            if (sharedPreferences.contains("Visited")) {
-                // User visited this app before.
-                String lastSituationSaved = sharedPreferences.getString("Visited", "NOT-FOUND");
+            String lastSeen = preferences.getLastSeen();
 
-                if (lastSituationSaved.equals("CreateOwnersPage"))
-                    intent = new Intent(LoadingPage.this, SelectClubsPage.class);
-                else if (lastSituationSaved.equals("SelectClubsPage"))
-                    intent = new Intent(LoadingPage.this, SlidesPage.class);
-                else
+            switch (lastSeen) {
+                case "SlidesPage":
                     intent = new Intent(LoadingPage.this, MainPage.class);
-            } else
-                // User did not visit this app before.(Preference is NULL or it does not have "Visited" key)
-                intent = new Intent(LoadingPage.this, StartPage.class);
+                    break;
+                case "CreateOwnersPage":
+                    intent = new Intent(LoadingPage.this, SelectClubsPage.class);
+                    break;
+                case "SelectClubsPage":
+                    intent = new Intent(LoadingPage.this, SlidesPage.class);
+                    break;
+                case "StartPage":
+                    intent = new Intent(LoadingPage.this, CreateOwnersPage.class);
+                    break;
+                default:
+                    // User did not visit this app before.
+                    intent = new Intent(LoadingPage.this, StartPage.class);
+                    break;
+            }
 
             startActivity(intent);
             finish();

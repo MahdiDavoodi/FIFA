@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,9 +18,11 @@ import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.OwnersData;
+import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class SelectClubsPage extends AppCompatActivity {
 
+    AppPreferences preferences;
     ImageButton nextButton, backButton, clubButton;
     Button doneButton;
     TextView clubName, clubBudget, clubClass,
@@ -197,10 +198,9 @@ public class SelectClubsPage extends AppCompatActivity {
         updateClubsDatabaseID(secondOwnerSelected);
 
         // Edit Preferences.
-        SharedPreferences sharedPreferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("Visited", "SelectClubsPage");
-        editor.apply();
+        preferences = new AppPreferences(this);
+        preferences.setLastSeen("SelectClubsPage");
+
         Toast.makeText(this, "Data saved!", Toast.LENGTH_SHORT).show();
     }
 

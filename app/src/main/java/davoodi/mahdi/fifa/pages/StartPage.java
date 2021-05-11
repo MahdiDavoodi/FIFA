@@ -22,8 +22,11 @@ import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Season;
+import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class StartPage extends AppCompatActivity {
+
+    AppPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,9 @@ public class StartPage extends AppCompatActivity {
     // OnClickListener for start button.
     public void startOnClick(View view) {
         createDatabase();
+        // Edit Preferences.
+        preferences = new AppPreferences(this);
+        preferences.setLastSeen("StartPage");
         startActivity(new Intent(StartPage.this, CreateOwnersPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
         finish();
