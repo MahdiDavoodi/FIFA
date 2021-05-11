@@ -13,8 +13,13 @@
     <color name="mainBigTextColor">#448546</color>
     <color name="mainDescriptionTextColor">#B1B3B6</color>
     <color name="mainTextColor">#FF000000</color>
-    <color name="mainButtonColor">#448546</color>
     <color name="mainDefaultIconColor">#448546</color>
     <color name="mainDefaultEditTextColor">#A0AEA0</color>
     <color name="mainDefaultEditTextFocusedColor">#448546</color>
+
+
+    // Buttons.
+    <color name="mainButtonColor">#448546</color>
+    <color name="mainButtonTextColor">#FFFFFF</color>
+
 </resources>

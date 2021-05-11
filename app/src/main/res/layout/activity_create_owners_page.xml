@@ -128,7 +128,7 @@
         android:text="@string/createOwnersSaveButtonStage1"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/mainTextColor"
+        android:textColor="@color/mainButtonTextColor"
         android:textDirection="ltr"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
