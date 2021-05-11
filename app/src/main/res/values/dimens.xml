@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Common Text Sizes.
+    <dimen name="text_size_5">90sp</dimen>
+    <dimen name="text_size_4">35sp</dimen>
+    <dimen name="text_size_3_5">24sp</dimen>
+    <dimen name="text_size_3">18sp</dimen>
+    <dimen name="text_size_2">16sp</dimen>
+    <dimen name="text_size_1">12sp</dimen>
+
+    // Button Text.
+    <dimen name="normalButton">12sp</dimen>
+
+</resources>

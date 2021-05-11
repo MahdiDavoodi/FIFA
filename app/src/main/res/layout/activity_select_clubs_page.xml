@@ -18,7 +18,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="12sp"
+        android:textSize="@dimen/text_size_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner2NameText" />
@@ -52,7 +52,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="12sp"
+        android:textSize="@dimen/text_size_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner1NameText" />
@@ -69,7 +69,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsDescriptionText" />
 
@@ -85,7 +85,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner1NameText" />
 
@@ -101,7 +101,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_size_3_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsDescriptionText" />
 
@@ -117,7 +117,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="30sp"
+        android:textSize="@dimen/text_size_3_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectClubsOwner1NameText" />
 
@@ -185,7 +185,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/mainTextColor"
                     android:textDirection="ltr"
-                    android:textSize="28sp"
+                    android:textSize="@dimen/text_size_3_5"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
@@ -199,7 +199,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/mainDescriptionTextColor"
                     android:textDirection="ltr"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
@@ -214,7 +214,7 @@
                     android:textAlignment="center"
                     android:textColor="@color/mainDescriptionTextColor"
                     android:textDirection="ltr"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_size_1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
@@ -247,7 +247,7 @@
         android:textAllCaps="false"
         android:textColor="@color/mainButtonTextColor"
         android:textDirection="ltr"
-        android:textSize="18sp"
+        android:textSize="@dimen/normalButton"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

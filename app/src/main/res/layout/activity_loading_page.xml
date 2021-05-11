@@ -20,7 +20,7 @@
         android:textAllCaps="true"
         android:textColor="@color/mainBigTextColor"
         android:textDirection="ltr"
-        android:textSize="90sp"
+        android:textSize="@dimen/text_size_5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_size_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -55,7 +55,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainTextColor"
         android:textDirection="ltr"
-        android:textSize="18sp"
+        android:textSize="@dimen/text_size_3"
         app:layout_constraintEnd_toEndOf="@+id/loadingAppNameText"
         app:layout_constraintStart_toStartOf="@+id/loadingAppNameText"
         app:layout_constraintTop_toBottomOf="@+id/loadingAppNameText" />

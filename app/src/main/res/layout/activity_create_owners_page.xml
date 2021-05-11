@@ -19,7 +19,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainTextColor"
         android:textDirection="ltr"
-        android:textSize="34sp"
+        android:textSize="@dimen/text_size_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createOwnersDescriptionText" />
@@ -60,7 +60,7 @@
         android:textColor="@color/mainTextColor"
         android:textColorHint="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="@+id/createOwnersText"
         app:layout_constraintStart_toStartOf="@+id/createOwnersText"
         app:layout_constraintTop_toBottomOf="@+id/createOwnersText" />
@@ -85,7 +85,7 @@
         android:textColor="@color/mainTextColor"
         android:textColorHint="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="@+id/createOwnersNameEditText"
         app:layout_constraintStart_toStartOf="@+id/createOwnersNameEditText"
         app:layout_constraintTop_toBottomOf="@+id/createOwnersNameEditText" />
@@ -110,7 +110,7 @@
         android:textColor="@color/mainTextColor"
         android:textColorHint="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
-        android:textSize="16sp"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="@+id/createOwnersPasswordEditText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/createOwnersPasswordEditText"
@@ -130,7 +130,7 @@
         android:textAllCaps="false"
         android:textColor="@color/mainButtonTextColor"
         android:textDirection="ltr"
-        android:textSize="18sp"
+        android:textSize="@dimen/normalButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
