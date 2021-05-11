@@ -18,7 +18,9 @@
 
     // Select Clubs Page.
     <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
-    <string name="selectClubsOfTenText">0/10</string>
+    <string name="selectClubsOfTenText">%1$d/10</string>
+    <string name="selectClubsClubBudgetText">Budget: %1$d million$</string>
+    <string name="selectClubsClassText">Class: %1$s</string>
     <string name="selectClubsDoneButton">Done</string>
 
     // Toasts.

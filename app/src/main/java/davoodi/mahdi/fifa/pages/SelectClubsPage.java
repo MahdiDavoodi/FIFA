@@ -2,7 +2,6 @@ package davoodi.mahdi.fifa.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,8 +10,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
@@ -35,47 +32,16 @@ public class SelectClubsPage extends AppCompatActivity {
     int currentIndex = 0, maxIndex;
     int turn = 1;
 
-    private void refreshPage() {
-        int firstOwnerSelectedSize = firstOwnerSelected.size();
-        int secondOwnerSelectedSize = secondOwnerSelected.size();
-        if (firstOwnerSelectedSize == 10 && secondOwnerSelectedSize == 10)
-            doneButton.setVisibility(View.VISIBLE);
-
-        clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
-        maxIndex = clubs.size() - 2;
-
-        StringBuilder list_1 = new StringBuilder(),
-                list_2 = new StringBuilder();
-
-        for (int i = 0; i < firstOwnerSelectedSize; i++) {
-            if (i == 0)
-                list_1 = new StringBuilder(firstOwnerSelected.get(i).getClubName());
-            else
-                list_1.append(", ").append(firstOwnerSelected.get(i).getClubName());
-        }
-
-        for (int i = 0; i < secondOwnerSelectedSize; i++) {
-            if (i == 0)
-                list_2 = new StringBuilder(secondOwnerSelected.get(i).getClubName());
-            else
-                list_2.append(", ").append(secondOwnerSelected.get(i).getClubName());
-        }
-
-        firstOwnerClubsNumber.setText(firstOwnerSelectedSize + "/10");
-        secondOwnerClubsNumber.setText(secondOwnerSelectedSize + "/10");
-        firstOwnerClubs.setText(list_1.toString());
-        secondOwnerClubs.setText(list_2.toString());
-    }
-
-    private void refreshCardView() {
-        currentClub = clubs.get(currentIndex);
-        int imageRes = getResources().getIdentifier("club" + currentClub.getClubID(),
-                "drawable",
-                getPackageName());
-        clubButton.setImageResource(imageRes);
-        clubName.setText(currentClub.getClubName());
-        clubBudget.setText("Budget: " + currentClub.getClubWealth() + " million $");
-        clubClass.setText("Class: " + currentClub.getClubClass());
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_select_clubs_page);
+        initializeWidgets();
+        firstOwnerName.setText(owners.get(0).getOwnerName());
+        secondOwnerName.setText(owners.get(1).getOwnerName());
+        firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
+        refreshPage();
+        refreshCardView();
     }
 
     private void initializeWidgets() {
@@ -84,6 +50,7 @@ public class SelectClubsPage extends AppCompatActivity {
         backButton = findViewById(R.id.selectClubsBackButton);
         clubButton = findViewById(R.id.selectClubsClubButton);
 
+        // Button.
         doneButton = findViewById(R.id.selectClubsDoneButton);
 
         // CardView TextViews.
@@ -99,7 +66,7 @@ public class SelectClubsPage extends AppCompatActivity {
         firstOwnerClubs = findViewById(R.id.selectClubsListText1);
         secondOwnerClubs = findViewById(R.id.selectClubsListText2);
 
-        // Saved Data.
+        // Read Saved Data.
         ClubsData clubsData = new ClubsData(this);
         OwnersData ownersData = new OwnersData(this);
         clubs = clubsData.getAllClubs();
@@ -108,19 +75,53 @@ public class SelectClubsPage extends AppCompatActivity {
         // Containers.
         firstOwnerSelected = new ArrayList<>();
         secondOwnerSelected = new ArrayList<>();
+
+        // Sort Clubs.
+        clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_clubs_page);
-        initializeWidgets();
-        firstOwnerName.setText(owners.get(0).getOwnerName());
-        secondOwnerName.setText(owners.get(1).getOwnerName());
-        refreshPage();
-        currentClub = clubs.get(currentIndex);
-        refreshCardView();
+    private void refreshPage() {
+        int first_size = firstOwnerSelected.size();
+        int second_size = secondOwnerSelected.size();
+        if (first_size == 10 && second_size == 10)
+            doneButton.setVisibility(View.VISIBLE);
+
+        maxIndex = clubs.size() - 2;
+
+        StringBuilder list_1 = new StringBuilder(),
+                list_2 = new StringBuilder();
+
+        for (int i = 0; i < first_size; i++) {
+            if (i == 0)
+                list_1 = new StringBuilder(firstOwnerSelected.get(i).getClubName());
+            else
+                list_1.append(", ").append(firstOwnerSelected.get(i).getClubName());
+        }
+
+        for (int i = 0; i < second_size; i++) {
+            if (i == 0)
+                list_2 = new StringBuilder(secondOwnerSelected.get(i).getClubName());
+            else
+                list_2.append(", ").append(secondOwnerSelected.get(i).getClubName());
+        }
+
+        firstOwnerClubsNumber.setText(getString(R.string.selectClubsOfTenText, first_size));
+        secondOwnerClubsNumber.setText(getString(R.string.selectClubsOfTenText, second_size));
+        firstOwnerClubs.setText(list_1.toString());
+        secondOwnerClubs.setText(list_2.toString());
     }
+
+    private void refreshCardView() {
+        currentClub = clubs.get(currentIndex);
+        int imageRes = getResources().getIdentifier("club" + currentClub.getClubID(),
+                "drawable",
+                getPackageName());
+        clubButton.setImageResource(imageRes);
+        clubName.setText(currentClub.getClubName());
+        clubBudget.setText(getString(R.string.selectClubsClubBudgetText, currentClub.getClubWealth()));
+        clubClass.setText(getString(R.string.selectClubsClassText, currentClub.getClubClass()));
+    }
+
 
     // Back Image Button OnClick.
     public void backButtonOnClick(View view) {
@@ -149,18 +150,18 @@ public class SelectClubsPage extends AppCompatActivity {
             // If turn is 1, owner 1 should select and if it is 2, owner 2 should select.
             if (turn == 1) {
                 firstOwnerSelected.add(currentClub);
-                turn = 2;
-                firstOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor));
-                secondOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor));
+                firstOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
+                secondOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
                 Toast.makeText(this, "Its " + owners.get(1).getOwnerName()
                         + " 's turn!", Toast.LENGTH_SHORT).show();
-            } else if (turn == 2) {
+                turn = 2;
+            } else {
                 secondOwnerSelected.add(currentClub);
-                turn = 1;
-                secondOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor));
-                firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor));
+                secondOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
+                firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
                 Toast.makeText(this, "Its " + owners.get(0).getOwnerName()
                         + " 's turn!", Toast.LENGTH_SHORT).show();
+                turn = 1;
             }
             clubs.remove(currentClub);
             refreshPage();
