@@ -14,7 +14,7 @@ public class LoadingPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading_page);
+        setContentView(R.layout.loading_page);
         new Thread(this::nextActivity).start();
     }
 

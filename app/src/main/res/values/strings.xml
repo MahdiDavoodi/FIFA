@@ -1,27 +1,23 @@
 <resources>
     // Total
     <string name="appName">FIFA</string>
-    <string name="developerName">Mahdi Davoodi</string>
+    <string name="developerName">Zero Day</string>
     <string name="appDescription">There is no limit for football.</string>
     <string name="welcomeToFIFA">Welcome to FIFA!</string>
 
     // Start Page.
     <string name="startDescriptionText">You can create owners and then select teams for them to start the competition.</string>
-    <string name="startStartButton">Start</string>
 
     // Create Owners Page.
     <string name="createOwnersDescriptionText">Now, you have to create your local account to manage your clubs.</string>
     <string name="createOwnersFirstOwnerText">Owner 1</string>
     <string name="createOwnersSecondOwnerText">Owner 2</string>
-    <string name="createOwnersSaveButtonStage1">Next</string>
-    <string name="createOwnersSaveButtonStage2">Done</string>
 
     // Select Clubs Page.
     <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
     <string name="selectClubsOfTenText">%1$d/10</string>
     <string name="selectClubsClubBudgetText">Budget: %1$d million$</string>
     <string name="selectClubsClassText">Class: %1$s</string>
-    <string name="selectClubsDoneButton">Done</string>
 
     // Toasts.
     <string name="createOwnersToast1">Please input your information!</string>
@@ -38,5 +34,15 @@
     <string name="nameHint">Name</string>
     <string name="passwordHint">Password</string>
     <string name="confirmPasswordHint">Confirm Password</string>
+
+    // Common Text
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="done">Done</string>
+    <string name="start">Start</string>
+
+    // Version Control.
+    <string name="slidesPage">Finish in Version 1.0</string>
+    <string name="version">version 1.0</string>
 
 </resources>

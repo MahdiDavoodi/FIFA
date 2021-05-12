@@ -27,7 +27,7 @@ public class CreateOwnersPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_owners_page);
+        setContentView(R.layout.create_owners_page);
         saveButton = findViewById(R.id.createOwnersSaveButton);
         nameEditText = findViewById(R.id.createOwnersNameEditText);
         passwordEditText = findViewById(R.id.createOwnersPasswordEditText);
@@ -54,7 +54,7 @@ public class CreateOwnersPage extends AppCompatActivity {
                 ownerText.setText(R.string.createOwnersSecondOwnerText);
                 Toast.makeText(this, R.string.createOwnersToast3, Toast.LENGTH_SHORT).show();
                 saveButtonStage++;
-                saveButton.setText(R.string.createOwnersSaveButtonStage2);
+                saveButton.setText(R.string.done);
             } else if (saveButtonStage == 2) {
                 owner2 = new Owner(saveButtonStage,
                         nameEditText.getText().toString().trim(),

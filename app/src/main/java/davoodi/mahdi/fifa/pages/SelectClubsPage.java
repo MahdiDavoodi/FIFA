@@ -40,7 +40,7 @@ public class SelectClubsPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_clubs_page);
+        setContentView(R.layout.select_clubs_page);
         initializeWidgets();
         firstOwnerName.setText(firstOwner.getOwnerName());
         secondOwnerName.setText(secondOwner.getOwnerName());
