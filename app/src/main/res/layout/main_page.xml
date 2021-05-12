@@ -13,14 +13,21 @@
         android:layout_height="match_parent"
         android:layout_above="@id/mainBottomNavigation" />
 
+    <View
+        android:id="@+id/mainShadowView"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/mainBottomNavigation"
+        android:background="@drawable/shadow" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/mainBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:background="?android:attr/selectableItemBackground"
-        app:itemIconTint="@color/mainButtonColor"
-        app:itemTextColor="@color/mainButtonColor"
+        app:itemIconTint="@color/mainDefaultIconColor"
+        app:itemTextColor="@color/mainDescriptionTextColor"
         app:menu="@menu/main_bottom_navigation" />
 </RelativeLayout>
