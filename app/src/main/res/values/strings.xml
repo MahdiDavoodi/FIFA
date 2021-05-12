@@ -19,6 +19,11 @@
     <string name="selectClubsClubBudgetText">Budget: %1$d million$</string>
     <string name="selectClubsClassText">Class: %1$s</string>
 
+    // Main Page.
+    <string name="mainNavigationMatches">Matches</string>
+    <string name="mainNavigationTransfer">Transfer</string>
+    <string name="mainNavigationCups">Cups</string>
+
     // Toasts.
     <string name="createOwnersToast1">Please input your information!</string>
     <string name="createOwnersToast2">Password does not match!</string>

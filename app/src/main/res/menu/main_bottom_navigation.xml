@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_matches"
+        android:icon="@drawable/ic_matches"
+        android:title="@string/mainNavigationMatches" />
+    <item
+        android:id="@+id/main_transfer"
+        android:icon="@drawable/ic_transfer"
+        android:title="@string/mainNavigationTransfer" />
+    <item
+        android:id="@+id/main_cups"
+        android:icon="@drawable/ic_cups"
+        android:title="@string/mainNavigationCups" />
+</menu>
