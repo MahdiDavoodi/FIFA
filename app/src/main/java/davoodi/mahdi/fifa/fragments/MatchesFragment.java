@@ -17,6 +17,8 @@ public class MatchesFragment extends Fragment {
     SeasonsData seasonsData;
     ResultsData resultsData;
     AppPreferences preferences;
+    int matchesCreated;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,5 +31,9 @@ public class MatchesFragment extends Fragment {
 
     private void refresh() {
 
+    }
+
+    private boolean isThereAnyMatches() {
+        return true;
     }
 }
