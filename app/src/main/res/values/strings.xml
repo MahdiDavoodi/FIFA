@@ -41,7 +41,7 @@
     <string name="confirmPasswordHint">Confirm Password</string>
 
     // Transfer Page.
-
+    <string name="transferDescriptionText">In this page, you can simply record your transfer history and see it again.</string>
 
     // Common Text
     <string name="history">History</string>
