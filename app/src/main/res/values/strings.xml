@@ -50,6 +50,7 @@
     <string name="skip">Skip</string>
     <string name="done">Done</string>
     <string name="start">Start</string>
+    <string name="info">Info</string>
 
     // Version Control.
     <string name="slidesPage">Finish in Version 1.0</string>

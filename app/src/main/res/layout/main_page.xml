@@ -13,9 +13,19 @@
         android:layout_height="wrap_content"
         android:background="@color/mainColor"
         android:minHeight="?attr/actionBarSize"
+        android:padding="4dp"
+        android:textDirection="ltr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/main_more_options"
+        app:subtitle="@string/appDescription"
+        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:subtitleTextColor="@color/mainDescriptionTextColor"
+        app:title="@string/appName"
+        app:titleMargin="4dp"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:titleTextColor="@color/mainBigTextColor" />
 
     <View
         android:id="@+id/mainShadowView2"
