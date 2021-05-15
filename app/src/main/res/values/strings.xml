@@ -43,6 +43,11 @@
     // Transfer Page.
     <string name="transferDescriptionText">In this page, you can simply record your transfer history and see it again.</string>
 
+    // Matches Page.
+    <string name="matchesPlayNextButton">Play</string>
+    <string name="matchesStatisticsButton">Statistics</string>
+    <string name="matchesDescriptionText">In this page, you can add or see matches results.</string>
+
     // Common Text
     <string name="history">History</string>
     <string name="newText">New</string>

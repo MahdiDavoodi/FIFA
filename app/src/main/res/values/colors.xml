@@ -22,4 +22,7 @@
     <color name="mainButtonColor">#448546</color>
     <color name="mainButtonTextColor">#FFFFFF</color>
 
+    // Line Views.
+    <color name="defaultLineColor">#448546</color>
+
 </resources>

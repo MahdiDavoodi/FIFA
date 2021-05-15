@@ -5,11 +5,87 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/matchesDescriptionText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Matches Fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="20dp"
+        android:text="@string/matchesDescriptionText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/matchesButtonBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchesDescriptionText">
+
+        <Button
+            android:id="@+id/matchesPlayButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:text="@string/matchesPlayNextButton"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+
+        <Button
+            android:id="@+id/matchesStatisticsButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:text="@string/matchesStatisticsButton"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/matchesLineView"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_margin="10dp"
+        android:background="@color/defaultLineColor"
+        app:layout_constraintTop_toBottomOf="@+id/matchesButtonBox" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matchesLineView"
+        app:layout_constraintVertical_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
