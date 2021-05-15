@@ -8,6 +8,8 @@
     <dimen name="text_size_3">18sp</dimen>
     <dimen name="text_size_2">16sp</dimen>
     <dimen name="text_size_1">12sp</dimen>
+    <dimen name="text_size_0_5">8sp</dimen>
+    <dimen name="text_size_0_2">5sp</dimen>
 
     // Button Text.
     <dimen name="normalButton">12sp</dimen>
