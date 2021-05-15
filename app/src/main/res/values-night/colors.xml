@@ -7,6 +7,8 @@
     <color name="light_green">#88FD01</color>
     <color name="green">#448546</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="red">#CF0F0F</color>
+    <color name="blue">#1228B6</color>
 
     // Main objects(Main Dark Theme)
     <color name="mainColor">#FF000000</color>
