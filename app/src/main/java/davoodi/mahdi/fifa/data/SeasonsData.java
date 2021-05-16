@@ -57,7 +57,7 @@ public class SeasonsData extends SQLiteOpenHelper {
     public Season getSeason(int ID) {
         Season season = null;
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_SEASONS + "' WHERE '" + Season.KEY_ID + "'  = " + ID, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_SEASONS + " WHERE " + Season.KEY_ID + " = " + ID, null);
         if (cursor.moveToFirst())
             season = new Season(
                     cursor.getInt(cursor.getColumnIndex(Season.KEY_ID)),
@@ -69,7 +69,7 @@ public class SeasonsData extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndex(Season.KEY_MATCHES))
             );
         else
-            Log.e("database", "Seasons database fucked up!");
+            Log.e("database", "Seasons database has problem!");
 
 
         cursor.close();
