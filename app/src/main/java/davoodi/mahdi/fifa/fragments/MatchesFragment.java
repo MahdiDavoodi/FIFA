@@ -8,12 +8,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.Objects;
 
 import davoodi.mahdi.fifa.R;
+import davoodi.mahdi.fifa.adapters.MatchesResultsAdapter;
 import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
@@ -34,6 +36,10 @@ public class MatchesFragment extends Fragment {
     }
 
     private void initialize() {
+        // Results List.
+        MatchesResultsAdapter adapter = new MatchesResultsAdapter(getActivity());
+        resultsList.setAdapter(adapter);
+        resultsList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Preferences.
         preferences = new AppPreferences(Objects.requireNonNull(getActivity()));
@@ -47,7 +53,8 @@ public class MatchesFragment extends Fragment {
 
     // Widgets In Fragment.
     @Override
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         resultsList = Objects.requireNonNull(getView()).findViewById(R.id.matchesResults);
     }
 }
