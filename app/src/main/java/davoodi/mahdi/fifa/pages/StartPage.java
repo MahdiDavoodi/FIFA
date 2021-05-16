@@ -27,6 +27,7 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 public class StartPage extends AppCompatActivity {
 
     AppPreferences preferences;
+    private static final int firstSeason = 2021;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,11 @@ public class StartPage extends AppCompatActivity {
 
     // OnClickListener for start button.
     public void startOnClick(View view) {
+        preferences = new AppPreferences(this);
+
         createDatabase();
         // Edit Preferences.
-        preferences = new AppPreferences(this);
+        preferences.setCurrentSeason(firstSeason);
         preferences.setLastSeen("StartPage");
         startActivity(new Intent(StartPage.this, CreateOwnersPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
@@ -59,8 +62,9 @@ public class StartPage extends AppCompatActivity {
         playersData.getWritableDatabase();
 
         // Seasons
+        int firstSeasonID = firstSeason;
         SeasonsData seasonsData = new SeasonsData(this);
-        Season firstSeason = new Season(2021,
+        Season firstSeason = new Season(firstSeasonID,
                 0,
                 0,
                 0,

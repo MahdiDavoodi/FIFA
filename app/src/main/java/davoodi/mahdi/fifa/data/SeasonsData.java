@@ -1,6 +1,7 @@
 package davoodi.mahdi.fifa.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -51,5 +52,28 @@ public class SeasonsData extends SQLiteOpenHelper {
             Log.i("database", "Season data inserted with id: " + insertID);
         if (database.isOpen()) database.close();
         Log.i("database", "Seasons database closed");
+    }
+
+    public Season getSeason(int ID) {
+        Season season = null;
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_SEASONS + "' WHERE '" + Season.KEY_ID + "'  = " + ID, null);
+        if (cursor.moveToFirst())
+            season = new Season(
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_ID)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_MT)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_TM)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_CHAMPIONS)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_EUROPE)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_GOLDEN)),
+                    cursor.getInt(cursor.getColumnIndex(Season.KEY_MATCHES))
+            );
+        else
+            Log.e("database", "Seasons database fucked up!");
+
+
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return season;
     }
 }

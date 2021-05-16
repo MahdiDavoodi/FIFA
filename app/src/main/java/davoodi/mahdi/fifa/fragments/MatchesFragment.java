@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 
 import davoodi.mahdi.fifa.R;
+import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
@@ -16,16 +17,16 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 public class MatchesFragment extends Fragment {
     SeasonsData seasonsData;
     ResultsData resultsData;
-    AppPreferences preferences;
     int matchesCreated;
-
+    Season season;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_matches, container, false);
     }
 
-    private void initWidgets() {
+    private void initialize() {
+
 
     }
 
