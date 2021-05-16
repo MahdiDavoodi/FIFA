@@ -30,11 +30,11 @@
     <View
         android:id="@+id/mainShadowView2"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="3dp"
         android:background="@drawable/to_down_shadow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainToolbar" />
+        app:layout_constraintTop_toBottomOf="@id/mainToolbar" />
 
     <FrameLayout
         android:id="@+id/mainFragmentContainer"
@@ -49,7 +49,7 @@
     <View
         android:id="@+id/mainShadowView1"
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="3dp"
         android:background="@drawable/to_up_shadow"
         app:layout_constraintBottom_toTopOf="@+id/mainBottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
