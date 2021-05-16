@@ -11,14 +11,59 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import davoodi.mahdi.fifa.R;
+import davoodi.mahdi.fifa.components.Club;
+import davoodi.mahdi.fifa.components.League;
+import davoodi.mahdi.fifa.components.Match;
+import davoodi.mahdi.fifa.components.Season;
+import davoodi.mahdi.fifa.data.ClubsData;
+import davoodi.mahdi.fifa.data.LeaguesData;
+import davoodi.mahdi.fifa.data.SeasonsData;
+import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAdapter.ViewHolder> {
 
     Context context;
+    ArrayList<League> leagues;
+    ArrayList<Club> clubs;
+    ArrayList<Match> matches;
+    AppPreferences preferences;
+
+    Season season;
+    League league;
+
 
     public MatchesResultsAdapter(Context context) {
         this.context = context;
+        readData();
+    }
+
+    private void readData() {
+        // Clubs.
+        ClubsData clubsData = new ClubsData(context);
+        clubs = clubsData.getAllClubs();
+
+        // Leagues.
+        LeaguesData leaguesData = new LeaguesData(context);
+        leagues = leaguesData.getAllLeagues();
+
+        // Preferences.
+        preferences = new AppPreferences(Objects.requireNonNull(context));
+
+        // Season.
+        SeasonsData seasonsData = new SeasonsData(context);
+        season = seasonsData.getSeason(preferences.getCurrentSeason());
+    }
+
+    private void setLeagueToShow() {
+        
+    }
+
+    private void fillMatches() {
+
     }
 
     @NonNull

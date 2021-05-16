@@ -36,10 +36,7 @@ public class MatchesFragment extends Fragment {
     }
 
     private void initialize() {
-        // Results List.
-        MatchesResultsAdapter adapter = new MatchesResultsAdapter(getActivity());
-        resultsList.setAdapter(adapter);
-        resultsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         // Preferences.
         preferences = new AppPreferences(Objects.requireNonNull(getActivity()));
@@ -48,6 +45,13 @@ public class MatchesFragment extends Fragment {
         seasonsData = new SeasonsData(getActivity());
 
         season = seasonsData.getSeason(preferences.getCurrentSeason());
+
+        /*// Results List.
+        if (season.getSeasonMatchesPlayed() != 0) {
+            MatchesResultsAdapter adapter = new MatchesResultsAdapter(getActivity());
+            resultsList.setAdapter(adapter);
+            resultsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }*/
     }
 
 

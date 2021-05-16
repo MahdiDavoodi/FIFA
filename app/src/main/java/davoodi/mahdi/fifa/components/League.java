@@ -11,6 +11,15 @@ public class League {
     private String leagueName;
     private int leagueNumber;
 
+    public League() {
+    }
+
+    public League(int leagueID, String leagueName, int leagueNumber) {
+        this.leagueID = leagueID;
+        this.leagueName = leagueName;
+        this.leagueNumber = leagueNumber;
+    }
+
     public ContentValues getContentValues() {
         ContentValues values = new ContentValues();
         values.put(KEY_ID, getLeagueID());
