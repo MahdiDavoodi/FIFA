@@ -5,8 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
+
+import java.util.Objects;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Season;
@@ -17,24 +22,32 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 public class MatchesFragment extends Fragment {
     SeasonsData seasonsData;
     ResultsData resultsData;
+    AppPreferences preferences;
     int matchesCreated;
     Season season;
+    RecyclerView resultsList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initialize();
         return inflater.inflate(R.layout.fragment_matches, container, false);
     }
 
     private void initialize() {
 
+        // Preferences.
+        preferences = new AppPreferences(Objects.requireNonNull(getActivity()));
 
+        // Database.
+        seasonsData = new SeasonsData(getActivity());
+
+        season = seasonsData.getSeason(preferences.getCurrentSeason());
     }
 
-    private void refresh() {
 
-    }
-
-    private boolean isThereAnyMatches() {
-        return true;
+    // Widgets In Fragment.
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        resultsList = Objects.requireNonNull(getView()).findViewById(R.id.matchesResults);
     }
 }
