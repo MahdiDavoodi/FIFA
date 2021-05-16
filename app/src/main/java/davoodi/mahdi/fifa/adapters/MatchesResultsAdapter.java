@@ -32,6 +32,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     ArrayList<Match> matches;
     AppPreferences preferences;
 
+    int matchesPlayed;
     Season season;
     League league;
 
@@ -39,6 +40,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     public MatchesResultsAdapter(Context context) {
         this.context = context;
         readData();
+        setLeagueToShow();
     }
 
     private void readData() {
@@ -56,15 +58,33 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         // Season.
         SeasonsData seasonsData = new SeasonsData(context);
         season = seasonsData.getSeason(preferences.getCurrentSeason());
+        matchesPlayed = season.getSeasonMatchesPlayed();
     }
 
     private void setLeagueToShow() {
-        
+        int ID = 0;
+        if (matchesPlayed < 200) {
+            // MT.
+            ID = 1;
+        } else if (matchesPlayed < 207) {
+            // TM.
+            ID = 2;
+        } else if (matchesPlayed < 221) {
+            // Champions.
+            ID = 3;
+        } else if (matchesPlayed < 228) {
+            // Europe.
+            ID = 4;
+        } else if (matchesPlayed < 229) {
+            // Golden.
+            ID = 5;
+        }
+        for (League league :
+                leagues) {
+            if (league.getLeagueID() == ID) this.league = league;
+        }
     }
 
-    private void fillMatches() {
-
-    }
 
     @NonNull
     @Override

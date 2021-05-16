@@ -1,5 +1,7 @@
 package davoodi.mahdi.fifa.components;
 
+import android.content.ContentValues;
+
 public class Match {
     public static final String KEY_ID = "matchID";
     public static final String KEY_SEASON = "seasonID";
@@ -10,6 +12,29 @@ public class Match {
     public static final String KEY_AWAY_GOALS = "awayGoals";
     public static final String KEY_MATCH_PLAYED = "matchPlayed";
 
+    public Match(long matchID, int seasonID, int leagueID, int homeTeamID, int awayTeamID, int homeGoals, int awayGoals, int matchPlayed) {
+        this.matchID = matchID;
+        this.seasonID = seasonID;
+        this.leagueID = leagueID;
+        this.homeTeamID = homeTeamID;
+        this.awayTeamID = awayTeamID;
+        this.homeGoals = homeGoals;
+        this.awayGoals = awayGoals;
+        this.matchPlayed = matchPlayed;
+    }
+
+    public ContentValues getContentValues() {
+        ContentValues values = new ContentValues();
+        values.put(KEY_ID, getMatchID());
+        values.put(KEY_SEASON, getSeasonID());
+        values.put(KEY_LEAGUE, getLeagueID());
+        values.put(KEY_HOME, getHomeTeamID());
+        values.put(KEY_AWAY, getAwayTeamID());
+        values.put(KEY_HOME_GOALS, getHomeGoals());
+        values.put(KEY_AWAY_GOALS, getAwayGoals());
+        values.put(KEY_MATCH_PLAYED, getMatchPlayed());
+        return values;
+    }
 
     private long matchID;
     private int seasonID,
