@@ -45,10 +45,11 @@ public class ResultsData extends SQLiteOpenHelper {
         // We should restore database.
     }
 
-    public ArrayList<Match> getAllSeasonMatches(int seasonID) {
+    public ArrayList<Match> getAllSeasonMatches(int seasonID, int leagueID) {
         SQLiteDatabase database = getReadableDatabase();
         ArrayList<Match> matches = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RESULTS + "' WHERE " + Match.KEY_SEASON + " = " + seasonID, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RESULTS
+                + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID, null);
         if (cursor.moveToFirst()) {
             do {
 

@@ -23,9 +23,7 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class MatchesFragment extends Fragment {
     SeasonsData seasonsData;
-    ResultsData resultsData;
     AppPreferences preferences;
-    int matchesCreated;
     Season season;
     RecyclerView resultsList;
 
@@ -48,12 +46,15 @@ public class MatchesFragment extends Fragment {
 
         // Results List.
         if (season.getSeasonMatchesPlayed() != 0) {
-            MatchesResultsAdapter adapter = new MatchesResultsAdapter(getActivity());
-            resultsList.setAdapter(adapter);
-            resultsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+            new Thread(this::showLeagueList);
         }
     }
 
+    private void showLeagueList() {
+        MatchesResultsAdapter adapter = new MatchesResultsAdapter(getActivity());
+        resultsList.setAdapter(adapter);
+        resultsList.setLayoutManager(new LinearLayoutManager(getActivity()));
+    }
 
     // Widgets In Fragment.
     @Override

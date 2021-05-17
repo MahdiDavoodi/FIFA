@@ -21,6 +21,7 @@ import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
+import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
@@ -41,6 +42,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         this.context = context;
         readData();
         setLeagueToShow();
+        setMatchesToShow();
     }
 
     private void readData() {
@@ -85,6 +87,20 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         }
     }
 
+    private void setMatchesToShow() {
+        ResultsData resultsData = new ResultsData(context);
+        matches = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+    }
+
+    private Club getClubFromID(int clubID) {
+        for (Club club :
+                clubs) {
+            if (club.getClubID() == clubID)
+                return club;
+        }
+        return null;
+    }
+
 
     @NonNull
     @Override
@@ -96,16 +112,54 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // This Match.
+        Match match = matches.get(position);
+
         // set widgets information
+        Club home_team = getClubFromID(match.getHomeTeamID());
+        Club away_team = getClubFromID(match.getAwayTeamID());
+
+        assert home_team != null;
+        assert away_team != null;
+
+        // Card views.
+        if (home_team.getClubOwner() == 1) {
+            holder.owner_color_1.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
+            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
+        } else if (home_team.getClubOwner() == 2) {
+            holder.owner_color_1.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
+            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
+        }
+
+        // Images
+        int home_imageRes = context.getResources().getIdentifier("club" + home_team.getClubID(),
+                "drawable",
+                context.getPackageName());
+        holder.home_team_logo.setImageResource(home_imageRes);
+
+        int away_imageRes = context.getResources().getIdentifier("club" + away_team.getClubID(),
+                "drawable",
+                context.getPackageName());
+        holder.away_team_logo.setImageResource(away_imageRes);
+
+        // Text Views.
+        holder.home_team_name.setText(home_team.getClubName());
+        holder.away_team_name.setText(away_team.getClubName());
+        holder.league.setText(league.getLeagueName());
+
+        if (match.getMatchPlayed() == 1)
+            holder.result.setText(context.getString(R.string.match_result, match.getHomeGoals(), match.getAwayGoals()));
+        else
+            holder.result.setText("---");
     }
 
     @Override
     public int getItemCount() {
         // Items number.
-        return 0;
+        return matches.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         CardView owner_color_1, owner_color_2;
         TextView result, home_team_name, away_team_name, league;
