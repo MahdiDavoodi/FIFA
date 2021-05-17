@@ -17,7 +17,6 @@ import java.util.Objects;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.adapters.MatchesResultsAdapter;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
@@ -35,7 +34,6 @@ public class MatchesFragment extends Fragment {
 
     private void initialize() {
 
-
         // Preferences.
         preferences = new AppPreferences(Objects.requireNonNull(getActivity()));
 
@@ -45,9 +43,9 @@ public class MatchesFragment extends Fragment {
         season = seasonsData.getSeason(preferences.getCurrentSeason());
 
         // Results List.
-        if (season.getSeasonMatchesPlayed() != 0) {
+        if (season.getSeasonMatchesPlayed() != 0)
             new Thread(this::showLeagueList);
-        }
+
     }
 
     private void showLeagueList() {
