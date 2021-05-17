@@ -18,6 +18,7 @@ import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.OwnersData;
+import davoodi.mahdi.fifa.data.RanksData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class SelectClubsPage extends AppCompatActivity {
@@ -196,6 +197,11 @@ public class SelectClubsPage extends AppCompatActivity {
         // Edit Database.
         updateClubsDatabaseID(firstOwnerSelected);
         updateClubsDatabaseID(secondOwnerSelected);
+
+        // Insert Clubs Into Ranks.
+        RanksData ranksData = new RanksData(this);
+        ranksData.insertClubs(firstOwnerSelected);
+        ranksData.insertClubs(secondOwnerSelected);
 
         // Edit Preferences.
         preferences = new AppPreferences(this);

@@ -47,6 +47,13 @@ public class RanksData extends SQLiteOpenHelper {
         // We should restore database.
     }
 
+    public void insertClubs(ArrayList<Club> clubs) {
+        for (Club club :
+                clubs) {
+            insertClub(club);
+        }
+    }
+
     public void insertClub(Club club) {
 
         Rank rank = new Rank(club.getClubID(),
@@ -60,7 +67,7 @@ public class RanksData extends SQLiteOpenHelper {
             Log.i("database", "Rank data insertion failed. (Rank: " + club.getClubName() + " ) ");
         else
             Log.i("database", "Rank data inserted with id: " + insertID);
-        if (database.isOpen()) database.close();
+        // Close
         Log.i("database", "Ranks database closed");
     }
 
