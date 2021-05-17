@@ -54,7 +54,6 @@ public class ResultsData extends SQLiteOpenHelper {
             do {
 
                 Match match = new Match(
-                        cursor.getInt(cursor.getColumnIndex(Match.KEY_ID)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_SEASON)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_LEAGUE)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME)),
@@ -68,5 +67,18 @@ public class ResultsData extends SQLiteOpenHelper {
         cursor.close();
         if (database.isOpen()) database.close();
         return matches;
+    }
+
+    public void insertMatch(Match match) {
+
+        // Now we work with our database.
+        SQLiteDatabase database = getWritableDatabase();
+        long insertID = database.insert(TABLE_RESULTS, null, match.getContentValues());
+
+        if (insertID == -1)
+            Log.i("database", "Match data insertion failed. (Match: " + match.getMatchID() + " ) ");
+        else
+            Log.i("database", "Match data inserted with id: " + insertID);
+
     }
 }
