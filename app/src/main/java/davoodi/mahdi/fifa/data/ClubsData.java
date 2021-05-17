@@ -95,4 +95,14 @@ public class ClubsData extends SQLiteOpenHelper {
         if (count != 1) Log.e("ClubsData", "Error in update method");
         if (database.isOpen()) database.close();
     }
+
+    public Club getClubFromID(int clubID) {
+        ArrayList<Club> clubs = getAllClubs();
+        for (Club club :
+                clubs) {
+            if (club.getClubID() == clubID)
+                return club;
+        }
+        return null;
+    }
 }

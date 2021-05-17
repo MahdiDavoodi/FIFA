@@ -14,6 +14,8 @@ import davoodi.mahdi.fifa.components.Rank;
 
 
 public class RanksData extends SQLiteOpenHelper {
+    Context context;
+
     private static final String DB_NAME = "ranks-db";
     private static final int DB_VERSION = 1;
     public static final String TABLE_RANKS = "ranks";
@@ -30,6 +32,7 @@ public class RanksData extends SQLiteOpenHelper {
 
     public RanksData(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -99,6 +102,30 @@ public class RanksData extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         int count = database.update(TABLE_RANKS, changedValues, Rank.KEY_CLUB + " = " + clubID, null);
         if (count != 1) Log.e("RanksData", "Error in update method");
-        if (database.isOpen()) database.close();
+    }
+
+    public void refreshRanksData() {
+        ArrayList<Rank> ranks = getAllRanks();
+        for (Rank rank :
+                ranks) {
+            rank.setMatchesPlayed(0);
+            rank.setWin(0);
+            rank.setLoss(0);
+            rank.setDraw(0);
+            rank.setGoalDifference(0);
+            rank.setPoints(0);
+            updateRank(rank.getClubID(), rank.getContentValues());
+        }
+    }
+
+    public ArrayList<Club> getAllRankedClubs() {
+        ArrayList<Rank> ranks = getAllRanks();
+        ArrayList<Club> clubs = new ArrayList<>();
+        ClubsData clubsData = new ClubsData(context);
+        for (Rank rank :
+                ranks) {
+            clubs.add(clubsData.getClubFromID(rank.getClubID()));
+        }
+        return clubs;
     }
 }

@@ -29,10 +29,9 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
 
     Context context;
     ArrayList<League> leagues;
-    ArrayList<Club> clubs;
     ArrayList<Match> matches;
     AppPreferences preferences;
-
+    ClubsData clubsData;
     int matchesPlayed;
     Season season;
     League league;
@@ -47,8 +46,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
 
     private void readData() {
         // Clubs.
-        ClubsData clubsData = new ClubsData(context);
-        clubs = clubsData.getAllClubs();
+        clubsData = new ClubsData(context);
 
         // Leagues.
         LeaguesData leaguesData = new LeaguesData(context);
@@ -92,15 +90,6 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         matches = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
     }
 
-    private Club getClubFromID(int clubID) {
-        for (Club club :
-                clubs) {
-            if (club.getClubID() == clubID)
-                return club;
-        }
-        return null;
-    }
-
 
     @NonNull
     @Override
@@ -116,8 +105,8 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         Match match = matches.get(position);
 
         // set widgets information
-        Club home_team = getClubFromID(match.getHomeTeamID());
-        Club away_team = getClubFromID(match.getAwayTeamID());
+        Club home_team = clubsData.getClubFromID(match.getHomeTeamID());
+        Club away_team = clubsData.getClubFromID(match.getAwayTeamID());
 
         assert home_team != null;
         assert away_team != null;
