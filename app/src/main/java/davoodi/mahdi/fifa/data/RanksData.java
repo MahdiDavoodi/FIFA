@@ -67,8 +67,9 @@ public class RanksData extends SQLiteOpenHelper {
             Log.i("database", "Rank data insertion failed. (Rank: " + club.getClubName() + " ) ");
         else
             Log.i("database", "Rank data inserted with id: " + insertID);
-        // Close
-        Log.i("database", "Ranks database closed");
+
+
+        // Better not to close.
     }
 
     public ArrayList<Rank> getAllRanks() {

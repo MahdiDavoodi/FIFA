@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -73,6 +74,12 @@ public class MainPage extends AppCompatActivity {
 
     private void openInfoPage() {
         startActivity(new Intent(MainPage.this, InfoPage.class));
+        overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+    }
+
+    // Matches Fragment Button listeners.
+    public void playOnClick(View view) {
+        startActivity(new Intent(MainPage.this, PlayPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
     }
 }
