@@ -79,6 +79,6 @@ public class ResultsData extends SQLiteOpenHelper {
             Log.i("database", "Match data insertion failed. (Match: " + match.getMatchID() + " ) ");
         else
             Log.i("database", "Match data inserted with id: " + insertID);
-
+        // Better to not close it.
     }
 }

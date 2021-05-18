@@ -43,6 +43,7 @@ public class StartPage extends AppCompatActivity {
         // Edit Preferences.
         preferences.setCurrentSeason(firstSeason);
         preferences.setLastSeen("StartPage");
+        preferences.setSeasonDatabaseCreated(false);
         startActivity(new Intent(StartPage.this, CreateOwnersPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
         finish();

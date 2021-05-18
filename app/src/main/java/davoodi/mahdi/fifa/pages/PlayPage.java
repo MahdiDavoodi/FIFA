@@ -11,8 +11,8 @@ import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.RanksData;
+import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
@@ -22,15 +22,28 @@ public class PlayPage extends AppCompatActivity {
     ArrayList<Club> owner_1_clubs, owner_2_clubs;
     RanksData ranksData;
     Season season;
+    ResultsData resultsData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_page);
+
+        readData();
         initialize();
     }
 
+    private void initialize() {
+
+        // Create MT For First Time.
+        if (!preferences.getSeasonDatabaseCreated())
+            createMT();
+    }
+
     private void readData() {
+        // Preferences.
+        preferences = new AppPreferences(this);
+
         // Ranks.
         ranksData = new RanksData(this);
 
@@ -38,6 +51,8 @@ public class PlayPage extends AppCompatActivity {
         SeasonsData seasonsData = new SeasonsData(this);
         season = seasonsData.getSeason(preferences.getCurrentSeason());
 
+        // Results.
+        resultsData = new ResultsData(this);
 
         // Clubs.
         ArrayList<Club> rankedClubs = ranksData.getAllRankedClubs();
@@ -56,19 +71,6 @@ public class PlayPage extends AppCompatActivity {
         return ownerClubs;
     }
 
-    private void initialize() {
-        // Read Database.
-        readData();
-
-
-        // Preferences.
-        preferences = new AppPreferences(this);
-
-        // Create MT For First Time.
-        if (!preferences.getSeasonDatabaseCreated())
-            createMT();
-    }
-
     private void createMT() {
 
         if (owner_1_clubs.size() == 10 && owner_2_clubs.size() == 10) {
@@ -78,7 +80,7 @@ public class PlayPage extends AppCompatActivity {
             Collections.shuffle(owner_2_clubs);
             int temp;
 
-            // Owner 1 Home Games.
+            // Create All Games.
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
                     temp = i + j;
@@ -87,12 +89,12 @@ public class PlayPage extends AppCompatActivity {
 
                     Match match = new Match(season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
                             owner_2_clubs.get(temp).getClubID(), 0, 0, 0);
+                    resultsData.insertMatch(match);
                 }
             }
-
-            // Owner 2 Home Games.
+            // Set Preferences.
+            preferences.setSeasonDatabaseCreated(true);
         }
-
     }
 
     @Override
