@@ -1,5 +1,6 @@
 package davoodi.mahdi.fifa.data;
 
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+
 
 import davoodi.mahdi.fifa.components.Match;
 
@@ -80,5 +82,33 @@ public class ResultsData extends SQLiteOpenHelper {
         else
             Log.i("database", "Match data inserted with id: " + insertID);
         // Better to not close it.
+    }
+
+    public Match getNextMatch(int seasonID, int leagueID) {
+        SQLiteDatabase database = getReadableDatabase();
+        Match match = null;
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RESULTS
+                + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID
+                + " AND " + Match.KEY_MATCH_PLAYED + " = 0  LIMIT 1", null);
+        if (cursor.moveToFirst()) {
+            match = new Match(
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_SEASON)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_LEAGUE)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_AWAY)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME_GOALS)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_AWAY_GOALS)),
+                    cursor.getInt(cursor.getColumnIndex(Match.KEY_MATCH_PLAYED)));
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return match;
+    }
+
+    public void updateMatch(Match match) {
+        SQLiteDatabase database = getWritableDatabase();
+        int count = database.update(TABLE_RESULTS, match.getContentValues(), Match.KEY_ID + " = " + match.getMatchID(), null);
+        if (count != 1) Log.e("ResultsData", "Error in update method");
+        if (database.isOpen()) database.close();
     }
 }

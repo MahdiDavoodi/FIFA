@@ -27,6 +27,7 @@ public class PlayPage extends AppCompatActivity {
     League league;
     ResultsData resultsData;
     int matchesPlayed;
+    Match currentMatch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class PlayPage extends AppCompatActivity {
         initialize();
     }
 
+    // DataBase.
     private void readData() {
         // Preferences.
         preferences = new AppPreferences(this);
@@ -87,34 +89,13 @@ public class PlayPage extends AppCompatActivity {
         }
     }
 
-    private void controlGolden() {
-    }
 
-    private void controlEurope() {
-    }
-
-    private void controlChampions() {
-    }
-
-    private void controlTM() {
-    }
-
+    // MT
     private void controlMT() {
         // Create MT For First Time.
         if (!preferences.getMtCreated())
             createMT();
 
-
-    }
-
-    private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
-        ArrayList<Club> ownerClubs = new ArrayList<>();
-        for (Club club :
-                rankedClubs) {
-            if (club.getClubOwner() == ownerID)
-                ownerClubs.add(club);
-        }
-        return ownerClubs;
     }
 
     private void createMT() {
@@ -141,6 +122,29 @@ public class PlayPage extends AppCompatActivity {
             // Set Preferences.
             preferences.setMtCreated(true);
         }
+    }
+
+
+    private void controlGolden() {
+    }
+
+    private void controlEurope() {
+    }
+
+    private void controlChampions() {
+    }
+
+    private void controlTM() {
+    }
+
+    private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
+        ArrayList<Club> ownerClubs = new ArrayList<>();
+        for (Club club :
+                rankedClubs) {
+            if (club.getClubOwner() == ownerID)
+                ownerClubs.add(club);
+        }
+        return ownerClubs;
     }
 
     @Override

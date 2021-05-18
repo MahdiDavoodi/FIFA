@@ -38,6 +38,7 @@
     // Hints.
     <string name="nameHint">Name</string>
     <string name="passwordHint">Password</string>
+    <string name="numberHint">Number</string>
     <string name="confirmPasswordHint">Confirm Password</string>
 
     // Transfer Page.
@@ -49,13 +50,21 @@
     <string name="matchesStatisticsButton">Statistics</string>
     <string name="matchesDescriptionText">In this page, you can add or see matches results.</string>
 
+    // Play Page.
+    <string name="playDescriptionText">Please input the Home/Away teams goals and press save button.</string>
+    <string name="playHomeText">Home</string>
+    <string name="playAwayText">Away</string>
+    <string name="playSeasonText">Season %1$d.</string>
+
     // Common Text
     <string name="history">History</string>
     <string name="newText">New</string>
     <string name="next">Next</string>
+    <string name="goals">Goals</string>
     <string name="skip">Skip</string>
     <string name="done">Done</string>
     <string name="start">Start</string>
+    <string name="save">Save</string>
     <string name="info">Info</string>
     <string name="match_result">%1$d - %2$d</string>
 
