@@ -97,12 +97,23 @@ public class ClubsData extends SQLiteOpenHelper {
     }
 
     public Club getClubFromID(int clubID) {
-        ArrayList<Club> clubs = getAllClubs();
-        for (Club club :
-                clubs) {
-            if (club.getClubID() == clubID)
-                return club;
+        SQLiteDatabase database = getReadableDatabase();
+        Club club = null;
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_CLUBS + "' WHERE " + Club.KEY_ID + " = " + clubID, null);
+        if (cursor.moveToFirst()) {
+            club = new Club(
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_ID)),
+                    cursor.getString(cursor.getColumnIndex(Club.KEY_NAME)),
+                    cursor.getLong(cursor.getColumnIndex(Club.KEY_WEALTH)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_MT)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_TM)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_CHAMPIONS)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_EUROPE)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_GOLDEN)),
+                    cursor.getString(cursor.getColumnIndex(Club.KEY_CLASS)),
+                    cursor.getInt(cursor.getColumnIndex(Club.KEY_OWNER)));
         }
-        return null;
+        cursor.close();
+        return club;
     }
 }

@@ -28,6 +28,29 @@ public class League {
         return values;
     }
 
+    public static int currentLeagueID(int matchesPlayed) {
+        int ID = 0;
+        if (matchesPlayed < 200) {
+            // MT.
+            ID = 1;
+        } else if (matchesPlayed < 207) {
+            // TM.
+            ID = 2;
+        } else if (matchesPlayed < 221) {
+            // Champions.
+            ID = 3;
+        } else if (matchesPlayed < 228) {
+            // Europe.
+            ID = 4;
+        } else if (matchesPlayed < 229) {
+            // Golden.
+            ID = 5;
+        }
+
+        return ID;
+    }
+
+
     public int getLeagueID() {
         return leagueID;
     }

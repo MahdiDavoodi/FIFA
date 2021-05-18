@@ -28,7 +28,6 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<League> leagues;
     ArrayList<Match> matches;
     AppPreferences preferences;
     ClubsData clubsData;
@@ -36,21 +35,15 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     Season season;
     League league;
 
-
     public MatchesResultsAdapter(Context context) {
         this.context = context;
         readData();
-        setLeagueToShow();
         setMatchesToShow();
     }
 
     private void readData() {
         // Clubs.
         clubsData = new ClubsData(context);
-
-        // Leagues.
-        LeaguesData leaguesData = new LeaguesData(context);
-        leagues = leaguesData.getAllLeagues();
 
         // Preferences.
         preferences = new AppPreferences(Objects.requireNonNull(context));
@@ -59,30 +52,10 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         SeasonsData seasonsData = new SeasonsData(context);
         season = seasonsData.getSeason(preferences.getCurrentSeason());
         matchesPlayed = season.getSeasonMatchesPlayed();
-    }
 
-    private void setLeagueToShow() {
-        int ID = 0;
-        if (matchesPlayed < 200) {
-            // MT.
-            ID = 1;
-        } else if (matchesPlayed < 207) {
-            // TM.
-            ID = 2;
-        } else if (matchesPlayed < 221) {
-            // Champions.
-            ID = 3;
-        } else if (matchesPlayed < 228) {
-            // Europe.
-            ID = 4;
-        } else if (matchesPlayed < 229) {
-            // Golden.
-            ID = 5;
-        }
-        for (League league :
-                leagues) {
-            if (league.getLeagueID() == ID) this.league = league;
-        }
+        // Leagues.
+        LeaguesData leaguesData = new LeaguesData(context);
+        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
     }
 
     private void setMatchesToShow() {

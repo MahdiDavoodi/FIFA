@@ -74,4 +74,19 @@ public class LeaguesData extends SQLiteOpenHelper {
         if (database.isOpen()) database.close();
         return leagues;
     }
+
+    public League getLeagueFromID(int leagueID) {
+        SQLiteDatabase database = getReadableDatabase();
+        League league = null;
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_LEAGUES + "' WHERE " + League.KEY_ID + " = " + leagueID, null);
+        if (cursor.moveToFirst()) {
+            league = new League(
+                    cursor.getInt(cursor.getColumnIndex(League.KEY_ID)),
+                    cursor.getString(cursor.getColumnIndex(League.KEY_NAME)),
+                    cursor.getInt(cursor.getColumnIndex(League.KEY_NUMBER)));
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return league;
+    }
 }

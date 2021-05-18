@@ -9,8 +9,10 @@ import java.util.Collections;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
+import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Season;
+import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.RanksData;
 import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
@@ -22,7 +24,9 @@ public class PlayPage extends AppCompatActivity {
     ArrayList<Club> owner_1_clubs, owner_2_clubs;
     RanksData ranksData;
     Season season;
+    League league;
     ResultsData resultsData;
+    int matchesPlayed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +35,6 @@ public class PlayPage extends AppCompatActivity {
 
         readData();
         initialize();
-    }
-
-    private void initialize() {
-
-        // Create MT For First Time.
-        if (!preferences.getSeasonDatabaseCreated())
-            createMT();
     }
 
     private void readData() {
@@ -50,6 +47,11 @@ public class PlayPage extends AppCompatActivity {
         // Season.
         SeasonsData seasonsData = new SeasonsData(this);
         season = seasonsData.getSeason(preferences.getCurrentSeason());
+        matchesPlayed = season.getSeasonMatchesPlayed();
+
+        // Leagues.
+        LeaguesData leaguesData = new LeaguesData(this);
+        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
 
         // Results.
         resultsData = new ResultsData(this);
@@ -58,6 +60,15 @@ public class PlayPage extends AppCompatActivity {
         ArrayList<Club> rankedClubs = ranksData.getAllRankedClubs();
         owner_1_clubs = setOwnerClubs(1, rankedClubs);
         owner_2_clubs = setOwnerClubs(2, rankedClubs);
+
+    }
+
+    private void initialize() {
+
+        // Create MT For First Time.
+        if (!preferences.getSeasonDatabaseCreated())
+            createMT();
+
 
     }
 
