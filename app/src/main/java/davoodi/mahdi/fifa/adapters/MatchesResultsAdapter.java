@@ -139,7 +139,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         if (match.getMatchPlayed() == 1)
             holder.result.setText(context.getString(R.string.match_result, match.getHomeGoals(), match.getAwayGoals()));
         else
-            holder.result.setText("---");
+            holder.result.setText(context.getString(R.string.matchesNotPlayed));
     }
 
     @Override

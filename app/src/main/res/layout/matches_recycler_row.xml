@@ -24,6 +24,7 @@
                 android:id="@+id/matchesOwnerColorView1"
                 android:layout_width="3dp"
                 android:layout_height="25dp"
+                android:layout_marginStart="10dp"
                 android:backgroundTint="@color/blue"
                 android:maxWidth="5dp"
                 android:maxHeight="30dp"
@@ -31,27 +32,25 @@
                 android:minHeight="20dp"
                 app:cardCornerRadius="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/matchesHomeTeamName"
-                app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/matchesHomeTeamName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/main_font"
                 android:padding="5dp"
                 android:text="@string/TextView"
-                android:textAlignment="center"
+                android:textAlignment="textEnd"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/matchesHomeTeamImage"
-                app:layout_constraintHorizontal_bias="0.85"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/matchesOwnerColorView1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
@@ -72,7 +71,6 @@
                 app:layout_constraintHorizontal_bias="0.92"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/club1" />
 
             <TextView
@@ -86,7 +84,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/mainTextColor"
                 android:textDirection="ltr"
-                android:textSize="@dimen/text_size_0_5"
+                android:textSize="@dimen/text_size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,14 +95,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:autoSizeTextType="uniform"
                 android:fontFamily="@font/main_font"
                 android:padding="5dp"
                 android:text="@string/TextView"
                 android:textAlignment="center"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
-                android:textSize="@dimen/text_size_0_2"
+                android:textSize="@dimen/text_size_0_5"
                 app:layout_constraintEnd_toEndOf="@+id/matchesResultText"
                 app:layout_constraintStart_toStartOf="@+id/matchesResultText"
                 app:layout_constraintTop_toBottomOf="@+id/matchesResultText" />
@@ -127,24 +124,23 @@
                 app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toEndOf="@+id/matchesResultText"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@drawable/club1" />
 
             <TextView
                 android:id="@+id/matchesAwayTeamName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/main_font"
                 android:padding="5dp"
                 android:text="@string/TextView"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintEnd_toStartOf="@+id/matchesOwnerColorView2"
+                app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toEndOf="@+id/matchesAwayTeamImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -152,6 +148,7 @@
                 android:id="@+id/matchesOwnerColorView2"
                 android:layout_width="3dp"
                 android:layout_height="25dp"
+                android:layout_marginEnd="10dp"
                 android:backgroundTint="@color/red"
                 android:maxWidth="5dp"
                 android:maxHeight="30dp"
@@ -160,8 +157,6 @@
                 app:cardCornerRadius="100dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.7"
-                app:layout_constraintStart_toEndOf="@+id/matchesAwayTeamName"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

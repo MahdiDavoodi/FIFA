@@ -45,6 +45,7 @@
 
     // Matches Page.
     <string name="matchesPlayNextButton">Play</string>
+    <string name="matchesNotPlayed">-TBD-</string>
     <string name="matchesStatisticsButton">Statistics</string>
     <string name="matchesDescriptionText">In this page, you can add or see matches results.</string>
 
