@@ -64,9 +64,44 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void initialize() {
+        whatToDo();
+    }
 
+    private void whatToDo() {
+        switch (league.getLeagueID()) {
+            case 2:
+                controlTM();
+                break;
+            case 3:
+                controlChampions();
+                break;
+            case 4:
+                controlEurope();
+                break;
+            case 5:
+                controlGolden();
+                break;
+            default:
+                controlMT();
+                break;
+        }
+    }
+
+    private void controlGolden() {
+    }
+
+    private void controlEurope() {
+    }
+
+    private void controlChampions() {
+    }
+
+    private void controlTM() {
+    }
+
+    private void controlMT() {
         // Create MT For First Time.
-        if (!preferences.getSeasonDatabaseCreated())
+        if (!preferences.getMtCreated())
             createMT();
 
 
@@ -104,7 +139,7 @@ public class PlayPage extends AppCompatActivity {
                 }
             }
             // Set Preferences.
-            preferences.setSeasonDatabaseCreated(true);
+            preferences.setMtCreated(true);
         }
     }
 

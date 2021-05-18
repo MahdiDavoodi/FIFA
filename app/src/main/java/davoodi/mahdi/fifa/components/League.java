@@ -30,19 +30,19 @@ public class League {
 
     public static int currentLeagueID(int matchesPlayed) {
         int ID = 0;
-        if (matchesPlayed < 200) {
+        if (matchesPlayed < 100) {
             // MT.
             ID = 1;
-        } else if (matchesPlayed < 207) {
+        } else if (matchesPlayed < 107) {
             // TM.
             ID = 2;
-        } else if (matchesPlayed < 221) {
+        } else if (matchesPlayed < 121) {
             // Champions.
             ID = 3;
-        } else if (matchesPlayed < 228) {
+        } else if (matchesPlayed < 128) {
             // Europe.
             ID = 4;
-        } else if (matchesPlayed < 229) {
+        } else if (matchesPlayed < 129) {
             // Golden.
             ID = 5;
         }
