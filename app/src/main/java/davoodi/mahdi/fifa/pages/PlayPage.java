@@ -48,6 +48,7 @@ public class PlayPage extends AppCompatActivity {
     ClubsData clubsData;
     OwnersData ownersData;
     SeasonsData seasonsData;
+    LeaguesData leaguesData;
 
     // UI.
     TextView season_text, league_text;
@@ -77,15 +78,22 @@ public class PlayPage extends AppCompatActivity {
 
         // Owners.
         ownersData = new OwnersData(this);
-        ArrayList<Owner> owners = ownersData.getAllOwners();
 
-
-        if (owner_1_clubs.contains(home)) {
-            home_owner = ownersData.getOwnerFromID(1);
-            away_owner = ownersData.getOwnerFromID(2);
-        } else if (owner_2_clubs.contains(home)) {
-            home_owner = ownersData.getOwnerFromID(2);
-            away_owner = ownersData.getOwnerFromID(1);
+        for (Club club :
+                owner_1_clubs) {
+            if (club.getClubID() == home.getClubID()) {
+                home_owner = ownersData.getOwnerFromID(1);
+                away_owner = ownersData.getOwnerFromID(2);
+                break;
+            }
+        }
+        for (Club club :
+                owner_2_clubs) {
+            if (club.getClubID() == home.getClubID()) {
+                home_owner = ownersData.getOwnerFromID(2);
+                away_owner = ownersData.getOwnerFromID(1);
+                break;
+            }
         }
 
         // Set UI ID.
@@ -121,7 +129,7 @@ public class PlayPage extends AppCompatActivity {
         matchesPlayed = season.getSeasonMatchesPlayed();
 
         // Leagues.
-        LeaguesData leaguesData = new LeaguesData(this);
+        leaguesData = new LeaguesData(this);
         league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
 
         // Results.
@@ -171,7 +179,7 @@ public class PlayPage extends AppCompatActivity {
                         if (temp >= 10)
                             temp = temp - 10;
 
-                        Match match = new Match(season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
+                        Match match = new Match(0, season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
                                 owner_2_clubs.get(temp).getClubID(), 0, 0, 0);
                         resultsData.insertMatch(match);
                     }
@@ -179,6 +187,7 @@ public class PlayPage extends AppCompatActivity {
                 // Set Preferences.
                 preferences.setMtCreated(true);
                 league.setLeagueNumber(league.getLeagueNumber() + 1);
+                leaguesData.updateLeague(league);
             }
         }
     }
@@ -312,9 +321,6 @@ public class PlayPage extends AppCompatActivity {
 
     // Same Data Change In Any Case.
     private void updateDataBase() {
-        // Maybe Some Changes...
-        new LeaguesData(this).updateLeague(league);
-
         // Match.
         currentMatch.setHomeGoals(home_goals);
         currentMatch.setAwayGoals(away_goals);

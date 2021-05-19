@@ -1,6 +1,7 @@
 package davoodi.mahdi.fifa.data;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -55,7 +56,7 @@ public class ResultsData extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
 
-                Match match = new Match(
+                Match match = new Match(cursor.getInt(cursor.getColumnIndex(Match.KEY_ID)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_SEASON)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_LEAGUE)),
                         cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME)),
@@ -75,7 +76,11 @@ public class ResultsData extends SQLiteOpenHelper {
 
         // Now we work with our database.
         SQLiteDatabase database = getWritableDatabase();
-        long insertID = database.insert(TABLE_RESULTS, null, match.getContentValues());
+        // Let SQLite set id.
+        ContentValues values = match.getContentValues();
+        values.remove(Match.KEY_ID);
+        //
+        long insertID = database.insert(TABLE_RESULTS, null, values);
 
         if (insertID == -1)
             Log.i("database", "Match data insertion failed. (Match: " + match.getMatchID() + " ) ");
@@ -91,7 +96,7 @@ public class ResultsData extends SQLiteOpenHelper {
                 + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID
                 + " AND " + Match.KEY_MATCH_PLAYED + " = 0  LIMIT 1", null);
         if (cursor.moveToFirst()) {
-            match = new Match(
+            match = new Match(cursor.getInt(cursor.getColumnIndex(Match.KEY_ID)),
                     cursor.getInt(cursor.getColumnIndex(Match.KEY_SEASON)),
                     cursor.getInt(cursor.getColumnIndex(Match.KEY_LEAGUE)),
                     cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME)),
