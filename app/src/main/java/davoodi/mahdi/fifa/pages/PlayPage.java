@@ -3,6 +3,9 @@ package davoodi.mahdi.fifa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +15,7 @@ import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Season;
+import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.RanksData;
 import davoodi.mahdi.fifa.data.ResultsData;
@@ -28,17 +32,56 @@ public class PlayPage extends AppCompatActivity {
     ResultsData resultsData;
     int matchesPlayed;
     Match currentMatch;
+    Club home, away;
+    ClubsData clubsData;
+
+    // UI
+    TextView season_text, league_text;
+    EditText home_goals_input, away_goals_input;
+    ImageView home_image, away_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_page);
-
-        readData();
         initialize();
     }
 
-    // DataBase.
+    private void initialize() {
+        // DataBase.
+        readData();
+
+        // What league and situation we have.
+        whatToDo();
+
+        // Set Current Match.
+        currentMatch = resultsData.getNextMatch(season.getSeasonID(), league.getLeagueID());
+
+        // Set Clubs.
+        home = clubsData.getClubFromID(currentMatch.getHomeTeamID());
+        away = clubsData.getClubFromID(currentMatch.getAwayTeamID());
+
+        // Set UI ID.
+        season_text = findViewById(R.id.playSeasonText);
+        league_text = findViewById(R.id.playLeagueText);
+        home_image = findViewById(R.id.playHomeImage);
+        away_image = findViewById(R.id.playAwayImage);
+        home_goals_input = findViewById(R.id.playHomeInput);
+        away_goals_input = findViewById(R.id.playAwayInput);
+
+        // Set UI.
+        season_text.setText(getResources().getString(R.string.playSeasonText, season.getSeasonID()));
+        league_text.setText(league.getLeagueName());
+
+        home_image.setImageResource(getResources().getIdentifier("club" + home.getClubID(),
+                "drawable",
+                getPackageName()));
+        away_image.setImageResource(getResources().getIdentifier("club" + away.getClubID(),
+                "drawable",
+                getPackageName()));
+
+    }
+
     private void readData() {
         // Preferences.
         preferences = new AppPreferences(this);
@@ -62,12 +105,10 @@ public class PlayPage extends AppCompatActivity {
         ArrayList<Club> rankedClubs = ranksData.getAllRankedClubs();
         owner_1_clubs = setOwnerClubs(1, rankedClubs);
         owner_2_clubs = setOwnerClubs(2, rankedClubs);
+        clubsData = new ClubsData(this);
 
     }
 
-    private void initialize() {
-        whatToDo();
-    }
 
     private void whatToDo() {
         switch (league.getLeagueID()) {
@@ -88,7 +129,6 @@ public class PlayPage extends AppCompatActivity {
                 break;
         }
     }
-
 
     // MT
     private void controlMT() {
