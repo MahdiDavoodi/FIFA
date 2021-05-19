@@ -16,9 +16,11 @@ import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
+import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
+import davoodi.mahdi.fifa.data.OwnersData;
 import davoodi.mahdi.fifa.data.RanksData;
 import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
@@ -32,16 +34,18 @@ public class PlayPage extends AppCompatActivity {
     // Useful Components.
     Season season;
     League league;
-    Club home, away;
+    Club home, away, winner, loser;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
     ArrayList<Club> owner_1_clubs, owner_2_clubs;
+    Owner home_owner, away_owner;
 
 
     // DataBase.
     RanksData ranksData;
     ResultsData resultsData;
     ClubsData clubsData;
+    OwnersData ownersData;
 
     // UI.
     TextView season_text, league_text;
@@ -68,6 +72,18 @@ public class PlayPage extends AppCompatActivity {
         // Set Clubs.
         home = clubsData.getClubFromID(currentMatch.getHomeTeamID());
         away = clubsData.getClubFromID(currentMatch.getAwayTeamID());
+
+        // Owners.
+        ownersData = new OwnersData(this);
+        ArrayList<Owner> owners = ownersData.getAllOwners();
+
+        if (owner_1_clubs.contains(home)) {
+            home_owner = owners.get(0);
+            away_owner = owners.get(1);
+        } else {
+            home_owner = owners.get(1);
+            away_owner = owners.get(0);
+        }
 
         // Set UI ID.
         season_text = findViewById(R.id.playSeasonText);
@@ -113,7 +129,6 @@ public class PlayPage extends AppCompatActivity {
         owner_1_clubs = setOwnerClubs(1, rankedClubs);
         owner_2_clubs = setOwnerClubs(2, rankedClubs);
         clubsData = new ClubsData(this);
-
     }
 
     private void whatToCreate() {
@@ -263,5 +278,18 @@ public class PlayPage extends AppCompatActivity {
         currentMatch.setMatchPlayed(1);
         resultsData.updateMatch(currentMatch);
 
+        // Choose the winner and loser.
+        if (home_goals > away_goals) {
+            home_owner.setOwnerTotalWin(home_owner.getOwnerTotalWin() + 1);
+            away_owner.setOwnerTotalLoss(away_owner.getOwnerTotalLoss() + 1);
+        } else if (away_goals > home_goals) {
+            away_owner.setOwnerTotalWin(away_owner.getOwnerTotalWin() + 1);
+            home_owner.setOwnerTotalLoss(home_owner.getOwnerTotalLoss() + 1);
+        } else {
+            away_owner.setOwnerTotalDraw(away_owner.getOwnerTotalDraw() + 1);
+            home_owner.setOwnerTotalDraw(home_owner.getOwnerTotalDraw() + 1);
+        }
+        ownersData.updateOwner(home_owner);
+        ownersData.updateOwner(away_owner);
     }
 }

@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Owner;
 
 
@@ -60,6 +61,14 @@ public class OwnersData extends SQLiteOpenHelper {
         if (database.isOpen()) database.close();
         Log.i("database", "Owners database closed");
     }
+
+    public void updateOwner(Owner owner) {
+        SQLiteDatabase database = getWritableDatabase();
+        int count = database.update(TABLE_OWNERS, owner.getContentValues(), Owner.KEY_ID + " = " + owner.getOwnerID(), null);
+        if (count != 1) Log.e("OwnersData", "Error in update method");
+        if (database.isOpen()) database.close();
+    }
+
 
     public ArrayList<Owner> getAllOwners() {
         SQLiteDatabase database = getReadableDatabase();
