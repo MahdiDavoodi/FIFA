@@ -107,7 +107,7 @@
         android:textAlignment="center"
         android:textColor="@color/mainTextColor"
         android:textDirection="ltr"
-        android:textSize="@dimen/text_size_1"
+        android:textSize="@dimen/text_size_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playHomeImage" />
@@ -116,13 +116,14 @@
         android:id="@+id/playLeagueText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/main_font"
         android:padding="5dp"
         android:text="@string/TextView"
         android:textAlignment="center"
         android:textColor="@color/mainBigTextColor"
         android:textDirection="ltr"
-        android:textSize="@dimen/text_size_0_5"
+        android:textSize="@dimen/text_size_1"
         app:layout_constraintEnd_toEndOf="@+id/playSeasonText"
         app:layout_constraintStart_toStartOf="@+id/playSeasonText"
         app:layout_constraintTop_toBottomOf="@+id/playSeasonText" />
@@ -144,9 +145,8 @@
         android:textColorHint="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
         android:textSize="@dimen/text_size_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/playHomeImage"
+        app:layout_constraintStart_toStartOf="@+id/playHomeImage"
         app:layout_constraintTop_toBottomOf="@+id/playLeagueText" />
 
     <EditText
@@ -166,9 +166,8 @@
         android:textColorHint="@color/mainDescriptionTextColor"
         android:textDirection="ltr"
         android:textSize="@dimen/text_size_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/playAwayImage"
+        app:layout_constraintStart_toStartOf="@+id/playAwayImage"
         app:layout_constraintTop_toBottomOf="@+id/playLeagueText" />
 
     <Button
@@ -177,6 +176,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:autoSizeTextType="uniform"
+        android:onClick="playSaveOnClick"
         android:backgroundTint="@color/mainButtonColor"
         android:fontFamily="@font/main_font"
         android:text="@string/save"

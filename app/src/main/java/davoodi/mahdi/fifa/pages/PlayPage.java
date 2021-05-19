@@ -3,9 +3,11 @@ package davoodi.mahdi.fifa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,18 +26,24 @@ import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class PlayPage extends AppCompatActivity {
 
+    // Preferences.
     AppPreferences preferences;
-    ArrayList<Club> owner_1_clubs, owner_2_clubs;
-    RanksData ranksData;
+
+    // Useful Components.
     Season season;
     League league;
-    ResultsData resultsData;
-    int matchesPlayed;
-    Match currentMatch;
     Club home, away;
+    Match currentMatch;
+    int matchesPlayed;
+    ArrayList<Club> owner_1_clubs, owner_2_clubs;
+
+
+    // DataBase.
+    RanksData ranksData;
+    ResultsData resultsData;
     ClubsData clubsData;
 
-    // UI
+    // UI.
     TextView season_text, league_text;
     EditText home_goals_input, away_goals_input;
     ImageView home_image, away_image;
@@ -79,7 +87,6 @@ public class PlayPage extends AppCompatActivity {
         away_image.setImageResource(getResources().getIdentifier("club" + away.getClubID(),
                 "drawable",
                 getPackageName()));
-
     }
 
     private void readData() {
@@ -109,7 +116,6 @@ public class PlayPage extends AppCompatActivity {
 
     }
 
-
     private void whatToDo() {
         switch (league.getLeagueID()) {
             case 2:
@@ -130,7 +136,6 @@ public class PlayPage extends AppCompatActivity {
         }
     }
 
-    // MT
     private void controlMT() {
         // Create MT For First Time.
         if (!preferences.getMtCreated())
@@ -191,5 +196,22 @@ public class PlayPage extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
+    }
+
+    // Save Button.
+    public void playSaveOnClick(View view) {
+        if (isInputValid()) {
+
+        }
+    }
+
+    // Input Valid Checker.
+    public boolean isInputValid() {
+        String homeChecker = home_goals_input.getText().toString();
+        String awayChecker = away_goals_input.getText().toString();
+        if (homeChecker.isEmpty() || awayChecker.isEmpty()) {
+            Toast.makeText(this, R.string.playToast1, Toast.LENGTH_SHORT).show();
+            return false;
+        } else return true;
     }
 }
