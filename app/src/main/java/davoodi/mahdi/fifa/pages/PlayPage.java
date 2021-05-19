@@ -17,6 +17,7 @@ import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Owner;
+import davoodi.mahdi.fifa.components.Rank;
 import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
@@ -34,7 +35,7 @@ public class PlayPage extends AppCompatActivity {
     // Useful Components.
     Season season;
     League league;
-    Club home, away, winner, loser;
+    Club home, away;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
     ArrayList<Club> owner_1_clubs, owner_2_clubs;
@@ -46,6 +47,7 @@ public class PlayPage extends AppCompatActivity {
     ResultsData resultsData;
     ClubsData clubsData;
     OwnersData ownersData;
+    SeasonsData seasonsData;
 
     // UI.
     TextView season_text, league_text;
@@ -77,12 +79,13 @@ public class PlayPage extends AppCompatActivity {
         ownersData = new OwnersData(this);
         ArrayList<Owner> owners = ownersData.getAllOwners();
 
+
         if (owner_1_clubs.contains(home)) {
-            home_owner = owners.get(0);
-            away_owner = owners.get(1);
-        } else {
-            home_owner = owners.get(1);
-            away_owner = owners.get(0);
+            home_owner = ownersData.getOwnerFromID(1);
+            away_owner = ownersData.getOwnerFromID(2);
+        } else if (owner_2_clubs.contains(home)) {
+            home_owner = ownersData.getOwnerFromID(2);
+            away_owner = ownersData.getOwnerFromID(1);
         }
 
         // Set UI ID.
@@ -113,7 +116,7 @@ public class PlayPage extends AppCompatActivity {
         ranksData = new RanksData(this);
 
         // Season.
-        SeasonsData seasonsData = new SeasonsData(this);
+        seasonsData = new SeasonsData(this);
         season = seasonsData.getSeason(preferences.getCurrentSeason());
         matchesPlayed = season.getSeasonMatchesPlayed();
 
@@ -175,8 +178,52 @@ public class PlayPage extends AppCompatActivity {
                 }
                 // Set Preferences.
                 preferences.setMtCreated(true);
+                league.setLeagueNumber(league.getLeagueNumber() + 1);
             }
         }
+    }
+
+    private void manageMT() {
+        Rank home_rank = ranksData.getClubRank(home.getClubID());
+        Rank away_rank = ranksData.getClubRank(away.getClubID());
+
+        // Match played.
+        home_rank.setMatchesPlayed(home_rank.getMatchesPlayed() + 1);
+        away_rank.setMatchesPlayed(away_rank.getMatchesPlayed() + 1);
+
+        // Points and ...
+        if (home_goals > away_goals) {
+
+            // Home Won.
+            home_rank.setWin(home_rank.getWin() + 1);
+            away_rank.setLoss(away_rank.getLoss() + 1);
+
+            home_rank.setGoalDifference(home_rank.getGoalDifference() + (home_goals - away_goals));
+            away_rank.setGoalDifference(away_rank.getGoalDifference() + (away_goals - home_goals));
+
+            home_rank.setPoints(home_rank.getPoints() + 3);
+
+        } else if (away_goals > home_goals) {
+
+            // Away Won.
+            away_rank.setWin(away_rank.getWin() + 1);
+            home_rank.setLoss(home_rank.getLoss() + 1);
+
+            home_rank.setGoalDifference(home_rank.getGoalDifference() + (home_goals - away_goals));
+            away_rank.setGoalDifference(away_rank.getGoalDifference() + (away_goals - home_goals));
+
+            away_rank.setPoints(away_rank.getPoints() + 3);
+        } else {
+            // Draw.
+            home_rank.setDraw(home_rank.getDraw() + 1);
+            away_rank.setDraw(away_rank.getDraw() + 1);
+
+            home_rank.setPoints(home_rank.getPoints() + 1);
+            away_rank.setPoints(away_rank.getPoints() + 1);
+        }
+
+        ranksData.updateRank(home_rank);
+        ranksData.updateRank(away_rank);
     }
 
     private void createGolden() {
@@ -189,10 +236,6 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void createTM() {
-    }
-
-    private void manageMT() {
-
     }
 
     private void manageTM() {
@@ -291,5 +334,8 @@ public class PlayPage extends AppCompatActivity {
         }
         ownersData.updateOwner(home_owner);
         ownersData.updateOwner(away_owner);
+
+        season.setSeasonMatchesPlayed(season.getSeasonMatchesPlayed() + 1);
+        seasonsData.updateSeason(season);
     }
 }

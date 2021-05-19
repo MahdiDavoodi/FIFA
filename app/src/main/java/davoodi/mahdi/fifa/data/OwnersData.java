@@ -70,6 +70,29 @@ public class OwnersData extends SQLiteOpenHelper {
     }
 
 
+    public Owner getOwnerFromID(int ownerID) {
+        SQLiteDatabase database = getReadableDatabase();
+        Owner owner = null;
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_OWNERS + "' WHERE " + Owner.KEY_ID + " = " + ownerID, null);
+        if (cursor.moveToFirst()) {
+
+            owner = new Owner(
+                    cursor.getInt(cursor.getColumnIndex(Owner.KEY_ID)),
+                    cursor.getString(cursor.getColumnIndex(Owner.KEY_NAME)),
+                    cursor.getLong(cursor.getColumnIndex(Owner.KEY_PASSWORD)),
+                    cursor.getLong(cursor.getColumnIndex(Owner.KEY_WEALTH)),
+                    cursor.getLong(cursor.getColumnIndex(Owner.KEY_WIN)),
+                    cursor.getLong(cursor.getColumnIndex(Owner.KEY_LOSS)),
+                    cursor.getLong(cursor.getColumnIndex(Owner.KEY_DRAW)),
+                    cursor.getInt(cursor.getColumnIndex(Owner.KEY_CUPS)));
+
+
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return owner;
+    }
+
     public ArrayList<Owner> getAllOwners() {
         SQLiteDatabase database = getReadableDatabase();
         ArrayList<Owner> owners = new ArrayList<>();

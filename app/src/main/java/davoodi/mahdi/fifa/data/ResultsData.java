@@ -108,7 +108,7 @@ public class ResultsData extends SQLiteOpenHelper {
     public void updateMatch(Match match) {
         SQLiteDatabase database = getWritableDatabase();
         int count = database.update(TABLE_RESULTS, match.getContentValues(), Match.KEY_ID + " = " + match.getMatchID(), null);
-        if (count != 1) Log.e("ResultsData", "Error in update method");
+        if (count != 1) Log.e("ResultsData", "Error in update method" + count);
         if (database.isOpen()) database.close();
     }
 }

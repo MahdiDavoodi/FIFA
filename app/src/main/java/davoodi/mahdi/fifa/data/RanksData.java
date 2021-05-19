@@ -1,6 +1,5 @@
 package davoodi.mahdi.fifa.data;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -98,10 +97,32 @@ public class RanksData extends SQLiteOpenHelper {
         return ranks;
     }
 
-    public void updateRank(int clubID, ContentValues changedValues) {
+    public void updateRank(Rank rank) {
         SQLiteDatabase database = getWritableDatabase();
-        int count = database.update(TABLE_RANKS, changedValues, Rank.KEY_CLUB + " = " + clubID, null);
+        int count = database.update(TABLE_RANKS, rank.getContentValues(), Rank.KEY_CLUB + " = " + rank.getClubID(), null);
         if (count != 1) Log.e("RanksData", "Error in update method");
+    }
+
+    public Rank getClubRank(int clubID) {
+        SQLiteDatabase database = getReadableDatabase();
+        Rank rank = null;
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RANKS + "' WHERE " + Rank.KEY_CLUB + " = " + clubID, null);
+        if (cursor.moveToFirst()) {
+
+            if (cursor.getCount() > 1)
+                Log.e("DataBase", "RanksData fucked up!");
+            rank = new Rank(
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_CLUB)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_PLAYED)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_WIN)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_LOSS)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_DRAW)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_GD)),
+                    cursor.getInt(cursor.getColumnIndex(Rank.KEY_PTS)));
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return rank;
     }
 
     public void refreshRanksData() {
@@ -114,7 +135,7 @@ public class RanksData extends SQLiteOpenHelper {
             rank.setDraw(0);
             rank.setGoalDifference(0);
             rank.setPoints(0);
-            updateRank(rank.getClubID(), rank.getContentValues());
+            updateRank(rank);
         }
     }
 

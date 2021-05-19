@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.components.Season;
 
 public class SeasonsData extends SQLiteOpenHelper {
@@ -39,6 +40,13 @@ public class SeasonsData extends SQLiteOpenHelper {
         Log.i("database", "Table '" + TABLE_SEASONS + "' dropped!");
         onCreate(database);
         // We should restore database.
+    }
+
+    public void updateSeason(Season season) {
+        SQLiteDatabase database = getWritableDatabase();
+        int count = database.update(TABLE_SEASONS, season.getContentValues(), Season.KEY_ID + " = " + season.getSeasonID(), null);
+        if (count != 1) Log.e("SeasonsData", "Error in update method");
+        if (database.isOpen()) database.close();
     }
 
     public void insertSeason(Season season) {
