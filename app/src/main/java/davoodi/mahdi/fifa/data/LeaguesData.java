@@ -1,6 +1,7 @@
 package davoodi.mahdi.fifa.data;
 
 
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,6 +41,13 @@ public class LeaguesData extends SQLiteOpenHelper {
         Log.i("database", "Table '" + TABLE_LEAGUES + "' dropped!");
         onCreate(database);
         // We should restore database.
+    }
+
+    public void updateLeague(League league) {
+        SQLiteDatabase database = getWritableDatabase();
+        int count = database.update(TABLE_LEAGUES, league.getContentValues(), League.KEY_ID + " = " + league.getLeagueID(), null);
+        if (count != 1) Log.e("LeaguesData", "Error in update method");
+        if (database.isOpen()) database.close();
     }
 
     public void insertLeague(League league) {

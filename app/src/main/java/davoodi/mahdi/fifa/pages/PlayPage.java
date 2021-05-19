@@ -34,7 +34,7 @@ public class PlayPage extends AppCompatActivity {
     League league;
     Club home, away;
     Match currentMatch;
-    int matchesPlayed;
+    int matchesPlayed, home_goals, away_goals;
     ArrayList<Club> owner_1_clubs, owner_2_clubs;
 
 
@@ -60,7 +60,7 @@ public class PlayPage extends AppCompatActivity {
         readData();
 
         // What league and situation we have.
-        whatToDo();
+        whatToCreate();
 
         // Set Current Match.
         currentMatch = resultsData.getNextMatch(season.getSeasonID(), league.getLeagueID());
@@ -116,70 +116,84 @@ public class PlayPage extends AppCompatActivity {
 
     }
 
-    private void whatToDo() {
+    private void whatToCreate() {
         switch (league.getLeagueID()) {
             case 2:
-                controlTM();
+                createTM();
                 break;
             case 3:
-                controlChampions();
+                createChampions();
                 break;
             case 4:
-                controlEurope();
+                createEurope();
                 break;
             case 5:
-                controlGolden();
+                createGolden();
                 break;
             default:
-                controlMT();
+                createMT();
                 break;
         }
-    }
-
-    private void controlMT() {
-        // Create MT For First Time.
-        if (!preferences.getMtCreated())
-            createMT();
-
     }
 
     private void createMT() {
+        // Create MT For First Time.
+        if (!preferences.getMtCreated()) {
+            if (owner_1_clubs.size() == 10 && owner_2_clubs.size() == 10) {
 
-        if (owner_1_clubs.size() == 10 && owner_2_clubs.size() == 10) {
+                // Shuffle Lists.
+                Collections.shuffle(owner_1_clubs);
+                Collections.shuffle(owner_2_clubs);
+                int temp;
 
-            // Shuffle Lists.
-            Collections.shuffle(owner_1_clubs);
-            Collections.shuffle(owner_2_clubs);
-            int temp;
+                // Create All Games.
+                for (int i = 0; i < 10; i++) {
+                    for (int j = 0; j < 10; j++) {
+                        temp = i + j;
+                        if (temp >= 10)
+                            temp = temp - 10;
 
-            // Create All Games.
-            for (int i = 0; i < 10; i++) {
-                for (int j = 0; j < 10; j++) {
-                    temp = i + j;
-                    if (temp >= 10)
-                        temp = temp - 10;
-
-                    Match match = new Match(season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
-                            owner_2_clubs.get(temp).getClubID(), 0, 0, 0);
-                    resultsData.insertMatch(match);
+                        Match match = new Match(season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
+                                owner_2_clubs.get(temp).getClubID(), 0, 0, 0);
+                        resultsData.insertMatch(match);
+                    }
                 }
+                // Set Preferences.
+                preferences.setMtCreated(true);
             }
-            // Set Preferences.
-            preferences.setMtCreated(true);
         }
     }
 
-
-    private void controlGolden() {
+    private void createGolden() {
     }
 
-    private void controlEurope() {
+    private void createEurope() {
     }
 
-    private void controlChampions() {
+    private void createChampions() {
     }
 
-    private void controlTM() {
+    private void createTM() {
+    }
+
+    private void manageMT() {
+
+    }
+
+    private void manageTM() {
+
+    }
+
+    private void manageChampions() {
+
+    }
+
+    private void manageEurope() {
+
+    }
+
+    private void manageGolden() {
+
     }
 
     private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
@@ -201,7 +215,26 @@ public class PlayPage extends AppCompatActivity {
     // Save Button.
     public void playSaveOnClick(View view) {
         if (isInputValid()) {
-
+            updateDataBase();
+            switch (league.getLeagueID()) {
+                case 2:
+                    manageTM();
+                    break;
+                case 3:
+                    manageChampions();
+                    break;
+                case 4:
+                    manageEurope();
+                    break;
+                case 5:
+                    manageGolden();
+                    break;
+                default:
+                    manageMT();
+                    break;
+            }
+            Toast.makeText(this, R.string.done, Toast.LENGTH_LONG).show();
+            finish();
         }
     }
 
@@ -212,6 +245,23 @@ public class PlayPage extends AppCompatActivity {
         if (homeChecker.isEmpty() || awayChecker.isEmpty()) {
             Toast.makeText(this, R.string.playToast1, Toast.LENGTH_SHORT).show();
             return false;
-        } else return true;
+        } else {
+            home_goals = Integer.parseInt(homeChecker);
+            away_goals = Integer.parseInt(awayChecker);
+            return true;
+        }
+    }
+
+    // Same Data Change In Any Case.
+    private void updateDataBase() {
+        // Maybe Some Changes...
+        new LeaguesData(this).updateLeague(league);
+
+        // Match.
+        currentMatch.setHomeGoals(home_goals);
+        currentMatch.setAwayGoals(away_goals);
+        currentMatch.setMatchPlayed(1);
+        resultsData.updateMatch(currentMatch);
+
     }
 }
