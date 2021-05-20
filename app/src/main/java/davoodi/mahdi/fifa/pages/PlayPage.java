@@ -292,6 +292,8 @@ public class PlayPage extends AppCompatActivity {
                 preferences.setTmCreated(true);
             } else
                 Log.e("PlayPage", "TM creation failed!");
+            league.setLeagueNumber(league.getLeagueNumber() + 1);
+            leaguesData.updateLeague(league);
         } else createNewGameTM();
     }
 
@@ -321,25 +323,52 @@ public class PlayPage extends AppCompatActivity {
                 }
             } else
                 Log.e("PlayPage", "TM creation of new game failed!");
-
         }
     }
 
-    private void manageTM() {
-        // Check if there is a match that does not played. so we don't need to create any match.
+    private void finishTM() {
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        Club home, away;
+        for (Match match :
+                past_results) {
+            home = clubsData.getClubFromID(match.getHomeTeamID());
+            away = clubsData.getClubFromID(match.getAwayTeamID());
+            if (match.getHomeGoals() > match.getAwayGoals()) {
+                tm_clubs.remove(away);
+            } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                tm_clubs.remove(home);
+            } else Log.e("PlayPage", "Error in createNewGameTM");
+        }
+        if (tm_clubs.size() == 1) {
+
+            Club winner = tm_clubs.get(0);
+
+            winner.setClubTM(winner.getClubTM() + 1);
+            winner.setClubWealth(winner.getClubWealth() + 40);
+            clubsData.updateClub(winner);
+
+            season.setSeasonTMWinnerID(winner.getClubID());
+            seasonsData.updateSeason(season);
+
+            Owner winner_owner = ownersData.getOwnerFromID(winner.getClubOwner());
+            winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
+            ownersData.updateOwner(winner_owner);
+
+        } else Log.e("PlayPage", "Finish TM Fucked up!");
+    }
+
+    // Champions.
+    private void createChampions() {
+    }
+
+    private void manageChampions() {
+
     }
 
     private void createGolden() {
     }
 
     private void createEurope() {
-    }
-
-    private void createChampions() {
-    }
-
-    private void manageChampions() {
-
     }
 
     private void manageEurope() {
@@ -371,9 +400,6 @@ public class PlayPage extends AppCompatActivity {
         if (isInputValid()) {
             updateDataBase();
             switch (league.getLeagueID()) {
-                case 2:
-                    manageTM();
-                    break;
                 case 3:
                     manageChampions();
                     break;

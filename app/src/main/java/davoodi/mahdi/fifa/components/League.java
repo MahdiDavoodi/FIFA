@@ -36,13 +36,13 @@ public class League {
         } else if (matchesPlayed < 107) {
             // TM.
             ID = 2;
-        } else if (matchesPlayed < 121) {
+        } else if (matchesPlayed < 114) {
             // Champions.
             ID = 3;
-        } else if (matchesPlayed < 128) {
+        } else if (matchesPlayed < 115) {
             // Europe.
             ID = 4;
-        } else if (matchesPlayed < 129) {
+        } else if (matchesPlayed < 116) {
             // Golden.
             ID = 5;
         }
