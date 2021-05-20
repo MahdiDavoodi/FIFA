@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,7 +37,7 @@ public class PlayPage extends AppCompatActivity {
     // Useful Components.
     Season season;
     League league;
-    ArrayList<Rank> currentRanking;
+    ArrayList<Club> ranked_clubs;
     Club home, away;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
@@ -124,7 +125,7 @@ public class PlayPage extends AppCompatActivity {
 
         // Ranks.
         ranksData = new RanksData(this);
-        currentRanking = ranksData.getAllRanks();
+        ranked_clubs = ranksData.getAllRankedClubs();
 
         // Season.
         seasonsData = new SeasonsData(this);
@@ -139,9 +140,8 @@ public class PlayPage extends AppCompatActivity {
         resultsData = new ResultsData(this);
 
         // Clubs.
-        ArrayList<Club> rankedClubs = ranksData.getAllRankedClubs();
-        owner_1_clubs = setOwnerClubs(1, rankedClubs);
-        owner_2_clubs = setOwnerClubs(2, rankedClubs);
+        owner_1_clubs = setOwnerClubs(1, ranked_clubs);
+        owner_2_clubs = setOwnerClubs(2, ranked_clubs);
         clubsData = new ClubsData(this);
     }
 
@@ -240,10 +240,9 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishMT() {
-        ArrayList<Club> all = ranksData.getAllRankedClubs();
-        Club first = all.get(0);
-        Club second = all.get(1);
-        Club third = all.get(2);
+        Club first = ranked_clubs.get(0);
+        Club second = ranked_clubs.get(1);
+        Club third = ranked_clubs.get(2);
 
         first.setClubMT(first.getClubMT() + 1);
         first.setClubWealth(first.getClubWealth() + 250);
@@ -257,17 +256,17 @@ public class PlayPage extends AppCompatActivity {
 
         Club club;
         for (int i = 3; i < 8; i++) {
-            club = all.get(i);
+            club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 20);
             clubsData.updateClub(club);
         }
         for (int i = 8; i < 16; i++) {
-            club = all.get(i);
+            club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 10);
             clubsData.updateClub(club);
         }
         for (int i = 16; i < 20; i++) {
-            club = all.get(i);
+            club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 3);
             clubsData.updateClub(club);
         }
@@ -284,6 +283,22 @@ public class PlayPage extends AppCompatActivity {
     private void createTM() {
         if (!preferences.getTmCreated()) {
             finishMT();
+            // 9th to 16th from ranks.
+            ArrayList<Club> tm_clubs = new ArrayList<>();
+            for (int i = 8; i < 16; i++) {
+                tm_clubs.add(ranked_clubs.get(i));
+            }
+
+            Collections.shuffle(tm_clubs);
+            if (tm_clubs.size() == 8) {
+                for (int i = 0; i < tm_clubs.size(); i = i + 2) {
+                    Match match = new Match(0, season.getSeasonID(), 2, tm_clubs.get(i).getClubID(),
+                            tm_clubs.get(i + 1).getClubID(), 0, 0, 0);
+                    resultsData.insertMatch(match);
+                }
+                preferences.setTmCreated(true);
+            } else
+                Log.e("PlayPage", "TM creation failed!");
         }
     }
 
