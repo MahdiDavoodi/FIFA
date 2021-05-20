@@ -38,7 +38,7 @@ public class PlayPage extends AppCompatActivity {
     Season season;
     League league;
     ArrayList<Club> ranked_clubs;
-    ArrayList<Club> tm_clubs;
+    ArrayList<Club> tm_clubs, cl_clubs;
     Club home, away;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
@@ -96,6 +96,12 @@ public class PlayPage extends AppCompatActivity {
         tm_clubs = new ArrayList<>();
         for (int i = 8; i < 16; i++) {
             tm_clubs.add(ranked_clubs.get(i));
+        }
+
+        // CL Clubs.
+        cl_clubs = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            cl_clubs.add(ranked_clubs.get(i));
         }
 
         // Set UI ID.
@@ -290,10 +296,10 @@ public class PlayPage extends AppCompatActivity {
                     resultsData.insertMatch(match);
                 }
                 preferences.setTmCreated(true);
+                league.setLeagueNumber(league.getLeagueNumber() + 1);
+                leaguesData.updateLeague(league);
             } else
                 Log.e("PlayPage", "TM creation failed!");
-            league.setLeagueNumber(league.getLeagueNumber() + 1);
-            leaguesData.updateLeague(league);
         } else createNewGameTM();
     }
 
@@ -337,7 +343,7 @@ public class PlayPage extends AppCompatActivity {
                 tm_clubs.remove(away);
             } else if (match.getHomeGoals() < match.getAwayGoals()) {
                 tm_clubs.remove(home);
-            } else Log.e("PlayPage", "Error in createNewGameTM");
+            } else Log.e("PlayPage", "Error in finish Champions");
         }
         if (tm_clubs.size() == 1) {
 
@@ -359,11 +365,84 @@ public class PlayPage extends AppCompatActivity {
 
     // Champions.
     private void createChampions() {
+        if (!preferences.getChampionsCreated()) {
+            finishTM();
+            Collections.shuffle(cl_clubs);
+            if (cl_clubs.size() == 8) {
+                for (int i = 0; i < cl_clubs.size(); i = i + 2) {
+                    Match match = new Match(0, season.getSeasonID(), 3, cl_clubs.get(i).getClubID(),
+                            cl_clubs.get(i + 1).getClubID(), 0, 0, 0);
+                    resultsData.insertMatch(match);
+                }
+                preferences.setChampionsCreated(true);
+                league.setLeagueNumber(league.getLeagueNumber() + 1);
+                leaguesData.updateLeague(league);
+            } else
+                Log.e("PlayPage", "Champions creation failed!");
+        } else createNewGameChampions();
     }
 
-    private void manageChampions() {
+    private void createNewGameChampions() {
+        ArrayList<Match> cl_matches = resultsData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
+        if (cl_matches.isEmpty()) {
+            ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+            Club home, away;
+            for (Match match :
+                    past_results) {
+                home = clubsData.getClubFromID(match.getHomeTeamID());
+                away = clubsData.getClubFromID(match.getAwayTeamID());
+                if (match.getHomeGoals() > match.getAwayGoals()) {
+                    cl_clubs.remove(away);
+                } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                    cl_clubs.remove(home);
+                } else Log.e("PlayPage", "Error in createNewGameChampions");
+            }
 
+            // All winners remain in cl_clubs.
+            Collections.shuffle(cl_clubs);
+            if ((cl_clubs.size() % 2) == 0) {
+                for (int i = 0; i < cl_clubs.size(); i = i + 2) {
+                    Match match = new Match(0, season.getSeasonID(), 3, cl_clubs.get(i).getClubID(),
+                            cl_clubs.get(i + 1).getClubID(), 0, 0, 0);
+                    resultsData.insertMatch(match);
+                }
+            } else
+                Log.e("PlayPage", "Champions creation of new game failed!");
+        }
     }
+
+    private void finishChampions() {
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        Club home, away;
+        for (Match match :
+                past_results) {
+            home = clubsData.getClubFromID(match.getHomeTeamID());
+            away = clubsData.getClubFromID(match.getAwayTeamID());
+            if (match.getHomeGoals() > match.getAwayGoals()) {
+                cl_clubs.remove(away);
+            } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                cl_clubs.remove(home);
+            } else Log.e("PlayPage", "Error in finish Champions");
+        }
+        if (cl_clubs.size() == 1) {
+
+            Club winner = cl_clubs.get(0);
+
+            winner.setClubChampions(winner.getClubChampions() + 1);
+            winner.setClubWealth(winner.getClubWealth() + 200);
+            clubsData.updateClub(winner);
+
+            season.setSeasonChampionsWinnerID(winner.getClubID());
+            seasonsData.updateSeason(season);
+
+            Owner winner_owner = ownersData.getOwnerFromID(winner.getClubOwner());
+            winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
+            ownersData.updateOwner(winner_owner);
+
+        } else Log.e("PlayPage", "Finish Champions Fucked up!");
+    }
+
+
 
     private void createGolden() {
     }
@@ -400,9 +479,6 @@ public class PlayPage extends AppCompatActivity {
         if (isInputValid()) {
             updateDataBase();
             switch (league.getLeagueID()) {
-                case 3:
-                    manageChampions();
-                    break;
                 case 4:
                     manageEurope();
                     break;
