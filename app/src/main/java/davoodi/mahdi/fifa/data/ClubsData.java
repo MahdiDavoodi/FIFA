@@ -89,11 +89,10 @@ public class ClubsData extends SQLiteOpenHelper {
         return clubs;
     }
 
-    public void updateClub(int ID, ContentValues changedValues) {
+    public void updateClub(Club club) {
         SQLiteDatabase database = getWritableDatabase();
-        int count = database.update(TABLE_CLUBS, changedValues, Club.KEY_ID + " = " + ID, null);
+        int count = database.update(TABLE_CLUBS, club.getContentValues(), Club.KEY_ID + " = " + club.getClubID(), null);
         if (count != 1) Log.e("ClubsData", "Error in update method");
-        if (database.isOpen()) database.close();
     }
 
     public Club getClubFromID(int clubID) {

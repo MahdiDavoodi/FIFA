@@ -2,7 +2,6 @@ package davoodi.mahdi.fifa.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -218,9 +217,7 @@ public class SelectClubsPage extends AppCompatActivity {
     private void updateClubsDatabaseID(ArrayList<Club> clubs) {
         for (Club club :
                 clubs) {
-            ContentValues newValues = new ContentValues();
-            newValues.put(Club.KEY_OWNER, club.getClubOwner());
-            clubsData.updateClub(club.getClubID(), newValues);
+            clubsData.updateClub(club);
         }
     }
 }

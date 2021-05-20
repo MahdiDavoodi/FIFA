@@ -240,8 +240,44 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishMT() {
+        ArrayList<Club> all = ranksData.getAllRankedClubs();
+        Club first = all.get(0);
+        Club second = all.get(1);
+        Club third = all.get(2);
 
+        first.setClubMT(first.getClubMT() + 1);
+        first.setClubWealth(first.getClubWealth() + 250);
 
+        second.setClubWealth(second.getClubWealth() + 80);
+        third.setClubWealth(third.getClubWealth() + 50);
+
+        clubsData.updateClub(first);
+        clubsData.updateClub(second);
+        clubsData.updateClub(third);
+
+        Club club;
+        for (int i = 3; i < 8; i++) {
+            club = all.get(i);
+            club.setClubWealth(club.getClubWealth() + 20);
+            clubsData.updateClub(club);
+        }
+        for (int i = 8; i < 16; i++) {
+            club = all.get(i);
+            club.setClubWealth(club.getClubWealth() + 10);
+            clubsData.updateClub(club);
+        }
+        for (int i = 16; i < 20; i++) {
+            club = all.get(i);
+            club.setClubWealth(club.getClubWealth() + 3);
+            clubsData.updateClub(club);
+        }
+
+        season.setSeasonMTWinnerID(first.getClubID());
+        seasonsData.updateSeason(season);
+
+        Owner first_owner = ownersData.getOwnerFromID(first.getClubOwner());
+        first_owner.setOwnerTotalCups(first_owner.getOwnerTotalCups() + 1);
+        ownersData.updateOwner(first_owner);
     }
 
     // TM.
