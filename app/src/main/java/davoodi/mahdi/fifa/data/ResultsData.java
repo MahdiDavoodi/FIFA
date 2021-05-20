@@ -52,7 +52,34 @@ public class ResultsData extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         ArrayList<Match> matches = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RESULTS
-                + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID, null);
+                + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID
+                + " ORDER BY " + Match.KEY_ID + " ASC ", null);
+        if (cursor.moveToFirst()) {
+            do {
+
+                Match match = new Match(cursor.getInt(cursor.getColumnIndex(Match.KEY_ID)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_SEASON)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_LEAGUE)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_AWAY)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_HOME_GOALS)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_AWAY_GOALS)),
+                        cursor.getInt(cursor.getColumnIndex(Match.KEY_MATCH_PLAYED)));
+                matches.add(match);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        if (database.isOpen()) database.close();
+        return matches;
+    }
+
+    public ArrayList<Match> getAllRemainMatches(int seasonID, int leagueID) {
+        SQLiteDatabase database = getReadableDatabase();
+        ArrayList<Match> matches = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RESULTS
+                + "' WHERE " + Match.KEY_SEASON + " = " + seasonID + " AND " + Match.KEY_LEAGUE + " = " + leagueID + " AND "
+                + Match.KEY_MATCH_PLAYED + " = 0"
+                + " ORDER BY " + Match.KEY_ID + " ASC ", null);
         if (cursor.moveToFirst()) {
             do {
 

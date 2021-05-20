@@ -38,6 +38,7 @@ public class PlayPage extends AppCompatActivity {
     Season season;
     League league;
     ArrayList<Club> ranked_clubs;
+    ArrayList<Club> tm_clubs;
     Club home, away;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
@@ -82,21 +83,19 @@ public class PlayPage extends AppCompatActivity {
         // Owners.
         ownersData = new OwnersData(this);
 
-        for (Club club :
-                owner_1_clubs) {
-            if (club.getClubID() == home.getClubID()) {
-                home_owner = ownersData.getOwnerFromID(1);
-                away_owner = ownersData.getOwnerFromID(2);
-                break;
-            }
+        if (owner_1_clubs.contains(home)) {
+            home_owner = ownersData.getOwnerFromID(1);
+            away_owner = ownersData.getOwnerFromID(2);
         }
-        for (Club club :
-                owner_2_clubs) {
-            if (club.getClubID() == home.getClubID()) {
-                home_owner = ownersData.getOwnerFromID(2);
-                away_owner = ownersData.getOwnerFromID(1);
-                break;
-            }
+        if (owner_2_clubs.contains(home)) {
+            home_owner = ownersData.getOwnerFromID(2);
+            away_owner = ownersData.getOwnerFromID(1);
+        }
+
+        // TM Clubs.
+        tm_clubs = new ArrayList<>();
+        for (int i = 8; i < 16; i++) {
+            tm_clubs.add(ranked_clubs.get(i));
         }
 
         // Set UI ID.
@@ -140,9 +139,9 @@ public class PlayPage extends AppCompatActivity {
         resultsData = new ResultsData(this);
 
         // Clubs.
+        clubsData = new ClubsData(this);
         owner_1_clubs = setOwnerClubs(1, ranked_clubs);
         owner_2_clubs = setOwnerClubs(2, ranked_clubs);
-        clubsData = new ClubsData(this);
     }
 
     private void whatToCreate() {
@@ -283,12 +282,6 @@ public class PlayPage extends AppCompatActivity {
     private void createTM() {
         if (!preferences.getTmCreated()) {
             finishMT();
-            // 9th to 16th from ranks.
-            ArrayList<Club> tm_clubs = new ArrayList<>();
-            for (int i = 8; i < 16; i++) {
-                tm_clubs.add(ranked_clubs.get(i));
-            }
-
             Collections.shuffle(tm_clubs);
             if (tm_clubs.size() == 8) {
                 for (int i = 0; i < tm_clubs.size(); i = i + 2) {
@@ -299,11 +292,41 @@ public class PlayPage extends AppCompatActivity {
                 preferences.setTmCreated(true);
             } else
                 Log.e("PlayPage", "TM creation failed!");
+        } else createNewGameTM();
+    }
+
+    private void createNewGameTM() {
+        ArrayList<Match> tm_matches = resultsData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
+        if (tm_matches.isEmpty()) {
+            ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+            Club home, away;
+            for (Match match :
+                    past_results) {
+                home = clubsData.getClubFromID(match.getHomeTeamID());
+                away = clubsData.getClubFromID(match.getAwayTeamID());
+                if (match.getHomeGoals() > match.getAwayGoals()) {
+                    tm_clubs.remove(away);
+                } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                    tm_clubs.remove(home);
+                } else Log.e("PlayPage", "Error in createNewGameTM");
+            }
+
+            // All winners remain in tm_clubs.
+            Collections.shuffle(tm_clubs);
+            if ((tm_clubs.size() % 2) == 0) {
+                for (int i = 0; i < tm_clubs.size(); i = i + 2) {
+                    Match match = new Match(0, season.getSeasonID(), 2, tm_clubs.get(i).getClubID(),
+                            tm_clubs.get(i + 1).getClubID(), 0, 0, 0);
+                    resultsData.insertMatch(match);
+                }
+            } else
+                Log.e("PlayPage", "TM creation of new game failed!");
+
         }
     }
 
     private void manageTM() {
-
+        // Check if there is a match that does not played. so we don't need to create any match.
     }
 
     private void createGolden() {

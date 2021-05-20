@@ -2,7 +2,22 @@ package davoodi.mahdi.fifa.components;
 
 import android.content.ContentValues;
 
+import java.util.Objects;
+
 public class Club {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Club club = (Club) o;
+        return clubID == club.clubID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(clubID);
+    }
+
     public static final String KEY_ID = "clubID";
     public static final String KEY_NAME = "clubName";
     public static final String KEY_WEALTH = "clubWealth";
