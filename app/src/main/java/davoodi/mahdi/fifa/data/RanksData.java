@@ -77,21 +77,25 @@ public class RanksData extends SQLiteOpenHelper {
     public ArrayList<Rank> getAllRanks() {
         SQLiteDatabase database = getReadableDatabase();
         ArrayList<Rank> ranks = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RANKS + "'", null);
-        if (cursor.moveToFirst()) {
-            do {
+        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_RANKS + "' ORDER BY "
+                + Rank.KEY_PTS + " DESC, " + Rank.KEY_GD + " DESC, " + Rank.KEY_WIN + " DESC", null);
+        if (cursor.getCount() == 20) {
+            Log.i("RanksData", "Everything is okay.");
+            if (cursor.moveToFirst()) {
+                do {
 
-                Rank rank = new Rank(
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_CLUB)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_PLAYED)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_WIN)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_LOSS)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_DRAW)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_GD)),
-                        cursor.getInt(cursor.getColumnIndex(Rank.KEY_PTS)));
-                ranks.add(rank);
-            } while (cursor.moveToNext());
-        }
+                    Rank rank = new Rank(
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_CLUB)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_PLAYED)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_WIN)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_LOSS)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_DRAW)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_GD)),
+                            cursor.getInt(cursor.getColumnIndex(Rank.KEY_PTS)));
+                    ranks.add(rank);
+                } while (cursor.moveToNext());
+            }
+        } else Log.e("RanksData", "Error in getAllRanks!");
         cursor.close();
         if (database.isOpen()) database.close();
         return ranks;

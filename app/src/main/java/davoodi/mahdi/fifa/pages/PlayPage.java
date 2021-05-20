@@ -35,6 +35,7 @@ public class PlayPage extends AppCompatActivity {
     // Useful Components.
     Season season;
     League league;
+    ArrayList<Rank> currentRanking;
     Club home, away;
     Match currentMatch;
     int matchesPlayed, home_goals, away_goals;
@@ -122,6 +123,7 @@ public class PlayPage extends AppCompatActivity {
 
         // Ranks.
         ranksData = new RanksData(this);
+        currentRanking = ranksData.getAllRanks();
 
         // Season.
         seasonsData = new SeasonsData(this);
@@ -162,6 +164,7 @@ public class PlayPage extends AppCompatActivity {
         }
     }
 
+    // MT.
     private void createMT() {
         // Create MT For First Time.
         if (!preferences.getMtCreated()) {
@@ -235,6 +238,22 @@ public class PlayPage extends AppCompatActivity {
         ranksData.updateRank(away_rank);
     }
 
+    private void finishMT() {
+
+
+    }
+
+    // TM.
+    private void createTM() {
+        if (!preferences.getTmCreated()) {
+            finishMT();
+        }
+    }
+
+    private void manageTM() {
+
+    }
+
     private void createGolden() {
     }
 
@@ -242,13 +261,6 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void createChampions() {
-    }
-
-    private void createTM() {
-    }
-
-    private void manageTM() {
-
     }
 
     private void manageChampions() {
