@@ -2,6 +2,7 @@ package davoodi.mahdi.fifa.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -287,7 +288,7 @@ public class PlayPage extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        startActivity(new Intent(PlayPage.this, MainPage.class));
         overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
     }
 
@@ -313,6 +314,8 @@ public class PlayPage extends AppCompatActivity {
                     break;
             }
             Toast.makeText(this, R.string.done, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(PlayPage.this, MainPage.class));
+            overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
             finish();
         }
     }
