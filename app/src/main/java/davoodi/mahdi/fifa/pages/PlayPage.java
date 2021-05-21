@@ -459,13 +459,102 @@ public class PlayPage extends AppCompatActivity {
             Log.e("PlayPage", "Europe creation failed!");
     }
 
+    private void finishEurope() {
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        if (past_results.size() == 1) {
+            Club home, away, europe_winner = null;
+            Match match = past_results.get(0);
+
+            home = clubsData.getClubFromID(match.getHomeTeamID());
+            away = clubsData.getClubFromID(match.getAwayTeamID());
+            if (match.getHomeGoals() > match.getAwayGoals()) {
+                europe_winner = home;
+            } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                europe_winner = away;
+            } else Log.e("PlayPage", "Error in finish Europe result goals.");
+
+            assert europe_winner != null;
+            europe_winner.setClubEurope(europe_winner.getClubEurope() + 1);
+            europe_winner.setClubWealth(europe_winner.getClubWealth() + 70);
+            clubsData.updateClub(europe_winner);
+
+            season.setSeasonEuropeWinnerID(europe_winner.getClubID());
+            seasonsData.updateSeason(season);
+
+            Owner winner_owner = ownersData.getOwnerFromID(europe_winner.getClubOwner());
+            winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
+            ownersData.updateOwner(winner_owner);
+        } else Log.e("PlayPage", "Error in finish Europe past results.");
+    }
+
+    // Golden.
     private void createGolden() {
+        if (!preferences.getGoldenCreated()) {
+            finishEurope();
+            Club mt_winner = clubsData.getClubFromID(season.getSeasonMTWinnerID());
+            Club europe_winner = clubsData.getClubFromID(season.getSeasonEuropeWinnerID());
+            Match match;
+            if (mt_winner.equals(europe_winner)) {
+                Club mt_second = ranked_clubs.get(1);
+                match = new Match(0, season.getSeasonID(), 5, mt_winner.getClubID(),
+                        mt_second.getClubID(), 0, 0, 0);
+            } else {
+                match = new Match(0, season.getSeasonID(), 5, mt_winner.getClubID(),
+                        europe_winner.getClubID(), 0, 0, 0);
+            }
+
+            resultsData.insertMatch(match);
+            preferences.setGoldenCreated(true);
+            league.setLeagueNumber(league.getLeagueNumber() + 1);
+            leaguesData.updateLeague(league);
+        }
     }
 
+    private void finishGolden() {
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        if (past_results.size() == 1) {
+            Club home, away, golden_winner = null;
+            Match match = past_results.get(0);
 
-    private void manageGolden() {
+            home = clubsData.getClubFromID(match.getHomeTeamID());
+            away = clubsData.getClubFromID(match.getAwayTeamID());
+            if (match.getHomeGoals() > match.getAwayGoals()) {
+                golden_winner = home;
+            } else if (match.getHomeGoals() < match.getAwayGoals()) {
+                golden_winner = away;
+            } else Log.e("PlayPage", "Error in finish Golden result goals.");
 
+            assert golden_winner != null;
+            golden_winner.setClubGolden(golden_winner.getClubGolden() + 1);
+            golden_winner.setClubWealth(golden_winner.getClubWealth() + 100);
+            clubsData.updateClub(golden_winner);
+
+            season.setSeasonGoldenWinnerID(golden_winner.getClubID());
+            seasonsData.updateSeason(season);
+
+            Owner winner_owner = ownersData.getOwnerFromID(golden_winner.getClubOwner());
+            winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
+            ownersData.updateOwner(winner_owner);
+            finishSeason();
+
+        } else Log.e("PlayPage", "Error in finish Golden past results.");
     }
+
+    private void finishSeason() {
+        int new_season = preferences.getCurrentSeason() + 1;
+        preferences.setCurrentSeason(new_season);
+
+        Season newSeason = new Season(new_season,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0);
+        seasonsData.insertSeason(newSeason);
+        ranksData.refreshRanksData();
+    }
+
 
     private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
         ArrayList<Club> ownerClubs = new ArrayList<>();
@@ -532,7 +621,11 @@ public class PlayPage extends AppCompatActivity {
         ownersData.updateOwner(home_owner);
         ownersData.updateOwner(away_owner);
 
-        season.setSeasonMatchesPlayed(season.getSeasonMatchesPlayed() + 1);
+        int mp = season.getSeasonMatchesPlayed() + 1;
+        season.setSeasonMatchesPlayed(mp);
         seasonsData.updateSeason(season);
+
+        if (mp == 116)
+            finishGolden();
     }
 }
