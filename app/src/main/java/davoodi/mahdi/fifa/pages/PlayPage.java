@@ -442,17 +442,26 @@ public class PlayPage extends AppCompatActivity {
         } else Log.e("PlayPage", "Finish Champions Fucked up!");
     }
 
+    // Europe.
+    private void createEurope() {
+        if (!preferences.getEuropeCreated()) {
+            finishChampions();
+            Club tm_winner = clubsData.getClubFromID(season.getSeasonTMWinnerID());
+            Club cl_winner = clubsData.getClubFromID(season.getSeasonChampionsWinnerID());
 
+            Match match = new Match(0, season.getSeasonID(), 4, tm_winner.getClubID(),
+                    cl_winner.getClubID(), 0, 0, 0);
+            resultsData.insertMatch(match);
+            preferences.setEuropeCreated(true);
+            league.setLeagueNumber(league.getLeagueNumber() + 1);
+            leaguesData.updateLeague(league);
+        } else
+            Log.e("PlayPage", "Europe creation failed!");
+    }
 
     private void createGolden() {
     }
 
-    private void createEurope() {
-    }
-
-    private void manageEurope() {
-
-    }
 
     private void manageGolden() {
 
@@ -478,17 +487,8 @@ public class PlayPage extends AppCompatActivity {
     public void playSaveOnClick(View view) {
         if (isInputValid()) {
             updateDataBase();
-            switch (league.getLeagueID()) {
-                case 4:
-                    manageEurope();
-                    break;
-                case 5:
-                    manageGolden();
-                    break;
-                default:
-                    manageMT();
-                    break;
-            }
+            if (league.getLeagueID() == 1)
+                manageMT();
             Toast.makeText(this, R.string.done, Toast.LENGTH_LONG).show();
             startActivity(new Intent(PlayPage.this, MainPage.class));
             overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
