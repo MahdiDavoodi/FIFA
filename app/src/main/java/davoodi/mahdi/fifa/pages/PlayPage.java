@@ -540,10 +540,10 @@ public class PlayPage extends AppCompatActivity {
         } else Log.e("PlayPage", "Error in finish Golden past results.");
     }
 
+    // Finish Season.
     private void finishSeason() {
         int new_season = preferences.getCurrentSeason() + 1;
         preferences.setCurrentSeason(new_season);
-
         Season newSeason = new Season(new_season,
                 0,
                 0,
@@ -554,7 +554,6 @@ public class PlayPage extends AppCompatActivity {
         seasonsData.insertSeason(newSeason);
         ranksData.refreshRanksData();
     }
-
 
     private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
         ArrayList<Club> ownerClubs = new ArrayList<>();
