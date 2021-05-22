@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import davoodi.mahdi.fifa.R;
-import davoodi.mahdi.fifa.adapters.MatchesResultsAdapter;
 import davoodi.mahdi.fifa.adapters.SeasonResultsAdapter;
 
 public class StatisticsPage extends AppCompatActivity {
@@ -30,7 +29,7 @@ public class StatisticsPage extends AppCompatActivity {
 
     public void seasonOnclick(View view) {
         list.setHasFixedSize(true);
-        list.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new SeasonResultsAdapter(this));
     }
 

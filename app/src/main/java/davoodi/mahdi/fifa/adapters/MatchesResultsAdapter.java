@@ -86,11 +86,11 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
 
         // Card views.
         if (home_team.getClubOwner() == 1) {
-            holder.owner_color_1.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
-            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
+            holder.owner_color_1.setCardBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
+            holder.owner_color_2.setCardBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
         } else if (home_team.getClubOwner() == 2) {
-            holder.owner_color_1.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
-            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
+            holder.owner_color_1.setCardBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
+            holder.owner_color_2.setCardBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
         }
 
         // Images

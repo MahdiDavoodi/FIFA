@@ -14,15 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
-import davoodi.mahdi.fifa.components.Club;
-import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Rank;
+import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.RanksData;
 
 public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdapter.ViewHolder> {
 
     Context context;
-    ArrayList<Club> ranked_clubs;
+    ClubsData clubsData;
     ArrayList<Rank> ranks;
     RanksData ranksData;
 
@@ -37,7 +36,7 @@ public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdap
         ranks = ranksData.getAllRanks();
 
         // Clubs.
-        ranked_clubs = ranksData.getAllRankedClubs();
+        clubsData = new ClubsData(context);
     }
 
     @NonNull
@@ -60,63 +59,31 @@ public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdap
             Rank rank = ranks.get(count);
 
             // Rank Color.
-            if (position == 1) {
-                holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.gold, context.getTheme()));
-            } else if (position > 1 && position <= 8) {
+            if (count == 0) {
+                holder.team_rank.setCardBackgroundColor(context.getResources().getColor(R.color.gold, context.getTheme()));
+            } else if (count < 8) {
                 holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
-            } else if (position >= 9 && position <= 16) {
+            } else if (count < 16) {
                 holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.orange, context.getTheme()));
             } else {
                 holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.gray, context.getTheme()));
             }
 
             // Team Image.
+            holder.team_image.setImageResource(context.getResources().getIdentifier("club" + rank.getClubID(),
+                    "drawable",
+                    context.getPackageName()));
 
             // Rank Info.
 
-
+            holder.team_name.setText(clubsData.getClubFromID(rank.getClubID()).getClubName());
+            holder.played.setText(String.valueOf(rank.getMatchesPlayed()));
+            holder.win.setText(String.valueOf(rank.getWin()));
+            holder.loss.setText(String.valueOf(rank.getLoss()));
+            holder.draw.setText(String.valueOf(rank.getDraw()));
+            holder.gd.setText(String.valueOf(rank.getGoalDifference()));
+            holder.points.setText(String.valueOf(rank.getPoints()));
         }
-
-
-        // This Match.
-        Match match = matches.get(position);
-
-        // set widgets information
-        Club home_team = clubsData.getClubFromID(match.getHomeTeamID());
-        Club away_team = clubsData.getClubFromID(match.getAwayTeamID());
-
-        assert home_team != null;
-        assert away_team != null;
-
-        // Card views.
-        if (home_team.getClubOwner() == 1) {
-            holder.team_rank.setBackgroundColor();
-            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
-        } else if (home_team.getClubOwner() == 2) {
-            holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
-            holder.owner_color_2.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
-        }
-
-        // Images
-        int home_imageRes = context.getResources().getIdentifier("club" + home_team.getClubID(),
-                "drawable",
-                context.getPackageName());
-        holder.home_team_logo.setImageResource(home_imageRes);
-
-        int away_imageRes = context.getResources().getIdentifier("club" + away_team.getClubID(),
-                "drawable",
-                context.getPackageName());
-        holder.away_team_logo.setImageResource(away_imageRes);
-
-        // Text Views.
-        holder.played.setText(home_team.getClubName());
-        holder.win.setText(away_team.getClubName());
-        holder.loss.setText(league.getLeagueName());
-
-        if (match.getMatchPlayed() == 1)
-            holder.team_name.setText(context.getString(R.string.match_result, match.getHomeGoals(), match.getAwayGoals()));
-        else
-            holder.team_name.setText(context.getString(R.string.matchesNotPlayed));
     }
 
     @Override
