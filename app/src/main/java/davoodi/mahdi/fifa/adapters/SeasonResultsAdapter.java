@@ -49,59 +49,38 @@ public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int count = position - 1;
-        if (count == -1) {
-            holder.team_rank.setVisibility(View.INVISIBLE);
-            holder.team_image.setVisibility(View.INVISIBLE);
-        } else {
-            holder.team_rank.setVisibility(View.VISIBLE);
-            holder.team_image.setVisibility(View.VISIBLE);
-            Rank rank = ranks.get(count);
+        Rank rank = ranks.get(position);
 
-            // Rank Color.
-            if (count == 0) {
-                holder.team_rank.setCardBackgroundColor(context.getResources().getColor(R.color.gold, context.getTheme()));
-            } else if (count < 8) {
-                holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
-            } else if (count < 16) {
-                holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.orange, context.getTheme()));
-            } else {
-                holder.team_rank.setBackgroundColor(context.getResources().getColor(R.color.gray, context.getTheme()));
-            }
+        // Team Image.
+        holder.team_image.setImageResource(context.getResources().getIdentifier("club" + rank.getClubID(),
+                "drawable",
+                context.getPackageName()));
 
-            // Team Image.
-            holder.team_image.setImageResource(context.getResources().getIdentifier("club" + rank.getClubID(),
-                    "drawable",
-                    context.getPackageName()));
+        // Rank Info.
 
-            // Rank Info.
-
-            holder.team_name.setText(clubsData.getClubFromID(rank.getClubID()).getClubName());
-            holder.played.setText(String.valueOf(rank.getMatchesPlayed()));
-            holder.win.setText(String.valueOf(rank.getWin()));
-            holder.loss.setText(String.valueOf(rank.getLoss()));
-            holder.draw.setText(String.valueOf(rank.getDraw()));
-            holder.gd.setText(String.valueOf(rank.getGoalDifference()));
-            holder.points.setText(String.valueOf(rank.getPoints()));
-        }
+        holder.team_name.setText(clubsData.getClubFromID(rank.getClubID()).getClubName());
+        holder.played.setText(String.valueOf(rank.getMatchesPlayed()));
+        holder.win.setText(String.valueOf(rank.getWin()));
+        holder.loss.setText(String.valueOf(rank.getLoss()));
+        holder.draw.setText(String.valueOf(rank.getDraw()));
+        holder.gd.setText(String.valueOf(rank.getGoalDifference()));
+        holder.points.setText(String.valueOf(rank.getPoints()));
     }
 
     @Override
     public int getItemCount() {
         // Items number.
-        return ranks.size() + 1;
+        return ranks.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        CardView team_rank;
         TextView team_name, played, win, loss, draw, gd, points;
         ImageView team_image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // Widgets.
-            team_rank = itemView.findViewById(R.id.statistics_season_rank_color);
             played = itemView.findViewById(R.id.statistics_season_match_played);
             win = itemView.findViewById(R.id.statistics_season_win);
             loss = itemView.findViewById(R.id.statistics_season_loss);
