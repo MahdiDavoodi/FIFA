@@ -9,9 +9,6 @@ import android.view.View;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.adapters.SeasonResultsAdapter;
-import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.SeasonsData;
-import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class StatisticsPage extends AppCompatActivity {
 
