@@ -6,4 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".pages.StatisticsPage">
 
+    <TextView
+        android:id="@+id/statisticsDescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="20dp"
+        android:text="@string/statisticsDescriptionText"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="@dimen/text_size_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/statisticsButtonBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsDescriptionText">
+
+        <Button
+            android:id="@+id/statisticsStandingsButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:text="@string/statisticsStandingsButton"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+
+        <Button
+            android:id="@+id/statisticsOwnersButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:text="@string/statisticsOwnersButton"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+
+        <Button
+            android:id="@+id/statisticsClubsButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:text="@string/statisticsClubsButton"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/statisticsLineView"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_margin="5dp"
+        android:background="@color/defaultLineColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsButtonBox" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsLineView"
+        app:layout_constraintVertical_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/statisticsSeasonList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,10 @@ public class StatisticsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistics_page);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
+    }
 }

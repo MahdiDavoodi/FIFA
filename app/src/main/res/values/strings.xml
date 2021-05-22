@@ -24,6 +24,12 @@
     <string name="mainNavigationTransfer">Transfer</string>
     <string name="mainNavigationCups">Cups</string>
 
+    // Statistics Page.
+    <string name="statisticsStandingsButton">Season</string>
+    <string name="statisticsOwnersButton">Owners</string>
+    <string name="statisticsClubsButton">Clubs</string>
+    <string name="statisticsDescriptionText">In this page, you can see all information about owners, clubs, season.</string>
+
     // Toasts.
     <string name="createOwnersToast1">Please input your information!</string>
     <string name="createOwnersToast2">Password does not match!</string>

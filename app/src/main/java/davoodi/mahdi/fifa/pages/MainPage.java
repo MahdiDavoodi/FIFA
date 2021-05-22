@@ -83,4 +83,10 @@ public class MainPage extends AppCompatActivity {
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
         finish();
     }
+
+    // Matches Fragment Button listeners.
+    public void statisticsOnClick(View view) {
+        startActivity(new Intent(MainPage.this, StatisticsPage.class));
+        overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+    }
 }
