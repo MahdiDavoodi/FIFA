@@ -30,6 +30,9 @@
     <string name="statisticsClubsButton">Clubs</string>
     <string name="statisticsDescriptionText">In this page, you can see all information about owners, clubs, season.</string>
 
+    // Lists Titles.
+    <string name="season_points">Pts</string>
+
     // Toasts.
     <string name="createOwnersToast1">Please input your information!</string>
     <string name="createOwnersToast2">Password does not match!</string>

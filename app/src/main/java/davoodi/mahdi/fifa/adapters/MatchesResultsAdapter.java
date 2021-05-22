@@ -68,7 +68,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.matches_recycler_row, parent, false);
+        View view = inflater.inflate(R.layout.matches_results_row, parent, false);
         return new ViewHolder(view);
     }
 
