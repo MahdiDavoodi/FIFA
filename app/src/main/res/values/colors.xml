@@ -9,6 +9,9 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="red">#CF0F0F</color>
     <color name="blue">#1228B6</color>
+    <color name="gray">#A9AAB3</color>
+    <color name="gold">#D3B026</color>
+    <color name="orange">#FF5722</color>
 
     // Main objects(Main Theme)
     <color name="mainColor">#FFFFFF</color>

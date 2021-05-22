@@ -41,6 +41,7 @@
             android:autoSizeTextType="uniform"
             android:backgroundTint="@color/mainButtonColor"
             android:fontFamily="@font/main_font"
+            android:onClick="seasonOnclick"
             android:text="@string/statisticsStandingsButton"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -58,6 +59,7 @@
             android:autoSizeTextType="uniform"
             android:backgroundTint="@color/mainButtonColor"
             android:fontFamily="@font/main_font"
+            android:onClick="ownerOnClick"
             android:text="@string/statisticsOwnersButton"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -75,6 +77,7 @@
             android:autoSizeTextType="uniform"
             android:backgroundTint="@color/mainButtonColor"
             android:fontFamily="@font/main_font"
+            android:onClick="clubsOnClick"
             android:text="@string/statisticsClubsButton"
             android:textAlignment="center"
             android:textAllCaps="false"
@@ -108,7 +111,7 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/statisticsSeasonList"
+                android:id="@+id/statisticsList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

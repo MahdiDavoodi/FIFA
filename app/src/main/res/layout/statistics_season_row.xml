@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layoutDirection="ltr">
@@ -55,19 +54,121 @@
                 app:srcCompat="@drawable/club1" />
 
             <TextView
-                android:id="@+id/statistics_season_club_name"
+                android:id="@+id/statistics_season_team_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/main_font"
                 android:padding="5dp"
-                android:text="@string/TextView"
+                android:text="@string/season_team_name"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/statistics_season_club_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_match_played"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_match_played"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_season_win"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_win"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_win"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_season_loss"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_goal_difference"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_goalDifference"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_season_points"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_points"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_loss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_loss"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_season_draw"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/statistics_season_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/main_font"
+                android:minWidth="35dp"
+                android:padding="5dp"
+                android:text="@string/season_draw"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_0_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/statistics_season_goal_difference"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
