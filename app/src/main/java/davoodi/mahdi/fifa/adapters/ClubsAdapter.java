@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ViewHolder> 
         // Info.
 
         holder.team_name.setText(club.getClubName());
-        holder.budget.setText(String.valueOf(club.getClubWealth() + "$"));
+        holder.budget.setText(context.getResources().getString(R.string.dollar, club.getClubWealth()));
         holder.mt.setText(String.valueOf(club.getClubMT()));
         holder.tm.setText(String.valueOf(club.getClubTM()));
         holder.champions.setText(String.valueOf(club.getClubChampions()));
