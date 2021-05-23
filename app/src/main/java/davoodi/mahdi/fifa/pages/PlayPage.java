@@ -625,15 +625,17 @@ public class PlayPage extends AppCompatActivity {
         resultsData.updateMatch(currentMatch);
 
         // Choose the winner and loser.
-        if (home_goals > away_goals) {
-            home_owner.setOwnerTotalWin(home_owner.getOwnerTotalWin() + 1);
-            away_owner.setOwnerTotalLoss(away_owner.getOwnerTotalLoss() + 1);
-        } else if (away_goals > home_goals) {
-            away_owner.setOwnerTotalWin(away_owner.getOwnerTotalWin() + 1);
-            home_owner.setOwnerTotalLoss(home_owner.getOwnerTotalLoss() + 1);
-        } else {
-            away_owner.setOwnerTotalDraw(away_owner.getOwnerTotalDraw() + 1);
-            home_owner.setOwnerTotalDraw(home_owner.getOwnerTotalDraw() + 1);
+        if (home.getClubOwner() != away.getClubOwner()) {
+            if (home_goals > away_goals) {
+                home_owner.setOwnerTotalWin(home_owner.getOwnerTotalWin() + 1);
+                away_owner.setOwnerTotalLoss(away_owner.getOwnerTotalLoss() + 1);
+            } else if (away_goals > home_goals) {
+                away_owner.setOwnerTotalWin(away_owner.getOwnerTotalWin() + 1);
+                home_owner.setOwnerTotalLoss(home_owner.getOwnerTotalLoss() + 1);
+            } else {
+                away_owner.setOwnerTotalDraw(away_owner.getOwnerTotalDraw() + 1);
+                home_owner.setOwnerTotalDraw(home_owner.getOwnerTotalDraw() + 1);
+            }
         }
         ownersData.updateOwner(home_owner);
         ownersData.updateOwner(away_owner);
