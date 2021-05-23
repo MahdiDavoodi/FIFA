@@ -548,6 +548,12 @@ public class PlayPage extends AppCompatActivity {
         seasonsData.insertSeason(newSeason);
         ranksData.refreshRanksData();
 
+        preferences.setMtCreated(false);
+        preferences.setTmCreated(false);
+        preferences.setChampionsCreated(false);
+        preferences.setEuropeCreated(false);
+        preferences.setGoldenCreated(false);
+
         if ((preferences.getSeasonCount() % 5) == 0)
             controlMoney();
     }
