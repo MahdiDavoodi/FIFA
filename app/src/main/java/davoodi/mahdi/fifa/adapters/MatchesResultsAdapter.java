@@ -85,12 +85,19 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         assert away_team != null;
 
         // Card views.
+
         if (home_team.getClubOwner() == 1) {
             holder.owner_color_1.setCardBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
-            holder.owner_color_2.setCardBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
-        } else if (home_team.getClubOwner() == 2) {
+        } else {
             holder.owner_color_1.setCardBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
+        }
+
+        if (away_team.getClubOwner() == 1) {
             holder.owner_color_2.setCardBackgroundColor(context.getResources().getColor(R.color.blue, context.getTheme()));
+
+        } else {
+
+            holder.owner_color_2.setCardBackgroundColor(context.getResources().getColor(R.color.red, context.getTheme()));
         }
 
         // Images

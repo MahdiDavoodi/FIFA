@@ -326,7 +326,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishTM() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         Club home, away;
         for (Match match :
                 past_results) {
@@ -334,9 +334,9 @@ public class PlayPage extends AppCompatActivity {
             away = clubsData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 tm_clubs.remove(away);
-            } else {
+            } else if (match.getHomeGoals() < match.getAwayGoals()) {
                 tm_clubs.remove(home);
-            }
+            } else Log.e("PlayPage", "Error in finish TM");
         }
         if (tm_clubs.size() == 1) {
 
@@ -405,7 +405,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishChampions() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         Club home, away;
         for (Match match :
                 past_results) {
@@ -453,7 +453,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishEurope() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         if (past_results.size() == 1) {
             Club home, away, europe_winner = null;
             Match match = past_results.get(0);
