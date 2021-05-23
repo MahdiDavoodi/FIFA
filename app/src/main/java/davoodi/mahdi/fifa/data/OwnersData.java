@@ -76,6 +76,7 @@ public class OwnersData extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_OWNERS + "' WHERE " + Owner.KEY_ID + " = " + ownerID, null);
         if (cursor.moveToFirst()) {
 
+            Log.i("OwnersData", "everything is good in getOwnerFromID");
             owner = new Owner(
                     cursor.getInt(cursor.getColumnIndex(Owner.KEY_ID)),
                     cursor.getString(cursor.getColumnIndex(Owner.KEY_NAME)),
@@ -87,7 +88,7 @@ public class OwnersData extends SQLiteOpenHelper {
                     cursor.getInt(cursor.getColumnIndex(Owner.KEY_CUPS)));
 
 
-        }
+        } else Log.e("OwnersData", "Problem in getOwnerFromID");
         cursor.close();
         if (database.isOpen()) database.close();
         return owner;

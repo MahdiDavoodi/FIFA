@@ -67,8 +67,41 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void initialize() {
-        // DataBase.
-        readData();
+        ranksData = new RanksData(this);
+        resultsData = new ResultsData(this);
+        clubsData = new ClubsData(this);
+        ownersData = new OwnersData(this);
+        seasonsData = new SeasonsData(this);
+        leaguesData = new LeaguesData(this);
+
+        // preferences.
+        preferences = new AppPreferences(this);
+
+        // ranks.
+        ranked_clubs = ranksData.getAllRankedClubs();
+
+        // Season.
+        season = seasonsData.getSeason(preferences.getCurrentSeason());
+        matchesPlayed = season.getSeasonMatchesPlayed();
+
+        // Leagues.
+        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
+
+        // Clubs.
+        owner_1_clubs = setOwnerClubs(1, ranked_clubs);
+        owner_2_clubs = setOwnerClubs(2, ranked_clubs);
+
+        // TM Clubs.
+        tm_clubs = new ArrayList<>();
+        for (int i = 8; i < 16; i++) {
+            tm_clubs.add(ranked_clubs.get(i));
+        }
+
+        // CL Clubs.
+        cl_clubs = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            cl_clubs.add(ranked_clubs.get(i));
+        }
 
         // What league and situation we have.
         whatToCreate();
@@ -81,8 +114,6 @@ public class PlayPage extends AppCompatActivity {
         away = clubsData.getClubFromID(currentMatch.getAwayTeamID());
 
         // Owners.
-        ownersData = new OwnersData(this);
-
         if (owner_1_clubs.contains(home)) {
             home_owner = ownersData.getOwnerFromID(1);
             away_owner = ownersData.getOwnerFromID(2);
@@ -90,18 +121,6 @@ public class PlayPage extends AppCompatActivity {
         if (owner_2_clubs.contains(home)) {
             home_owner = ownersData.getOwnerFromID(2);
             away_owner = ownersData.getOwnerFromID(1);
-        }
-
-        // TM Clubs.
-        tm_clubs = new ArrayList<>();
-        for (int i = 8; i < 16; i++) {
-            tm_clubs.add(ranked_clubs.get(i));
-        }
-
-        // CL Clubs.
-        cl_clubs = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            cl_clubs.add(ranked_clubs.get(i));
         }
 
         // Set UI ID.
@@ -122,32 +141,6 @@ public class PlayPage extends AppCompatActivity {
         away_image.setImageResource(getResources().getIdentifier("club" + away.getClubID(),
                 "drawable",
                 getPackageName()));
-    }
-
-    private void readData() {
-        // Preferences.
-        preferences = new AppPreferences(this);
-
-        // Ranks.
-        ranksData = new RanksData(this);
-        ranked_clubs = ranksData.getAllRankedClubs();
-
-        // Season.
-        seasonsData = new SeasonsData(this);
-        season = seasonsData.getSeason(preferences.getCurrentSeason());
-        matchesPlayed = season.getSeasonMatchesPlayed();
-
-        // Leagues.
-        leaguesData = new LeaguesData(this);
-        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
-
-        // Results.
-        resultsData = new ResultsData(this);
-
-        // Clubs.
-        clubsData = new ClubsData(this);
-        owner_1_clubs = setOwnerClubs(1, ranked_clubs);
-        owner_2_clubs = setOwnerClubs(2, ranked_clubs);
     }
 
     private void whatToCreate() {
@@ -341,9 +334,9 @@ public class PlayPage extends AppCompatActivity {
             away = clubsData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 tm_clubs.remove(away);
-            } else if (match.getHomeGoals() < match.getAwayGoals()) {
+            } else {
                 tm_clubs.remove(home);
-            } else Log.e("PlayPage", "Error in finish Champions");
+            }
         }
         if (tm_clubs.size() == 1) {
 
@@ -606,6 +599,9 @@ public class PlayPage extends AppCompatActivity {
         String awayChecker = away_goals_input.getText().toString();
         if (homeChecker.isEmpty() || awayChecker.isEmpty()) {
             Toast.makeText(this, R.string.playToast1, Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (league.getLeagueID() > 1 && homeChecker.equalsIgnoreCase(awayChecker)) {
+            Toast.makeText(this, "It should not be equals!", Toast.LENGTH_LONG).show();
             return false;
         } else {
             home_goals = Integer.parseInt(homeChecker);
