@@ -30,6 +30,9 @@
     <string name="statisticsClubsButton">Clubs</string>
     <string name="statisticsDescriptionText">In this page, you can see all information about owners, clubs, season.</string>
 
+    // Info Page.
+    <string name="developer_info">Hey There! My name is Mahdi Davoodi and I am a junior Android developer. I created this app for me and my brother. But I hope you can find it useful and enjoy it!</string>
+
     // Lists Titles.
     <string name="season_points">Pts</string>
     <string name="season_goalDifference">GD</string>
@@ -93,5 +96,6 @@
     // Version Control.
     <string name="slidesPage">Finish in Version 1.0</string>
     <string name="version">version 1.0</string>
+    <string name="last_update">Last Update: May, 2021.</string>
 
 </resources>

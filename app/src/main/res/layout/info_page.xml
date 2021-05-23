@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".pages.InfoPage">
 
+    <TextView
+        android:id="@+id/info_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/base05"
+        android:text="@string/appName"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/mainBigTextColor"
+        android:textDirection="ltr"
+        android:textSize="@dimen/text_size_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="10dp"
+        android:text="@string/developer_info"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_app_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/info_tv_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="10dp"
+        android:text="@string/last_update"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_tv_1" />
+
+    <TextView
+        android:id="@+id/info_tv_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="10dp"
+        android:text="@string/version"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        app:layout_constraintEnd_toEndOf="@+id/info_tv_2"
+        app:layout_constraintStart_toStartOf="@+id/info_tv_2"
+        app:layout_constraintTop_toBottomOf="@+id/info_tv_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
