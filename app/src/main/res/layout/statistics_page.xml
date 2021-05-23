@@ -22,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <LinearLayout
         android:id="@+id/statisticsButtonBox"
         android:layout_width="match_parent"
@@ -86,6 +87,22 @@
             android:textSize="@dimen/normalButton" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/statisticsListDescriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/main_font"
+        android:padding="5dp"
+        android:text="@string/season_description"
+        android:textAlignment="center"
+        android:textColor="@color/mainDescriptionTextColor"
+        android:textDirection="ltr"
+        android:textSize="@dimen/text_size_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statisticsButtonBox" />
+
     <View
         android:id="@+id/statisticsLineView"
         android:layout_width="match_parent"
@@ -94,7 +111,7 @@
         android:background="@color/defaultLineColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statisticsButtonBox" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsListDescriptionText" />
 
     <ScrollView
         android:layout_width="match_parent"

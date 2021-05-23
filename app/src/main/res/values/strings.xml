@@ -39,17 +39,9 @@
     <string name="season_match_played">Pl</string>
     <string name="season_team_name">Team</string>
 
-    <string name="owner_win">W</string>
-    <string name="owner_loss">L</string>
-    <string name="owner_draw">D</string>
-    <string name="owner_cups">Cups</string>
-    <string name="owner_name">Name</string>
-
-    <string name="club_mt">MT</string>
-    <string name="club_tm">TM</string>
-    <string name="club_cl">Champions</string>
-    <string name="club_eu">Europe</string>
-    <string name="club_go">Golden</string>
+    <string name="club_description">Club / Budget / MT / TM / Champions / Europe / Golden.</string>
+    <string name="owner_description">Owner / Win / Loss / Draw / Cups.</string>
+    <string name="season_description">Team / Pl / W / L / D / GD / Pts.</string>
 
 
     // Toasts.
@@ -60,8 +52,8 @@
     <string name="playToast1">Please input the goals!</string>
 
     // Objects Descriptions
-    <string name="imageView">Image View</string>
-    <string name="TextView">Text View</string>
+    <string name="imageView">Image</string>
+    <string name="TextView">Text</string>
     <string name="ImageButton">Image Button</string>
 
     // Hints.
