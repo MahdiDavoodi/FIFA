@@ -69,6 +69,7 @@ public class StartPage extends AppCompatActivity {
         playersData.getWritableDatabase();
 
         // Seasons
+        preferences.setSeasonCount(1);
         int firstSeasonID = firstSeason;
         SeasonsData seasonsData = new SeasonsData(this);
         Season firstSeason = new Season(firstSeasonID,

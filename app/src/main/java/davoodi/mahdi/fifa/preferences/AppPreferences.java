@@ -14,6 +14,7 @@ public class AppPreferences {
     private static final String CHAMPIONS_CREATED = "ChampionsDatabase";
     private static final String EUROPE_CREATED = "EuropeDatabase";
     private static final String GOLDEN_CREATED = "GoldenDatabase";
+    private static final String SEASON_COUNT = "SeasonCount";
 
     public AppPreferences(Context context) {
         preferences = context.getSharedPreferences(APP_PREF, Context.MODE_PRIVATE);
@@ -73,5 +74,13 @@ public class AppPreferences {
 
     public boolean getGoldenCreated() {
         return preferences.getBoolean(GOLDEN_CREATED, false);
+    }
+
+    public void setSeasonCount(int count) {
+        preferences.edit().putInt(SEASON_COUNT, count).apply();
+    }
+
+    public int getSeasonCount() {
+        return preferences.getInt(SEASON_COUNT, 0);
     }
 }

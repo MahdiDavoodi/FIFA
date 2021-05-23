@@ -542,6 +542,7 @@ public class PlayPage extends AppCompatActivity {
 
     // Finish Season.
     private void finishSeason() {
+        preferences.setSeasonCount(preferences.getSeasonCount() + 1);
         int new_season = preferences.getCurrentSeason() + 1;
         preferences.setCurrentSeason(new_season);
         Season newSeason = new Season(new_season,
@@ -553,6 +554,21 @@ public class PlayPage extends AppCompatActivity {
                 0);
         seasonsData.insertSeason(newSeason);
         ranksData.refreshRanksData();
+
+        if ((preferences.getSeasonCount() % 5) == 0)
+            controlMoney();
+    }
+
+    private void controlMoney() {
+        long wealth;
+        for (Club club :
+                ranked_clubs) {
+            wealth = club.getClubWealth();
+            // remain 70% of wealth.
+            wealth = (wealth * 70) / 100;
+            club.setClubWealth(wealth);
+        }
+        Toast.makeText(this, "Money control applied!", Toast.LENGTH_LONG).show();
     }
 
     private ArrayList<Club> setOwnerClubs(int ownerID, ArrayList<Club> rankedClubs) {
