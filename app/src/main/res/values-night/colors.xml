@@ -14,7 +14,7 @@
     <color name="orange">#FF5722</color>
 
     // Main objects(Main Dark Theme)
-    <color name="mainColor">#FF000000</color>
+    <color name="mainColor">#000000</color>
     <color name="mainBigTextColor">#5109F3</color>
     <color name="mainDescriptionTextColor">#B1B3B6</color>
     <color name="mainTextColor">#FFFFFFFF</color>
