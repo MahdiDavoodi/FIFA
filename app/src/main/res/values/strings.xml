@@ -87,6 +87,9 @@
     <string name="goals">Goals</string>
     <string name="skip">Skip</string>
     <string name="done">Done</string>
+    <string name="login">LogIn</string>
+    <string name="cancel">Cancel</string>
+    <string name="enter_password">Please enter your password.</string>
     <string name="start">Start</string>
     <string name="save">Save</string>
     <string name="info">Info</string>

@@ -46,6 +46,7 @@
             android:autoSizeTextType="uniform"
             android:backgroundTint="@color/mainButtonColor"
             android:fontFamily="@font/main_font"
+            android:onClick="transferNewOnClick"
             android:text="@string/newText"
             android:textAlignment="center"
             android:textAllCaps="false"
