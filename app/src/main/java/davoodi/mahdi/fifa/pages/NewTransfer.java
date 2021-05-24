@@ -166,7 +166,7 @@ public class NewTransfer extends AppCompatActivity {
                 transfersData.insertTransfer(transfer);
 
                 to.setClubWealth(to.getClubWealth() - price);
-                from.setClubWealth(from.getClubWealth() + price);
+                from.setClubWealth(from.getClubWealth() + price_with_tax);
 
                 clubsData.updateClub(from);
                 clubsData.updateClub(to);
