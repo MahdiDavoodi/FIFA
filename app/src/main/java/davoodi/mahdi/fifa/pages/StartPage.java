@@ -13,7 +13,6 @@ import java.util.List;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.OwnersData;
-import davoodi.mahdi.fifa.data.PlayersData;
 import davoodi.mahdi.fifa.data.ResultsData;
 import davoodi.mahdi.fifa.data.SeasonsData;
 import davoodi.mahdi.fifa.data.TransfersData;
@@ -63,10 +62,6 @@ public class StartPage extends AppCompatActivity {
         // Owners
         OwnersData ownersData = new OwnersData(this);
         ownersData.getWritableDatabase();
-
-        // Players
-        PlayersData playersData = new PlayersData(this);
-        playersData.getWritableDatabase();
 
         // Seasons
         preferences.setSeasonCount(1);
