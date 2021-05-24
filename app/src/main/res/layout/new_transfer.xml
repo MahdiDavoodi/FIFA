@@ -148,27 +148,6 @@
             android:textDirection="ltr"
             android:textSize="@dimen/text_size_2" />
 
-        <EditText
-            android:id="@+id/nt_player_age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="80dp"
-            android:autoSizeTextType="uniform"
-            android:autofillHints="@string/numberHint"
-            android:background="@drawable/edit_text_background_1"
-            android:ems="5"
-            android:fontFamily="@font/main_font"
-            android:gravity="center"
-            android:hint="@string/age"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textAlignment="center"
-            android:textColor="@color/mainTextColor"
-            android:textColorHint="@color/mainDescriptionTextColor"
-            android:textDirection="ltr"
-            android:textSize="@dimen/text_size_2" />
 
         <EditText
             android:id="@+id/nt_player_overall"

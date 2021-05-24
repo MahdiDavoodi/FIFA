@@ -4,16 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
+import davoodi.mahdi.fifa.components.Transfer;
 import davoodi.mahdi.fifa.data.ClubsData;
+import davoodi.mahdi.fifa.data.TransfersData;
 
 public class NewTransfer extends AppCompatActivity {
+
+    // Player Info.
+    EditText name_input, overall_input;
 
     // From Club CardView.
     TextView f_textView;
@@ -27,9 +34,12 @@ public class NewTransfer extends AppCompatActivity {
     ArrayList<Club> from_clubs, to_clubs;
     int from_index, to_index;
     Club to, from;
+    int overall;
+    String name;
 
     // Database.
     ClubsData clubsData;
+    TransfersData transfersData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +51,7 @@ public class NewTransfer extends AppCompatActivity {
     private void initialize() {
 
         // Database.
+        transfersData = new TransfersData(this);
         clubsData = new ClubsData(this);
 
         // Components.
@@ -57,6 +68,9 @@ public class NewTransfer extends AppCompatActivity {
         to_index = 1;
 
         // Set UI.
+        name_input = findViewById(R.id.nt_player_name);
+        overall_input = findViewById(R.id.nt_player_overall);
+
         f_textView = findViewById(R.id.nt_fromClubName);
         f_imageButton = findViewById(R.id.nt_fromClubButton);
 
@@ -138,5 +152,59 @@ public class NewTransfer extends AppCompatActivity {
 
     // Save Button.
     public void ntSaveButton(View view) {
+        if (inputValid()) {
+            long price = getPrice(overall);
+            if (doesToClubHasItMoney(price)) {
+                long price_with_tax = (price * 90) / 100;
+
+                Transfer transfer = new Transfer(0,
+                        from.getClubID(),
+                        to.getClubID(),
+                        name,
+                        price);
+
+                transfersData.insertTransfer(transfer);
+
+                to.setClubWealth(to.getClubWealth() - price);
+                from.setClubWealth(from.getClubWealth() + price);
+
+                clubsData.updateClub(from);
+                clubsData.updateClub(to);
+
+                Toast.makeText(this, "Transfer saved. "
+                        + (price - price_with_tax) + " million$ tax applied!", Toast.LENGTH_LONG).show();
+
+            } else {
+                Toast.makeText(this, "Destination club does not have enough money ("
+                        + price + " million$).", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+    private boolean inputValid() {
+        name = name_input.getText().toString().trim();
+        String overall_temp = overall_input.getText().toString().trim();
+
+        if (name.isEmpty() || overall_temp.isEmpty()) {
+            Toast.makeText(this, "Please input the player info!", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            overall = Integer.parseInt(overall_temp);
+            return true;
+        }
+    }
+
+    private long getPrice(int overall) {
+        if (overall <= 86)
+            return overall;
+        else if (overall <= 90)
+            return overall * 2;
+        else if (overall <= 95)
+            return overall * 5;
+        else return overall * 10;
+    }
+
+    private boolean doesToClubHasItMoney(long price) {
+        return (to.getClubWealth() - price) > 0;
     }
 }
