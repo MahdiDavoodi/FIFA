@@ -1,9 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
     tools:context=".pages.NewTransfer">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/main_font"
+            android:padding="20dp"
+            android:text="@string/nt_descriptionText"
+            android:textAlignment="center"
+            android:textColor="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_2" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/main_font"
+            android:text="@string/from"
+            android:textAlignment="center"
+            android:textColor="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_3_5" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="20dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="@string/ImageButton"
+                    android:onClick="fromBackButton"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/nt_fromClubButton"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:contentDescription="@string/ImageButton"
+                        android:maxWidth="200dp"
+                        android:maxHeight="200dp"
+                        android:minWidth="150dp"
+                        android:minHeight="150dp"
+                        android:padding="20dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/club1" />
+
+                    <TextView
+                        android:id="@+id/nt_fromClubName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/main_font"
+                        android:padding="5dp"
+                        android:text="@string/TextView"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainTextColor"
+                        android:textDirection="ltr"
+                        android:textSize="@dimen/text_size_3_5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="@string/ImageButton"
+                    android:onClick="fromNextButton"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_next" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/main_font"
+            android:text="@string/nt_playerInfo"
+            android:textAlignment="center"
+            android:textColor="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_3_5" />
+
+
+    </LinearLayout>
+</ScrollView>

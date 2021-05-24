@@ -80,14 +80,21 @@
     <string name="playAwayText">Away</string>
     <string name="playSeasonText">Season %1$d.</string>
 
+    // New Transfer Page.
+    <string name="nt_descriptionText">Please enter the information correctly and in order! (Scroll down)</string>
+    <string name="nt_playerInfo">Player Info</string>
+
+
     // Common Text
     <string name="history">History</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
     <string name="newText">New</string>
     <string name="next">Next</string>
     <string name="goals">Goals</string>
     <string name="skip">Skip</string>
     <string name="done">Done</string>
-    <string name="login">LogIn</string>
+    <string name="login">Login</string>
     <string name="cancel">Cancel</string>
     <string name="enter_password">Please enter your password.</string>
     <string name="start">Start</string>
