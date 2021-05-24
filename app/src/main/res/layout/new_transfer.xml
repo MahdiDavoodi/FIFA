@@ -126,6 +126,195 @@
             android:textDirection="ltr"
             android:textSize="@dimen/text_size_3_5" />
 
+        <EditText
+            android:id="@+id/nt_player_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="80dp"
+            android:autoSizeTextType="uniform"
+            android:autofillHints="@string/nameHint"
+            android:background="@drawable/edit_text_background_1"
+            android:ems="5"
+            android:fontFamily="@font/main_font"
+            android:gravity="center"
+            android:hint="@string/nameHint"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/mainTextColor"
+            android:textColorHint="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_2" />
+
+        <EditText
+            android:id="@+id/nt_player_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="80dp"
+            android:autoSizeTextType="uniform"
+            android:autofillHints="@string/numberHint"
+            android:background="@drawable/edit_text_background_1"
+            android:ems="5"
+            android:fontFamily="@font/main_font"
+            android:gravity="center"
+            android:hint="@string/age"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/mainTextColor"
+            android:textColorHint="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_2" />
+
+        <EditText
+            android:id="@+id/nt_player_overall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="80dp"
+            android:autoSizeTextType="uniform"
+            android:autofillHints="@string/numberHint"
+            android:background="@drawable/edit_text_background_1"
+            android:ems="5"
+            android:fontFamily="@font/main_font"
+            android:gravity="center"
+            android:hint="@string/overall"
+            android:inputType="number"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/mainTextColor"
+            android:textColorHint="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/main_font"
+            android:text="@string/to"
+            android:textAlignment="center"
+            android:textColor="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_3_5" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="5dp"
+            app:cardMaxElevation="20dp"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="@string/ImageButton"
+                    android:onClick="toBackButton"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/nt_toClubButton"
+                        android:layout_width="200dp"
+                        android:layout_height="200dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:contentDescription="@string/ImageButton"
+                        android:maxWidth="200dp"
+                        android:maxHeight="200dp"
+                        android:minWidth="150dp"
+                        android:minHeight="150dp"
+                        android:padding="20dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/club1" />
+
+                    <TextView
+                        android:id="@+id/nt_toClubName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:autoSizeTextType="uniform"
+                        android:fontFamily="@font/main_font"
+                        android:padding="5dp"
+                        android:text="@string/TextView"
+                        android:textAlignment="center"
+                        android:textColor="@color/mainTextColor"
+                        android:textDirection="ltr"
+                        android:textSize="@dimen/text_size_3_5"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                </LinearLayout>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="@string/ImageButton"
+                    android:onClick="toNextButton"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/ic_next" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/nt_saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:autoSizeTextType="uniform"
+            android:backgroundTint="@color/mainButtonColor"
+            android:fontFamily="@font/main_font"
+            android:onClick="ntSaveButton"
+            android:text="@string/save"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/mainButtonTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/normalButton" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/main_font"
+            android:padding="20dp"
+            android:text="@string/nt_descriptionText2"
+            android:textAlignment="center"
+            android:textColor="@color/mainDescriptionTextColor"
+            android:textDirection="ltr"
+            android:textSize="@dimen/text_size_2" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="5dp" />
+
 
     </LinearLayout>
 </ScrollView>

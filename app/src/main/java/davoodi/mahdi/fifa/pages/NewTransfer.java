@@ -28,4 +28,17 @@ public class NewTransfer extends AppCompatActivity {
 
     public void fromNextButton(View view) {
     }
+
+
+    // To Club CardView.
+    public void toBackButton(View view) {
+    }
+
+    public void toNextButton(View view) {
+    }
+
+
+    // Save Button.
+    public void ntSaveButton(View view) {
+    }
 }
