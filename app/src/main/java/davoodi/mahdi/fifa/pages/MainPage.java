@@ -95,6 +95,8 @@ public class MainPage extends AppCompatActivity {
         finish();
     }
 
+
+    // Transfer Fragment Buttons.
     public void statisticsOnClick(View view) {
         startActivity(new Intent(MainPage.this, StatisticsPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
@@ -111,5 +113,10 @@ public class MainPage extends AppCompatActivity {
     private void showTransferPasswordDialog() {
         TransferPasswordDialog dialog = new TransferPasswordDialog();
         dialog.show(getSupportFragmentManager(), "Transfer Password Dialog.");
+    }
+
+    public void thOnClick(View view) {
+        startActivity(new Intent(MainPage.this, TransferHistoryPage.class));
+        overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
     }
 }

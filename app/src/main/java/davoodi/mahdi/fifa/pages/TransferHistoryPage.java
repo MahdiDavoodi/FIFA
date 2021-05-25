@@ -22,4 +22,10 @@ public class TransferHistoryPage extends AppCompatActivity {
         transfer_list.setLayoutManager(new LinearLayoutManager(this));
         transfer_list.setAdapter(new TransferHistoryAdapter(this));
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
+    }
 }
