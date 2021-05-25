@@ -17,9 +17,6 @@ import davoodi.mahdi.fifa.components.Cup;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.CupsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
-import davoodi.mahdi.fifa.data.SeasonsData;
-import davoodi.mahdi.fifa.data.TransfersData;
-import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 
 public class CupsListAdapter extends RecyclerView.Adapter<CupsListAdapter.ViewHolder> {
@@ -40,6 +37,7 @@ public class CupsListAdapter extends RecyclerView.Adapter<CupsListAdapter.ViewHo
         clubsData = new ClubsData(context);
         leaguesData = new LeaguesData(context);
         cupsData = new CupsData(context);
+        cups = cupsData.getAllCups();
     }
 
     @NonNull

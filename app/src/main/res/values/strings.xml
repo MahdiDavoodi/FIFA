@@ -98,8 +98,8 @@
     <string name="newText">New</string>
     <string name="next">Next</string>
     <string name="goals">Goals</string>
-    <string name="season">Season: %1d$</string>
-    <string name="winner">Winner: %1s$</string>
+    <string name="season">Season: %1d</string>
+    <string name="winner">Winner: %1s</string>
     <string name="skip">Skip</string>
     <string name="done">Done</string>
     <string name="login">Login</string>
