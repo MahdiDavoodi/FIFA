@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardMaxElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/th_row_fromText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="5dp"
+                android:text="@string/from"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/th_row_fromImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imageView"
+                android:maxWidth="50dp"
+                android:maxHeight="50dp"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/th_row_fromText"
+                app:layout_constraintStart_toStartOf="@+id/th_row_fromText"
+                app:layout_constraintTop_toBottomOf="@+id/th_row_fromText"
+                app:srcCompat="@drawable/club1" />
+
+            <ImageView
+                android:id="@+id/th_row_transferIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imageView"
+                android:maxWidth="50dp"
+                android:maxHeight="50dp"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
+                android:padding="1dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="@+id/th_row_playerName"
+                app:layout_constraintStart_toStartOf="@+id/th_row_playerName"
+                app:layout_constraintTop_toBottomOf="@+id/th_row_playerName"
+                app:srcCompat="@drawable/ic_transfer" />
+
+            <TextView
+                android:id="@+id/th_row_playerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="5dp"
+                android:text="@string/TextView"
+                android:textAlignment="center"
+                android:textColor="@color/mainTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/th_row_playerPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="5dp"
+                android:text="@string/TextView"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_1"
+                app:layout_constraintEnd_toEndOf="@+id/th_row_transferIcon"
+                app:layout_constraintStart_toStartOf="@+id/th_row_transferIcon"
+                app:layout_constraintTop_toBottomOf="@+id/th_row_transferIcon" />
+
+            <ImageView
+                android:id="@+id/th_row_toImage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:contentDescription="@string/imageView"
+                android:maxWidth="50dp"
+                android:maxHeight="50dp"
+                android:minWidth="25dp"
+                android:minHeight="25dp"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/th_row_toText"
+                app:layout_constraintStart_toStartOf="@+id/th_row_toText"
+                app:layout_constraintTop_toBottomOf="@+id/th_row_toText"
+                app:srcCompat="@drawable/club1" />
+
+            <TextView
+                android:id="@+id/th_row_toText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="5dp"
+                android:text="@string/to"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.85"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
