@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import davoodi.mahdi.fifa.data.ClubsData;
+import davoodi.mahdi.fifa.data.CupsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.OwnersData;
 import davoodi.mahdi.fifa.data.ResultsData;
@@ -80,6 +81,10 @@ public class StartPage extends AppCompatActivity {
         // Results
         ResultsData resultsData = new ResultsData(this);
         resultsData.getWritableDatabase();
+
+        // Cups
+        CupsData cupsData = new CupsData(this);
+        cupsData.getWritableDatabase();
 
         // Transfers
         TransfersData transfersData = new TransfersData(this);

@@ -16,12 +16,14 @@ import java.util.Collections;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
+import davoodi.mahdi.fifa.components.Cup;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.components.Rank;
 import davoodi.mahdi.fifa.components.Season;
 import davoodi.mahdi.fifa.data.ClubsData;
+import davoodi.mahdi.fifa.data.CupsData;
 import davoodi.mahdi.fifa.data.LeaguesData;
 import davoodi.mahdi.fifa.data.OwnersData;
 import davoodi.mahdi.fifa.data.RanksData;
@@ -53,6 +55,7 @@ public class PlayPage extends AppCompatActivity {
     OwnersData ownersData;
     SeasonsData seasonsData;
     LeaguesData leaguesData;
+    CupsData cupsData;
 
     // UI.
     TextView season_text, league_text;
@@ -67,6 +70,7 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void initialize() {
+        cupsData = new CupsData(this);
         ranksData = new RanksData(this);
         resultsData = new ResultsData(this);
         clubsData = new ClubsData(this);
@@ -275,6 +279,9 @@ public class PlayPage extends AppCompatActivity {
         Owner first_owner = ownersData.getOwnerFromID(first.getClubOwner());
         first_owner.setOwnerTotalCups(first_owner.getOwnerTotalCups() + 1);
         ownersData.updateOwner(first_owner);
+
+        cupsData.insertCup(new Cup(0, season.getSeasonID(),
+                league.getLeagueID() - 1, first.getClubID()));
     }
 
     // TM.
@@ -352,6 +359,9 @@ public class PlayPage extends AppCompatActivity {
             Owner winner_owner = ownersData.getOwnerFromID(winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
             ownersData.updateOwner(winner_owner);
+
+            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+                    league.getLeagueID() - 1, winner.getClubID()));
 
         } else Log.e("PlayPage", "Finish TM Fucked up!");
     }
@@ -432,6 +442,9 @@ public class PlayPage extends AppCompatActivity {
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
             ownersData.updateOwner(winner_owner);
 
+            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+                    league.getLeagueID() - 1, winner.getClubID()));
+
         } else Log.e("PlayPage", "Finish Champions Fucked up!");
     }
 
@@ -477,6 +490,9 @@ public class PlayPage extends AppCompatActivity {
             Owner winner_owner = ownersData.getOwnerFromID(europe_winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
             ownersData.updateOwner(winner_owner);
+
+            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+                    league.getLeagueID() - 1, europe_winner.getClubID()));
         } else Log.e("PlayPage", "Error in finish Europe past results.");
     }
 
@@ -528,6 +544,10 @@ public class PlayPage extends AppCompatActivity {
             Owner winner_owner = ownersData.getOwnerFromID(golden_winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
             ownersData.updateOwner(winner_owner);
+
+            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+                    league.getLeagueID(), golden_winner.getClubID()));
+
             finishSeason();
 
         } else Log.e("PlayPage", "Error in finish Golden past results.");
