@@ -17,7 +17,7 @@ import davoodi.mahdi.fifa.components.Transfer;
 import davoodi.mahdi.fifa.data.ClubsData;
 import davoodi.mahdi.fifa.data.TransfersData;
 
-public class NewTransfer extends AppCompatActivity {
+public class NewTransferPage extends AppCompatActivity {
 
     // Player Info.
     EditText name_input, overall_input;
@@ -44,7 +44,7 @@ public class NewTransfer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_transfer);
+        setContentView(R.layout.new_transfer_page);
         initialize();
     }
 

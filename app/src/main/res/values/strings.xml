@@ -85,6 +85,9 @@
     <string name="nt_descriptionText2">Do not forget to save. Also please insert the player full name.</string>
     <string name="nt_playerInfo">Player Info</string>
 
+    // Transfer History Page.
+    <string name="th_descriptionText">You can see all of your transfers in here. From latest to oldest. (Transfer window is open for every season 20 first game!)</string>
+
 
     // Common Text
     <string name="history">History</string>

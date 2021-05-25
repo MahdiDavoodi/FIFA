@@ -19,7 +19,7 @@ import java.util.Objects;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.data.OwnersData;
-import davoodi.mahdi.fifa.pages.NewTransfer;
+import davoodi.mahdi.fifa.pages.NewTransferPage;
 
 public class TransferPasswordDialog extends AppCompatDialogFragment {
 
@@ -67,7 +67,7 @@ public class TransferPasswordDialog extends AppCompatDialogFragment {
             long owner_2_hash = Owner.passwordHash(input_2);
             if (owner_1.getOwnerPasswordHash() == owner_1_hash
                     && owner_2.getOwnerPasswordHash() == owner_2_hash) {
-                startActivity(new Intent(getContext(), NewTransfer.class));
+                startActivity(new Intent(getContext(), NewTransferPage.class));
                 Objects.requireNonNull(getActivity()).overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
             } else
                 Toast.makeText(getActivity(), "Passwords was not correct!", Toast.LENGTH_SHORT).show();
