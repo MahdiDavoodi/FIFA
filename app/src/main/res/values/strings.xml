@@ -107,6 +107,7 @@
     <string name="save">Save</string>
     <string name="info">Info</string>
     <string name="dollar">%1$d$</string>
+    <string name="million_dollar">%1$d million$</string>
     <string name="match_result">%1$d - %2$d</string>
 
     // Version Control.
