@@ -632,7 +632,11 @@ public class PlayPage extends AppCompatActivity {
         } else {
             home_goals = Integer.parseInt(homeChecker);
             away_goals = Integer.parseInt(awayChecker);
-            return true;
+            if (home_goals > 30 || away_goals > 30) {
+                Toast.makeText(this, "Input is not realistic!", Toast.LENGTH_LONG).show();
+                return false;
+            } else
+                return true;
         }
     }
 
