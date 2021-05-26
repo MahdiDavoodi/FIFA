@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:autoSizeTextType="uniform"
-        android:fontFamily="@font/base05"
+        android:fontFamily="@font/ethnocentric"
         android:text="@string/developerName"
         android:textAlignment="center"
         android:textAllCaps="true"
