@@ -89,6 +89,26 @@
     <string name="th_descriptionText">You can see all of your transfers in here. From latest to oldest. (Transfer window is open for every season 20 first game!)</string>
 
 
+    // Slides Page
+    <string name="slides_text1">Hey, here some information about this app.</string>
+    <string name="slides_text2">Clubs</string>
+    <string name="slides_text3">28 clubs included. Only 20 clubs get involved in leagues.</string>
+    <string name="slides_text4">Transfers</string>
+    <string name="slides_text5">Player price calculate from his overall. Like this(overall = X): 0–86 = X, 87–90 = 2X, 91–95 = 5X, 95–100 = 10X.</string>
+    <string name="slides_text6">MT</string>
+    <string name="slides_text7">Contains 20 teams(10 from each owner). Every club will receive a prize depends on their standing on the table.</string>
+    <string name="slides_text8">TM</string>
+    <string name="slides_text9">Contains 8 teams(Owner-Free). In this league it does not matter who is the owner, we choose to control any team we want in every match.(Cup Format). Winner gets 40 million.</string>
+    <string name="slides_text10">Champions</string>
+    <string name="slides_text11">Contains 8 teams(Owner-Free, Cup format). Winner gets 200 million.</string>
+    <string name="slides_text12">Europe</string>
+    <string name="slides_text13">Match between winner of TM and winner of Champions. Winner gets 70 million.</string>
+    <string name="slides_text14">Golden</string>
+    <string name="slides_text15">Match between winner of Champions and MT (If it was same, 1st and 2nd in MT.). Winner gets 100 million.</string>
+    <string name="slides_text16">Money Control</string>
+    <string name="slides_text17">Every 5 Seasons, all clubs will lose 30% of their property.</string>
+
+
     // Common Text
     <string name="history">History</string>
     <string name="overall">Overall</string>
@@ -102,6 +122,8 @@
     <string name="winner">Winner: %1s</string>
     <string name="skip">Skip</string>
     <string name="done">Done</string>
+    <string name="ok">OK</string>
+    <string name="rules">Rules</string>
     <string name="login">Login</string>
     <string name="cancel">Cancel</string>
     <string name="enter_password">Please enter your password.</string>

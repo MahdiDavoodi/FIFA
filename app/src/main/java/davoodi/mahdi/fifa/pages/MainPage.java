@@ -78,9 +78,17 @@ public class MainPage extends AppCompatActivity {
         if (item.getItemId() == R.id.main_info) {
             openInfoPage();
             return true;
+        } else if (item.getItemId() == R.id.main_rules) {
+            openRulesPage();
+            return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void openRulesPage() {
+        startActivity(new Intent(MainPage.this, SlidesPage.class));
+        overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
     }
 
     private void openInfoPage() {
@@ -118,5 +126,11 @@ public class MainPage extends AppCompatActivity {
     public void thOnClick(View view) {
         startActivity(new Intent(MainPage.this, TransferHistoryPage.class));
         overridePendingTransition(R.anim.activity_slide_from_right, R.anim.activity_slide_to_left);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_slide_from_left, R.anim.activity_slide_to_right);
     }
 }

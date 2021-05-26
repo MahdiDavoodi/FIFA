@@ -7,40 +7,255 @@
     android:layoutDirection="ltr"
     tools:context=".pages.SlidesPage">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/slidesShadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text1"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text2"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text3"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text4"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text5"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text6"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text7"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text8"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text9"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text10"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text11"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text12"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text13"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text14"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text15"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="10dp"
+                android:text="@string/slides_text16"
+                android:textAlignment="center"
+                android:textColor="@color/mainBigTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_4" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/main_font"
+                android:padding="15dp"
+                android:text="@string/slides_text17"
+                android:textAlignment="center"
+                android:textColor="@color/mainDescriptionTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/text_size_2" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/slidesShadow"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/to_up_shadow"
+        app:layout_constraintBottom_toTopOf="@+id/slidesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/slidesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:autoSizeTextType="uniform"
         android:backgroundTint="@color/mainButtonColor"
         android:fontFamily="@font/main_font"
-        android:onClick="skipOnClick"
-        android:text="@string/skip"
+        android:onClick="okOnClick"
+        android:text="@string/ok"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/mainButtonTextColor"
         android:textDirection="ltr"
         android:textSize="@dimen/normalButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/slidesText"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="@+id/slidesText"
-        app:layout_constraintTop_toBottomOf="@+id/slidesText"
-        app:layout_constraintVertical_bias="0.113" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/slidesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/main_font"
-        android:text="@string/slidesPage"
-        android:textAlignment="center"
-        android:textColor="@color/mainDescriptionTextColor"
-        android:textDirection="ltr"
-        android:textSize="@dimen/text_size_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
