@@ -10,8 +10,8 @@
 
     // Create Owners Page.
     <string name="createOwnersDescriptionText">Now, you have to create your local account to manage your clubs.</string>
-    <string name="createOwnersFirstOwnerText">Owner 1</string>
-    <string name="createOwnersSecondOwnerText">Owner 2</string>
+    <string name="createOwnersFirstOwnerText">First Owner</string>
+    <string name="createOwnersSecondOwnerText">Second Owner</string>
 
     // Select Clubs Page.
     <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
@@ -28,10 +28,10 @@
     <string name="statisticsStandingsButton">Season</string>
     <string name="statisticsOwnersButton">Owners</string>
     <string name="statisticsClubsButton">Clubs</string>
-    <string name="statisticsDescriptionText">In this page, you can see all information about owners, clubs, season.</string>
+    <string name="statisticsDescriptionText">All statistics about current season, owners and clubs.</string>
 
     // Info Page.
-    <string name="developer_info">Hey There! My name is Mahdi Davoodi and I am a junior Android developer. I created this app for me and my brother. But I hope you can find it useful and enjoy it!</string>
+    <string name="developer_info">Hey There! My name is Mahdi and I am a junior Android developer. I created this app for me and my brother. We play our league from 2016 :). Hope you can find it useful and enjoy it!</string>
 
     // Lists Titles.
     <string name="season_points">Pts</string>
@@ -66,13 +66,13 @@
     <string name="confirmPasswordHint">Confirm Password</string>
 
     // Transfer Page.
-    <string name="transferDescriptionText">In this page, you can simply record your transfer history and see it again.</string>
+    <string name="transferDescriptionText">You can simply record your transfer history and see it again in history page.</string>
 
     // Matches Page.
     <string name="matchesPlayNextButton">Play</string>
     <string name="matchesNotPlayed">-TBD-</string>
     <string name="matchesStatisticsButton">Statistics</string>
-    <string name="matchesDescriptionText">In this page, you can add or see matches results.</string>
+    <string name="matchesDescriptionText">You can add or see matches results here.</string>
 
     // Play Page.
     <string name="playDescriptionText">Please input the Home/Away teams goals and press save button.</string>
@@ -82,11 +82,11 @@
 
     // New Transfer Page.
     <string name="nt_descriptionText">Please enter the information correctly and in order! (Scroll down)</string>
-    <string name="nt_descriptionText2">Do not forget to save. Also please insert the player full name. Also 10% tax will apply.</string>
+    <string name="nt_descriptionText2">Do not forget to save. Also please insert the player full name. Note that 10% tax will apply.</string>
     <string name="nt_playerInfo">Player Info</string>
 
     // Transfer History Page.
-    <string name="th_descriptionText">You can see all of your transfers in here. From latest to oldest. (Transfer window is open for every season 20 first game!)</string>
+    <string name="th_descriptionText">You can see all of your transfers in here. From latest to oldest. Also Transfer window is open for every season 20 first game.</string>
 
 
     // Slides Page
@@ -135,7 +135,6 @@
     <string name="match_result">%1$d - %2$d</string>
 
     // Version Control.
-    <string name="slidesPage">Finish in Version 1.0</string>
     <string name="version">version 1.0</string>
     <string name="last_update">Last Update: May, 2021.</string>
 

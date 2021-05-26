@@ -28,6 +28,6 @@
     <color name="mainButtonTextColor">#FFFFFF</color>
 
     // Line Views.
-    <color name="defaultLineColor">#448546</color>
+    <color name="defaultLineColor">#9B999F</color>
 
 </resources>
