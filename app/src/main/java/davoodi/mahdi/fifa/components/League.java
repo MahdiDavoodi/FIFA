@@ -75,8 +75,4 @@ public class League {
         this.leagueNumber = leagueNumber;
     }
 
-    @Override
-    public String toString() {
-        return leagueName;
-    }
 }

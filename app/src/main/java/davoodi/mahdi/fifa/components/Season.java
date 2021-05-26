@@ -103,9 +103,4 @@ public class Season {
     public void setSeasonMatchesPlayed(int seasonMatchesPlayed) {
         this.seasonMatchesPlayed = seasonMatchesPlayed;
     }
-
-    @Override
-    public String toString() {
-        return String.valueOf(seasonID);
-    }
 }

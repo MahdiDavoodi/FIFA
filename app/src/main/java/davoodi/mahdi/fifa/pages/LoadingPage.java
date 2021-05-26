@@ -22,7 +22,7 @@ public class LoadingPage extends AppCompatActivity {
         preferences = new AppPreferences(this);
         Intent intent;
         try {
-            Thread.sleep(3000);
+            Thread.sleep(500);
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         } finally {

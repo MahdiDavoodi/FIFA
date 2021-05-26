@@ -12,7 +12,13 @@ public class Rank {
     public static final String KEY_PTS = "points";
 
 
-    private int clubID, matchesPlayed, win, loss, draw, goalDifference, points;
+    private final int clubID;
+    private int matchesPlayed;
+    private int win;
+    private int loss;
+    private int draw;
+    private int goalDifference;
+    private int points;
 
 
     public Rank(int clubID, int matchesPlayed, int win, int loss, int draw, int goalDifference, int points) {
@@ -39,10 +45,6 @@ public class Rank {
 
     public int getClubID() {
         return clubID;
-    }
-
-    public void setClubID(int clubID) {
-        this.clubID = clubID;
     }
 
     public int getMatchesPlayed() {

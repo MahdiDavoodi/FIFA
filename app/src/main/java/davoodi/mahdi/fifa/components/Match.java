@@ -36,21 +36,17 @@ public class Match {
         return values;
     }
 
-    private long matchID;
-    private int seasonID,
-            leagueID,
-            homeTeamID,
-            awayTeamID,
-            homeGoals,
-            awayGoals,
-            matchPlayed;
+    private final long matchID;
+    private int seasonID;
+    private int leagueID;
+    private final int homeTeamID;
+    private final int awayTeamID;
+    private int homeGoals;
+    private int awayGoals;
+    private int matchPlayed;
 
     public long getMatchID() {
         return matchID;
-    }
-
-    public void setMatchID(long matchID) {
-        this.matchID = matchID;
     }
 
     public int getSeasonID() {
@@ -73,16 +69,8 @@ public class Match {
         return homeTeamID;
     }
 
-    public void setHomeTeamID(int homeTeamID) {
-        this.homeTeamID = homeTeamID;
-    }
-
     public int getAwayTeamID() {
         return awayTeamID;
-    }
-
-    public void setAwayTeamID(int awayTeamID) {
-        this.awayTeamID = awayTeamID;
     }
 
     public int getHomeGoals() {

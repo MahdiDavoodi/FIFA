@@ -25,16 +25,13 @@ public class Cup {
         return values;
     }
 
-    private int cupID, seasonID,
-            leagueID,
-            winnerID;
+    private final int cupID;
+    private int seasonID;
+    private int leagueID;
+    private int winnerID;
 
     public int getCupID() {
         return cupID;
-    }
-
-    public void setCupID(int cupID) {
-        this.cupID = cupID;
     }
 
     public int getSeasonID() {

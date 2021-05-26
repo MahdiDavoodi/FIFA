@@ -13,10 +13,10 @@ public class Owner {
     public static final String KEY_CUPS = "ownerTotalCups";
 
 
-    private int ownerID;
-    private String ownerName;
-    private long ownerPasswordHash;
-    private long ownerTotalWealth;
+    private final int ownerID;
+    private final String ownerName;
+    private final long ownerPasswordHash;
+    private final long ownerTotalWealth;
     private long ownerTotalWin, ownerTotalLoss, ownerTotalDraw;
     private int ownerTotalCups;
 
@@ -63,32 +63,16 @@ public class Owner {
         return ownerID;
     }
 
-    public void setOwnerID(int ownerID) {
-        this.ownerID = ownerID;
-    }
-
     public String getOwnerName() {
         return ownerName;
-    }
-
-    public void setOwnerName(String ownerName) {
-        this.ownerName = ownerName;
     }
 
     public long getOwnerPasswordHash() {
         return ownerPasswordHash;
     }
 
-    public void setOwnerPasswordHash(long ownerPasswordHash) {
-        this.ownerPasswordHash = ownerPasswordHash;
-    }
-
     public long getOwnerTotalWealth() {
         return ownerTotalWealth;
-    }
-
-    public void setOwnerTotalWealth(long ownerTotalWealth) {
-        this.ownerTotalWealth = ownerTotalWealth;
     }
 
     public long getOwnerTotalWin() {
@@ -123,8 +107,4 @@ public class Owner {
         this.ownerTotalCups = ownerTotalCups;
     }
 
-    @Override
-    public String toString() {
-        return ownerName;
-    }
 }

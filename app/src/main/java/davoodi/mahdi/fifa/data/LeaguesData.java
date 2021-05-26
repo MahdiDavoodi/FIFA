@@ -1,14 +1,11 @@
 package davoodi.mahdi.fifa.data;
 
 
-
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.components.League;
 
@@ -62,25 +59,6 @@ public class LeaguesData extends SQLiteOpenHelper {
             Log.i("database", "League data inserted with id: " + insertID);
         if (database.isOpen()) database.close();
         Log.i("database", "Leagues database closed");
-    }
-
-    public ArrayList<League> getAllLeagues() {
-        SQLiteDatabase database = getReadableDatabase();
-        ArrayList<League> leagues = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM '" + TABLE_LEAGUES + "'", null);
-        if (cursor.moveToFirst()) {
-            do {
-
-                League league = new League(
-                        cursor.getInt(cursor.getColumnIndex(League.KEY_ID)),
-                        cursor.getString(cursor.getColumnIndex(League.KEY_NAME)),
-                        cursor.getInt(cursor.getColumnIndex(League.KEY_NUMBER)));
-                leagues.add(league);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        if (database.isOpen()) database.close();
-        return leagues;
     }
 
     public League getLeagueFromID(int leagueID) {

@@ -10,9 +10,11 @@ public class Transfer {
     public static final String KEY_PRICE = "price";
 
 
-    private int transferID, fromClubID, toClubID;
-    private long price;
-    private String playerName;
+    private final int transferID;
+    private final int fromClubID;
+    private int toClubID;
+    private final long price;
+    private final String playerName;
 
     public Transfer(int transferID, int fromClubID, int toClubID, String playerName, long price) {
         this.transferID = transferID;
@@ -36,24 +38,12 @@ public class Transfer {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
     public int getTransferID() {
         return transferID;
     }
 
-    public void setTransferID(int transferID) {
-        this.transferID = transferID;
-    }
-
     public int getFromClubID() {
         return fromClubID;
-    }
-
-    public void setFromClubID(int fromClubID) {
-        this.fromClubID = fromClubID;
     }
 
     public int getToClubID() {
@@ -64,12 +54,8 @@ public class Transfer {
         this.toClubID = toClubID;
     }
 
-
     public long getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
-        this.price = price;
-    }
 }

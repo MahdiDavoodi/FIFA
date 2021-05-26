@@ -1,6 +1,6 @@
 package davoodi.mahdi.fifa.data;
 
-import android.content.ContentValues;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

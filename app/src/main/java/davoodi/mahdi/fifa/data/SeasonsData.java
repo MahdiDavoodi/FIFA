@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.components.Season;
 
 public class SeasonsData extends SQLiteOpenHelper {
