@@ -28,7 +28,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text1"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -40,7 +40,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text2"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -52,7 +52,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text3"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text4"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -76,7 +76,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text5"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -88,7 +88,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text6"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -100,7 +100,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text7"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -112,7 +112,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text8"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -124,7 +124,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text9"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -136,7 +136,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text10"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -148,7 +148,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text11"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -160,7 +160,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text12"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -172,7 +172,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text13"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -184,7 +184,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text14"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -196,7 +196,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text15"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
@@ -208,7 +208,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="10dp"
                 android:text="@string/slides_text16"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
@@ -220,7 +220,7 @@
                 android:fontFamily="@font/main_font"
                 android:padding="15dp"
                 android:text="@string/slides_text17"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
