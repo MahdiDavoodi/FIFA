@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple">#FF3700B3</color>
-    <color name="teal">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="light_green">#88FD01</color>
-    <color name="green">#448546</color>
-    <color name="transparent">#00FFFFFF</color>
-    <color name="red">#CF0F0F</color>
-    <color name="blue">#1228B6</color>
-    <color name="gray">#A9AAB3</color>
-    <color name="gold">#D3B026</color>
-    <color name="orange">#FF5722</color>
-
     // Main objects(Main Dark Theme)
     <color name="mainColor">#000000</color>
     <color name="mainBigTextColor">#5109F3</color>
