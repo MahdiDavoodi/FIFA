@@ -18,6 +18,7 @@ public class StatisticsPage extends AppCompatActivity {
 
     RecyclerView list;
     TextView description;
+    View season, clubs, owners;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,20 @@ public class StatisticsPage extends AppCompatActivity {
         setContentView(R.layout.statistics_page);
         list = findViewById(R.id.statisticsList);
         description = findViewById(R.id.statisticsListDescriptionText);
+        season = findViewById(R.id.sp_season_line);
+        owners = findViewById(R.id.sp_owner_line);
+        clubs = findViewById(R.id.sp_clubs_line);
+
+        // Default.
+        description.setText(getResources().getString(R.string.season_description));
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.setAdapter(new SeasonResultsAdapter(this));
+    }
+
+    private void makeThemeTransparent() {
+        season.setBackgroundColor(getResources().getColor(R.color.transparent, getTheme()));
+        owners.setBackgroundColor(getResources().getColor(R.color.transparent, getTheme()));
+        clubs.setBackgroundColor(getResources().getColor(R.color.transparent, getTheme()));
     }
 
     @Override
@@ -35,18 +50,24 @@ public class StatisticsPage extends AppCompatActivity {
     }
 
     public void seasonOnclick(View view) {
+        makeThemeTransparent();
+        season.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.season_description));
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new SeasonResultsAdapter(this));
     }
 
     public void ownerOnClick(View view) {
+        makeThemeTransparent();
+        owners.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.owner_description));
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new OwnersAdapter(this));
     }
 
     public void clubsOnClick(View view) {
+        makeThemeTransparent();
+        clubs.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.club_description));
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new ClubsAdapter(this));

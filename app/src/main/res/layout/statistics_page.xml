@@ -27,64 +27,100 @@
         android:id="@+id/statisticsButtonBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsDescriptionText">
 
-        <Button
-            android:id="@+id/statisticsStandingsButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/mainButtonColor"
-            android:fontFamily="@font/main_font"
-            android:onClick="seasonOnclick"
-            android:text="@string/statisticsStandingsButton"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/mainButtonTextColor"
-            android:textDirection="ltr"
-            android:textSize="@dimen/normalButton" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/statisticsOwnersButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/mainButtonColor"
-            android:fontFamily="@font/main_font"
-            android:onClick="ownerOnClick"
-            android:text="@string/statisticsOwnersButton"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/mainButtonTextColor"
-            android:textDirection="ltr"
-            android:textSize="@dimen/normalButton" />
+            <View
+                android:id="@+id/sp_season_line"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@color/mainButtonColor" />
 
-        <Button
-            android:id="@+id/statisticsClubsButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            <View
+                android:id="@+id/sp_clubs_line"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@color/transparent" />
+
+            <View
+                android:id="@+id/sp_owner_line"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/mainButtonColor"
-            android:fontFamily="@font/main_font"
-            android:onClick="clubsOnClick"
-            android:text="@string/statisticsClubsButton"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/mainButtonTextColor"
-            android:textDirection="ltr"
-            android:textSize="@dimen/normalButton" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/statisticsStandingsButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/mainButtonColor"
+                android:fontFamily="@font/main_font"
+                android:onClick="seasonOnclick"
+                android:text="@string/statisticsStandingsButton"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/mainButtonTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/normalButton" />
+
+            <Button
+                android:id="@+id/statisticsClubsButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/mainButtonColor"
+                android:fontFamily="@font/main_font"
+                android:onClick="clubsOnClick"
+                android:text="@string/statisticsClubsButton"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/mainButtonTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/normalButton" />
+
+            <Button
+                android:id="@+id/statisticsOwnersButton"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:autoSizeTextType="uniform"
+                android:backgroundTint="@color/mainButtonColor"
+                android:fontFamily="@font/main_font"
+                android:onClick="ownerOnClick"
+                android:text="@string/statisticsOwnersButton"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/mainButtonTextColor"
+                android:textDirection="ltr"
+                android:textSize="@dimen/normalButton" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
