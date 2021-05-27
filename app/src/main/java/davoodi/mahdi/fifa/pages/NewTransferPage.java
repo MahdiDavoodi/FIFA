@@ -190,7 +190,11 @@ public class NewTransferPage extends AppCompatActivity {
             return false;
         } else {
             overall = Integer.parseInt(overall_temp);
-            return true;
+            if (overall > 100 || overall < 40) {
+                Toast.makeText(this, "Overall is not acceptable for transfer!", Toast.LENGTH_SHORT).show();
+                return false;
+            } else
+                return true;
         }
     }
 
