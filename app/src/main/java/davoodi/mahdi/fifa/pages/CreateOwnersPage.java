@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Owner;
-import davoodi.mahdi.fifa.data.OwnersData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class CreateOwnersPage extends AppCompatActivity {
@@ -73,9 +73,9 @@ public class CreateOwnersPage extends AppCompatActivity {
     }
 
     private void saveOwnersData() {
-        OwnersData ownersData = new OwnersData(this);
-        ownersData.insertOwner(owner1);
-        ownersData.insertOwner(owner2);
+        FifaData fifaData = new FifaData(this);
+        fifaData.insertOwner(owner1);
+        fifaData.insertOwner(owner2);
         preferences = new AppPreferences(this);
         preferences.setLastSeen("CreateOwnersPage");
         Toast.makeText(this, R.string.createOwnersToast4, Toast.LENGTH_SHORT).show();

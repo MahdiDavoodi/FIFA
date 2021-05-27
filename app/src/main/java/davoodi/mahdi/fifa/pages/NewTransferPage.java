@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Transfer;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.TransfersData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 public class NewTransferPage extends AppCompatActivity {
 
@@ -38,8 +37,7 @@ public class NewTransferPage extends AppCompatActivity {
     String name;
 
     // Database.
-    ClubsData clubsData;
-    TransfersData transfersData;
+    FifaData fifaData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +49,11 @@ public class NewTransferPage extends AppCompatActivity {
     private void initialize() {
 
         // Database.
-        transfersData = new TransfersData(this);
-        clubsData = new ClubsData(this);
+        fifaData = new FifaData(this);
 
         // Components.
-        from_clubs = clubsData.getAllClubs();
-        to_clubs = clubsData.getAllClubs();
+        from_clubs = fifaData.getAllClubs();
+        to_clubs = fifaData.getAllClubs();
 
         from_clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
         to_clubs.sort((o1, o2) -> (int) (o2.getClubWealth() - o1.getClubWealth()));
@@ -163,13 +160,13 @@ public class NewTransferPage extends AppCompatActivity {
                         name,
                         price);
 
-                transfersData.insertTransfer(transfer);
+                fifaData.insertTransfer(transfer);
 
                 to.setClubWealth(to.getClubWealth() - price);
                 from.setClubWealth(from.getClubWealth() + price_with_tax);
 
-                clubsData.updateClub(from);
-                clubsData.updateClub(to);
+                fifaData.updateClub(from);
+                fifaData.updateClub(to);
 
                 Toast.makeText(this, "Transfer saved. "
                         + (price - price_with_tax) + " million$ tax applied!", Toast.LENGTH_LONG).show();

@@ -14,15 +14,13 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Rank;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.RanksData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdapter.ViewHolder> {
 
     Context context;
-    ClubsData clubsData;
+    FifaData fifaData;
     ArrayList<Rank> ranks;
-    RanksData ranksData;
 
     public SeasonResultsAdapter(Context context) {
         this.context = context;
@@ -31,11 +29,8 @@ public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdap
 
     private void readData() {
         // Ranks.
-        ranksData = new RanksData(context);
-        ranks = ranksData.getAllRanks();
-
-        // Clubs.
-        clubsData = new ClubsData(context);
+        fifaData = new FifaData(context);
+        ranks = fifaData.getAllRanks();
     }
 
     @NonNull
@@ -57,7 +52,7 @@ public class SeasonResultsAdapter extends RecyclerView.Adapter<SeasonResultsAdap
 
         // Rank Info.
 
-        holder.team_name.setText(clubsData.getClubFromID(rank.getClubID()).getClubName());
+        holder.team_name.setText(fifaData.getClubFromID(rank.getClubID()).getClubName());
         holder.played.setText(String.valueOf(rank.getMatchesPlayed()));
         holder.win.setText(String.valueOf(rank.getWin()));
         holder.loss.setText(String.valueOf(rank.getLoss()));

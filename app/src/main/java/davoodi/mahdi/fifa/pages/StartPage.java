@@ -10,13 +10,7 @@ import android.view.View;
 import java.io.InputStream;
 import java.util.List;
 
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.CupsData;
-import davoodi.mahdi.fifa.data.LeaguesData;
-import davoodi.mahdi.fifa.data.OwnersData;
-import davoodi.mahdi.fifa.data.ResultsData;
-import davoodi.mahdi.fifa.data.SeasonsData;
-import davoodi.mahdi.fifa.data.TransfersData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.parsers.JsonParser;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
@@ -28,11 +22,13 @@ public class StartPage extends AppCompatActivity {
 
     AppPreferences preferences;
     private static final int firstSeason = 2021;
+    FifaData fifaData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_page);
+        fifaData = new FifaData(this);
     }
 
     // OnClickListener for start button.
@@ -60,14 +56,10 @@ public class StartPage extends AppCompatActivity {
         // Clubs and Leagues from json files.
         importJson();
 
-        // Owners
-        OwnersData ownersData = new OwnersData(this);
-        ownersData.getWritableDatabase();
 
         // Seasons
         preferences.setSeasonCount(1);
         int firstSeasonID = firstSeason;
-        SeasonsData seasonsData = new SeasonsData(this);
         Season firstSeason = new Season(firstSeasonID,
                 0,
                 0,
@@ -75,42 +67,27 @@ public class StartPage extends AppCompatActivity {
                 0,
                 0,
                 0);
-        seasonsData.insertSeason(firstSeason);
-        seasonsData.getWritableDatabase();
-
-        // Results
-        ResultsData resultsData = new ResultsData(this);
-        resultsData.getWritableDatabase();
-
-        // Cups
-        CupsData cupsData = new CupsData(this);
-        cupsData.getWritableDatabase();
-
-        // Transfers
-        TransfersData transfersData = new TransfersData(this);
-        transfersData.getWritableDatabase();
-
+        fifaData.insertSeason(firstSeason);
+        fifaData.getWritableDatabase();
     }
 
     // Import json files into database.
     private void importJson() {
 
         // Clubs.
-        ClubsData clubsData = new ClubsData(this);
         Log.i("database", "Database opened");
         InputStream clubsInput = getResources().openRawResource(R.raw.clubs);
         List<Club> clubs = JsonParser.clubsJson(clubsInput);
         Log.i("jsonParser", "Returned " + clubs.size() + " clubs!");
         for (Club club : clubs)
-            clubsData.insertClub(club);
+            fifaData.insertClub(club);
 
         // Leagues.
-        LeaguesData leaguesData = new LeaguesData(this);
         Log.i("database", "Database opened");
         InputStream leaguesInput = getResources().openRawResource(R.raw.leagues);
         List<League> leagues = JsonParser.leaguesJson(leaguesInput);
         Log.i("jsonParser", "Returned " + leagues.size() + " leagues!");
         for (League league : leagues)
-            leaguesData.insertLeague(league);
+            fifaData.insertLeague(league);
     }
 }

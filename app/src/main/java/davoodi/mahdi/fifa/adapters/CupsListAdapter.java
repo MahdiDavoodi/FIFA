@@ -14,18 +14,14 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Cup;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.CupsData;
-import davoodi.mahdi.fifa.data.LeaguesData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 
 public class CupsListAdapter extends RecyclerView.Adapter<CupsListAdapter.ViewHolder> {
 
     Context context;
-    CupsData cupsData;
     ArrayList<Cup> cups;
-    ClubsData clubsData;
-    LeaguesData leaguesData;
+    FifaData fifaData;
 
     public CupsListAdapter(Context context) {
         this.context = context;
@@ -34,10 +30,8 @@ public class CupsListAdapter extends RecyclerView.Adapter<CupsListAdapter.ViewHo
 
     private void readData() {
         // Owners.
-        clubsData = new ClubsData(context);
-        leaguesData = new LeaguesData(context);
-        cupsData = new CupsData(context);
-        cups = cupsData.getAllCups();
+        fifaData = new FifaData(context);
+        cups = fifaData.getAllCups();
     }
 
     @NonNull
@@ -61,8 +55,8 @@ public class CupsListAdapter extends RecyclerView.Adapter<CupsListAdapter.ViewHo
 
         // Text.
         holder.season.setText(context.getResources().getString(R.string.season, cup.getSeasonID()));
-        holder.winner.setText(context.getResources().getString(R.string.winner, clubsData.getClubFromID(cup.getWinnerID()).getClubName()));
-        holder.title.setText(leaguesData.getLeagueFromID(cup.getLeagueID()).getLeagueName());
+        holder.winner.setText(context.getResources().getString(R.string.winner, fifaData.getClubFromID(cup.getWinnerID()).getClubName()));
+        holder.title.setText(fifaData.getLeagueFromID(cup.getLeagueID()).getLeagueName());
     }
 
     @Override

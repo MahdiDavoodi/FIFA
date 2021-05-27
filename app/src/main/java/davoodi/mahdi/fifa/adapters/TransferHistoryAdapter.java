@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Transfer;
-import davoodi.mahdi.fifa.data.TransfersData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 
 public class TransferHistoryAdapter extends RecyclerView.Adapter<TransferHistoryAdapter.ViewHolder> {
 
     Context context;
-    TransfersData transfersData;
+    FifaData fifaData;
     ArrayList<Transfer> transfers;
 
     public TransferHistoryAdapter(Context context) {
@@ -30,8 +30,8 @@ public class TransferHistoryAdapter extends RecyclerView.Adapter<TransferHistory
 
     private void readData() {
         // Owners.
-        transfersData = new TransfersData(context);
-        transfers = transfersData.getAllTransfers();
+        fifaData = new FifaData(context);
+        transfers = fifaData.getAllTransfers();
     }
 
     @NonNull

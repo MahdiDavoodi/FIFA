@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.Owner;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.OwnersData;
-import davoodi.mahdi.fifa.data.RanksData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class SelectClubsPage extends AppCompatActivity {
@@ -35,7 +33,7 @@ public class SelectClubsPage extends AppCompatActivity {
     Club currentClub;
     int currentIndex = 0, maxIndex;
     int turn = 1;
-    ClubsData clubsData;
+    FifaData fifaData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +70,9 @@ public class SelectClubsPage extends AppCompatActivity {
         secondOwnerClubs = findViewById(R.id.selectClubsListText2);
 
         // Read Saved Data.
-        clubsData = new ClubsData(this);
-        OwnersData ownersData = new OwnersData(this);
-        clubs = clubsData.getAllClubs();
-        ArrayList<Owner> owners = ownersData.getAllOwners();
+        fifaData = new FifaData(this);
+        clubs = fifaData.getAllClubs();
+        ArrayList<Owner> owners = fifaData.getAllOwners();
 
         // Containers.
         firstOwnerSelected = new ArrayList<>();
@@ -198,9 +195,8 @@ public class SelectClubsPage extends AppCompatActivity {
         updateClubsDatabaseID(secondOwnerSelected);
 
         // Insert Clubs Into Ranks.
-        RanksData ranksData = new RanksData(this);
-        ranksData.insertClubs(firstOwnerSelected);
-        ranksData.insertClubs(secondOwnerSelected);
+        fifaData.insertClubsRanks(firstOwnerSelected);
+        fifaData.insertClubsRanks(secondOwnerSelected);
 
         // Edit Preferences.
         preferences = new AppPreferences(this);
@@ -217,7 +213,7 @@ public class SelectClubsPage extends AppCompatActivity {
     private void updateClubsDatabaseID(ArrayList<Club> clubs) {
         for (Club club :
                 clubs) {
-            clubsData.updateClub(club);
+            fifaData.updateClub(club);
         }
     }
 }

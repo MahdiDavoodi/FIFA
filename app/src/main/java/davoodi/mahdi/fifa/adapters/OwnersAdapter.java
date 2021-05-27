@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Owner;
-import davoodi.mahdi.fifa.data.OwnersData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 
 public class OwnersAdapter extends RecyclerView.Adapter<OwnersAdapter.ViewHolder> {
 
     Context context;
-    OwnersData ownersData;
+    FifaData fifaData;
     ArrayList<Owner> owners;
 
     public OwnersAdapter(Context context) {
@@ -30,8 +30,8 @@ public class OwnersAdapter extends RecyclerView.Adapter<OwnersAdapter.ViewHolder
 
     private void readData() {
         // Owners.
-        ownersData = new OwnersData(context);
-        owners = ownersData.getAllOwners();
+        fifaData = new FifaData(context);
+        owners = fifaData.getAllOwners();
     }
 
     @NonNull

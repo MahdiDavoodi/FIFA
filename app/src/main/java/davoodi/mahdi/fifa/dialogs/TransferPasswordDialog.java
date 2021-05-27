@@ -18,12 +18,12 @@ import java.util.Objects;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Owner;
-import davoodi.mahdi.fifa.data.OwnersData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.pages.NewTransferPage;
 
 public class TransferPasswordDialog extends AppCompatDialogFragment {
 
-    OwnersData ownersData;
+    FifaData fifaData;
     Owner owner_1, owner_2;
     EditText owner_1_input, owner_2_input;
     String input_1 = "", input_2 = "";
@@ -31,8 +31,8 @@ public class TransferPasswordDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        ownersData = new OwnersData(getActivity());
-        ArrayList<Owner> owners = ownersData.getAllOwners();
+        fifaData = new FifaData(getActivity());
+        ArrayList<Owner> owners = fifaData.getAllOwners();
         owner_1 = owners.get(0);
         owner_2 = owners.get(1);
 

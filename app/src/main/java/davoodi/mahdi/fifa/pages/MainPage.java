@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.SeasonsData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.dialogs.TransferPasswordDialog;
 import davoodi.mahdi.fifa.fragments.CupsFragment;
 import davoodi.mahdi.fifa.fragments.MatchesFragment;
@@ -30,7 +30,7 @@ public class MainPage extends AppCompatActivity {
     BottomNavigationView navigationView;
     Toolbar toolbar;
     Season season;
-    SeasonsData seasonsData;
+    FifaData fifaData;
     AppPreferences preferences;
 
     @Override
@@ -43,8 +43,8 @@ public class MainPage extends AppCompatActivity {
 
     private void initializeWidgets() {
         preferences = new AppPreferences(this);
-        seasonsData = new SeasonsData(this);
-        season = seasonsData.getSeason(preferences.getCurrentSeason());
+        fifaData = new FifaData(this);
+        season = fifaData.getSeason(preferences.getCurrentSeason());
         navigationView = findViewById(R.id.mainBottomNavigation);
         navigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
         toolbar = findViewById(R.id.mainToolbar);

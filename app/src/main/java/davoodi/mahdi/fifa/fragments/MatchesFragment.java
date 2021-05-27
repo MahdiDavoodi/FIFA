@@ -14,21 +14,21 @@ import java.util.Objects;
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.adapters.MatchesResultsAdapter;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.SeasonsData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 
 public class MatchesFragment extends Fragment {
     RecyclerView resultsList;
     Season season;
-    SeasonsData seasonsData;
+    FifaData fifaData;
     AppPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         preferences = new AppPreferences(Objects.requireNonNull(getActivity()));
-        seasonsData = new SeasonsData(getActivity());
-        season = seasonsData.getSeason(preferences.getCurrentSeason());
+        fifaData = new FifaData(getActivity());
+        season = fifaData.getSeason(preferences.getCurrentSeason());
 
         // Inflate the layout.
         View view = inflater.inflate(R.layout.fragment_matches, container, false);

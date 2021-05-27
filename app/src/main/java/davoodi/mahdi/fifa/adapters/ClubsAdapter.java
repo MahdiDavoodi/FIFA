@@ -14,12 +14,12 @@ import java.util.ArrayList;
 
 import davoodi.mahdi.fifa.R;
 import davoodi.mahdi.fifa.components.Club;
-import davoodi.mahdi.fifa.data.RanksData;
+import davoodi.mahdi.fifa.data.FifaData;
 
 public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ViewHolder> {
 
     Context context;
-    RanksData ranksData;
+    FifaData fifaData;
     ArrayList<Club> clubs;
 
     public ClubsAdapter(Context context) {
@@ -29,9 +29,9 @@ public class ClubsAdapter extends RecyclerView.Adapter<ClubsAdapter.ViewHolder> 
 
     private void readData() {
         // Ranks.
-        ranksData = new RanksData(context);
+        fifaData = new FifaData(context);
         // Clubs.
-        clubs = ranksData.getAllRankedClubs();
+        clubs = fifaData.getAllRankedClubs();
     }
 
     @NonNull

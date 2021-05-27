@@ -22,13 +22,7 @@ import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Owner;
 import davoodi.mahdi.fifa.components.Rank;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.CupsData;
-import davoodi.mahdi.fifa.data.LeaguesData;
-import davoodi.mahdi.fifa.data.OwnersData;
-import davoodi.mahdi.fifa.data.RanksData;
-import davoodi.mahdi.fifa.data.ResultsData;
-import davoodi.mahdi.fifa.data.SeasonsData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class PlayPage extends AppCompatActivity {
@@ -49,13 +43,7 @@ public class PlayPage extends AppCompatActivity {
 
 
     // DataBase.
-    RanksData ranksData;
-    ResultsData resultsData;
-    ClubsData clubsData;
-    OwnersData ownersData;
-    SeasonsData seasonsData;
-    LeaguesData leaguesData;
-    CupsData cupsData;
+    FifaData fifaData;
 
     // UI.
     TextView season_text, league_text;
@@ -70,26 +58,20 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void initialize() {
-        cupsData = new CupsData(this);
-        ranksData = new RanksData(this);
-        resultsData = new ResultsData(this);
-        clubsData = new ClubsData(this);
-        ownersData = new OwnersData(this);
-        seasonsData = new SeasonsData(this);
-        leaguesData = new LeaguesData(this);
+        fifaData = new FifaData(this);
 
         // preferences.
         preferences = new AppPreferences(this);
 
         // ranks.
-        ranked_clubs = ranksData.getAllRankedClubs();
+        ranked_clubs = fifaData.getAllRankedClubs();
 
         // Season.
-        season = seasonsData.getSeason(preferences.getCurrentSeason());
+        season = fifaData.getSeason(preferences.getCurrentSeason());
         matchesPlayed = season.getSeasonMatchesPlayed();
 
         // Leagues.
-        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
+        league = fifaData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
 
         // Clubs.
         owner_1_clubs = setOwnerClubs(1, ranked_clubs);
@@ -111,20 +93,20 @@ public class PlayPage extends AppCompatActivity {
         whatToCreate();
 
         // Set Current Match.
-        currentMatch = resultsData.getNextMatch(season.getSeasonID(), league.getLeagueID());
+        currentMatch = fifaData.getNextMatch(season.getSeasonID(), league.getLeagueID());
 
         // Set Clubs.
-        home = clubsData.getClubFromID(currentMatch.getHomeTeamID());
-        away = clubsData.getClubFromID(currentMatch.getAwayTeamID());
+        home = fifaData.getClubFromID(currentMatch.getHomeTeamID());
+        away = fifaData.getClubFromID(currentMatch.getAwayTeamID());
 
         // Owners.
         if (owner_1_clubs.contains(home)) {
-            home_owner = ownersData.getOwnerFromID(1);
-            away_owner = ownersData.getOwnerFromID(2);
+            home_owner = fifaData.getOwnerFromID(1);
+            away_owner = fifaData.getOwnerFromID(2);
         }
         if (owner_2_clubs.contains(home)) {
-            home_owner = ownersData.getOwnerFromID(2);
-            away_owner = ownersData.getOwnerFromID(1);
+            home_owner = fifaData.getOwnerFromID(2);
+            away_owner = fifaData.getOwnerFromID(1);
         }
 
         // Set UI ID.
@@ -187,20 +169,20 @@ public class PlayPage extends AppCompatActivity {
 
                         Match match = new Match(0, season.getSeasonID(), 1, owner_1_clubs.get(j).getClubID(),
                                 owner_2_clubs.get(temp).getClubID(), 0, 0, 0);
-                        resultsData.insertMatch(match);
+                        fifaData.insertMatch(match);
                     }
                 }
                 // Set Preferences.
                 preferences.setMtCreated(true);
                 league.setLeagueNumber(league.getLeagueNumber() + 1);
-                leaguesData.updateLeague(league);
+                fifaData.updateLeague(league);
             }
         }
     }
 
     private void manageMT() {
-        Rank home_rank = ranksData.getClubRank(home.getClubID());
-        Rank away_rank = ranksData.getClubRank(away.getClubID());
+        Rank home_rank = fifaData.getClubRank(home.getClubID());
+        Rank away_rank = fifaData.getClubRank(away.getClubID());
 
         // Match played.
         home_rank.setMatchesPlayed(home_rank.getMatchesPlayed() + 1);
@@ -237,8 +219,8 @@ public class PlayPage extends AppCompatActivity {
             away_rank.setPoints(away_rank.getPoints() + 1);
         }
 
-        ranksData.updateRank(home_rank);
-        ranksData.updateRank(away_rank);
+        fifaData.updateRank(home_rank);
+        fifaData.updateRank(away_rank);
     }
 
     private void finishMT() {
@@ -252,35 +234,35 @@ public class PlayPage extends AppCompatActivity {
         second.setClubWealth(second.getClubWealth() + 80);
         third.setClubWealth(third.getClubWealth() + 50);
 
-        clubsData.updateClub(first);
-        clubsData.updateClub(second);
-        clubsData.updateClub(third);
+        fifaData.updateClub(first);
+        fifaData.updateClub(second);
+        fifaData.updateClub(third);
 
         Club club;
         for (int i = 3; i < 8; i++) {
             club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 20);
-            clubsData.updateClub(club);
+            fifaData.updateClub(club);
         }
         for (int i = 8; i < 16; i++) {
             club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 10);
-            clubsData.updateClub(club);
+            fifaData.updateClub(club);
         }
         for (int i = 16; i < 20; i++) {
             club = ranked_clubs.get(i);
             club.setClubWealth(club.getClubWealth() + 3);
-            clubsData.updateClub(club);
+            fifaData.updateClub(club);
         }
 
         season.setSeasonMTWinnerID(first.getClubID());
-        seasonsData.updateSeason(season);
+        fifaData.updateSeason(season);
 
-        Owner first_owner = ownersData.getOwnerFromID(first.getClubOwner());
+        Owner first_owner = fifaData.getOwnerFromID(first.getClubOwner());
         first_owner.setOwnerTotalCups(first_owner.getOwnerTotalCups() + 1);
-        ownersData.updateOwner(first_owner);
+        fifaData.updateOwner(first_owner);
 
-        cupsData.insertCup(new Cup(0, season.getSeasonID(),
+        fifaData.insertCup(new Cup(0, season.getSeasonID(),
                 league.getLeagueID() - 1, first.getClubID()));
     }
 
@@ -293,25 +275,25 @@ public class PlayPage extends AppCompatActivity {
                 for (int i = 0; i < tm_clubs.size(); i = i + 2) {
                     Match match = new Match(0, season.getSeasonID(), 2, tm_clubs.get(i).getClubID(),
                             tm_clubs.get(i + 1).getClubID(), 0, 0, 0);
-                    resultsData.insertMatch(match);
+                    fifaData.insertMatch(match);
                 }
                 preferences.setTmCreated(true);
                 league.setLeagueNumber(league.getLeagueNumber() + 1);
-                leaguesData.updateLeague(league);
+                fifaData.updateLeague(league);
             } else
                 Log.e("PlayPage", "TM creation failed!");
         } else createNewGameTM();
     }
 
     private void createNewGameTM() {
-        ArrayList<Match> tm_matches = resultsData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> tm_matches = fifaData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
         if (tm_matches.isEmpty()) {
-            ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+            ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
             Club home, away;
             for (Match match :
                     past_results) {
-                home = clubsData.getClubFromID(match.getHomeTeamID());
-                away = clubsData.getClubFromID(match.getAwayTeamID());
+                home = fifaData.getClubFromID(match.getHomeTeamID());
+                away = fifaData.getClubFromID(match.getAwayTeamID());
                 if (match.getHomeGoals() > match.getAwayGoals()) {
                     tm_clubs.remove(away);
                 } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -325,7 +307,7 @@ public class PlayPage extends AppCompatActivity {
                 for (int i = 0; i < tm_clubs.size(); i = i + 2) {
                     Match match = new Match(0, season.getSeasonID(), 2, tm_clubs.get(i).getClubID(),
                             tm_clubs.get(i + 1).getClubID(), 0, 0, 0);
-                    resultsData.insertMatch(match);
+                    fifaData.insertMatch(match);
                 }
             } else
                 Log.e("PlayPage", "TM creation of new game failed!");
@@ -333,12 +315,12 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishTM() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
+        ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         Club home, away;
         for (Match match :
                 past_results) {
-            home = clubsData.getClubFromID(match.getHomeTeamID());
-            away = clubsData.getClubFromID(match.getAwayTeamID());
+            home = fifaData.getClubFromID(match.getHomeTeamID());
+            away = fifaData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 tm_clubs.remove(away);
             } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -351,16 +333,16 @@ public class PlayPage extends AppCompatActivity {
 
             winner.setClubTM(winner.getClubTM() + 1);
             winner.setClubWealth(winner.getClubWealth() + 40);
-            clubsData.updateClub(winner);
+            fifaData.updateClub(winner);
 
             season.setSeasonTMWinnerID(winner.getClubID());
-            seasonsData.updateSeason(season);
+            fifaData.updateSeason(season);
 
-            Owner winner_owner = ownersData.getOwnerFromID(winner.getClubOwner());
+            Owner winner_owner = fifaData.getOwnerFromID(winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
-            ownersData.updateOwner(winner_owner);
+            fifaData.updateOwner(winner_owner);
 
-            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+            fifaData.insertCup(new Cup(0, season.getSeasonID(),
                     league.getLeagueID() - 1, winner.getClubID()));
 
         } else Log.e("PlayPage", "Finish TM Fucked up!");
@@ -375,25 +357,25 @@ public class PlayPage extends AppCompatActivity {
                 for (int i = 0; i < cl_clubs.size(); i = i + 2) {
                     Match match = new Match(0, season.getSeasonID(), 3, cl_clubs.get(i).getClubID(),
                             cl_clubs.get(i + 1).getClubID(), 0, 0, 0);
-                    resultsData.insertMatch(match);
+                    fifaData.insertMatch(match);
                 }
                 preferences.setChampionsCreated(true);
                 league.setLeagueNumber(league.getLeagueNumber() + 1);
-                leaguesData.updateLeague(league);
+                fifaData.updateLeague(league);
             } else
                 Log.e("PlayPage", "Champions creation failed!");
         } else createNewGameChampions();
     }
 
     private void createNewGameChampions() {
-        ArrayList<Match> cl_matches = resultsData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> cl_matches = fifaData.getAllRemainMatches(season.getSeasonID(), league.getLeagueID());
         if (cl_matches.isEmpty()) {
-            ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+            ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
             Club home, away;
             for (Match match :
                     past_results) {
-                home = clubsData.getClubFromID(match.getHomeTeamID());
-                away = clubsData.getClubFromID(match.getAwayTeamID());
+                home = fifaData.getClubFromID(match.getHomeTeamID());
+                away = fifaData.getClubFromID(match.getAwayTeamID());
                 if (match.getHomeGoals() > match.getAwayGoals()) {
                     cl_clubs.remove(away);
                 } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -407,7 +389,7 @@ public class PlayPage extends AppCompatActivity {
                 for (int i = 0; i < cl_clubs.size(); i = i + 2) {
                     Match match = new Match(0, season.getSeasonID(), 3, cl_clubs.get(i).getClubID(),
                             cl_clubs.get(i + 1).getClubID(), 0, 0, 0);
-                    resultsData.insertMatch(match);
+                    fifaData.insertMatch(match);
                 }
             } else
                 Log.e("PlayPage", "Champions creation of new game failed!");
@@ -415,12 +397,12 @@ public class PlayPage extends AppCompatActivity {
     }
 
     private void finishChampions() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
+        ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         Club home, away;
         for (Match match :
                 past_results) {
-            home = clubsData.getClubFromID(match.getHomeTeamID());
-            away = clubsData.getClubFromID(match.getAwayTeamID());
+            home = fifaData.getClubFromID(match.getHomeTeamID());
+            away = fifaData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 cl_clubs.remove(away);
             } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -433,16 +415,16 @@ public class PlayPage extends AppCompatActivity {
 
             winner.setClubChampions(winner.getClubChampions() + 1);
             winner.setClubWealth(winner.getClubWealth() + 200);
-            clubsData.updateClub(winner);
+            fifaData.updateClub(winner);
 
             season.setSeasonChampionsWinnerID(winner.getClubID());
-            seasonsData.updateSeason(season);
+            fifaData.updateSeason(season);
 
-            Owner winner_owner = ownersData.getOwnerFromID(winner.getClubOwner());
+            Owner winner_owner = fifaData.getOwnerFromID(winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
-            ownersData.updateOwner(winner_owner);
+            fifaData.updateOwner(winner_owner);
 
-            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+            fifaData.insertCup(new Cup(0, season.getSeasonID(),
                     league.getLeagueID() - 1, winner.getClubID()));
 
         } else Log.e("PlayPage", "Finish Champions Fucked up!");
@@ -452,27 +434,27 @@ public class PlayPage extends AppCompatActivity {
     private void createEurope() {
         if (!preferences.getEuropeCreated()) {
             finishChampions();
-            Club tm_winner = clubsData.getClubFromID(season.getSeasonTMWinnerID());
-            Club cl_winner = clubsData.getClubFromID(season.getSeasonChampionsWinnerID());
+            Club tm_winner = fifaData.getClubFromID(season.getSeasonTMWinnerID());
+            Club cl_winner = fifaData.getClubFromID(season.getSeasonChampionsWinnerID());
 
             Match match = new Match(0, season.getSeasonID(), 4, tm_winner.getClubID(),
                     cl_winner.getClubID(), 0, 0, 0);
-            resultsData.insertMatch(match);
+            fifaData.insertMatch(match);
             preferences.setEuropeCreated(true);
             league.setLeagueNumber(league.getLeagueNumber() + 1);
-            leaguesData.updateLeague(league);
+            fifaData.updateLeague(league);
         } else
             Log.e("PlayPage", "Europe creation failed!");
     }
 
     private void finishEurope() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
+        ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID() - 1);
         if (past_results.size() == 1) {
             Club home, away, europe_winner = null;
             Match match = past_results.get(0);
 
-            home = clubsData.getClubFromID(match.getHomeTeamID());
-            away = clubsData.getClubFromID(match.getAwayTeamID());
+            home = fifaData.getClubFromID(match.getHomeTeamID());
+            away = fifaData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 europe_winner = home;
             } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -482,16 +464,16 @@ public class PlayPage extends AppCompatActivity {
             assert europe_winner != null;
             europe_winner.setClubEurope(europe_winner.getClubEurope() + 1);
             europe_winner.setClubWealth(europe_winner.getClubWealth() + 70);
-            clubsData.updateClub(europe_winner);
+            fifaData.updateClub(europe_winner);
 
             season.setSeasonEuropeWinnerID(europe_winner.getClubID());
-            seasonsData.updateSeason(season);
+            fifaData.updateSeason(season);
 
-            Owner winner_owner = ownersData.getOwnerFromID(europe_winner.getClubOwner());
+            Owner winner_owner = fifaData.getOwnerFromID(europe_winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
-            ownersData.updateOwner(winner_owner);
+            fifaData.updateOwner(winner_owner);
 
-            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+            fifaData.insertCup(new Cup(0, season.getSeasonID(),
                     league.getLeagueID() - 1, europe_winner.getClubID()));
         } else Log.e("PlayPage", "Error in finish Europe past results.");
     }
@@ -500,8 +482,8 @@ public class PlayPage extends AppCompatActivity {
     private void createGolden() {
         if (!preferences.getGoldenCreated()) {
             finishEurope();
-            Club mt_winner = clubsData.getClubFromID(season.getSeasonMTWinnerID());
-            Club europe_winner = clubsData.getClubFromID(season.getSeasonEuropeWinnerID());
+            Club mt_winner = fifaData.getClubFromID(season.getSeasonMTWinnerID());
+            Club europe_winner = fifaData.getClubFromID(season.getSeasonEuropeWinnerID());
             Match match;
             if (mt_winner.equals(europe_winner)) {
                 Club mt_second = ranked_clubs.get(1);
@@ -512,21 +494,21 @@ public class PlayPage extends AppCompatActivity {
                         europe_winner.getClubID(), 0, 0, 0);
             }
 
-            resultsData.insertMatch(match);
+            fifaData.insertMatch(match);
             preferences.setGoldenCreated(true);
             league.setLeagueNumber(league.getLeagueNumber() + 1);
-            leaguesData.updateLeague(league);
+            fifaData.updateLeague(league);
         }
     }
 
     private void finishGolden() {
-        ArrayList<Match> past_results = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        ArrayList<Match> past_results = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
         if (past_results.size() == 1) {
             Club home, away, golden_winner = null;
             Match match = past_results.get(0);
 
-            home = clubsData.getClubFromID(match.getHomeTeamID());
-            away = clubsData.getClubFromID(match.getAwayTeamID());
+            home = fifaData.getClubFromID(match.getHomeTeamID());
+            away = fifaData.getClubFromID(match.getAwayTeamID());
             if (match.getHomeGoals() > match.getAwayGoals()) {
                 golden_winner = home;
             } else if (match.getHomeGoals() < match.getAwayGoals()) {
@@ -536,16 +518,16 @@ public class PlayPage extends AppCompatActivity {
             assert golden_winner != null;
             golden_winner.setClubGolden(golden_winner.getClubGolden() + 1);
             golden_winner.setClubWealth(golden_winner.getClubWealth() + 100);
-            clubsData.updateClub(golden_winner);
+            fifaData.updateClub(golden_winner);
 
             season.setSeasonGoldenWinnerID(golden_winner.getClubID());
-            seasonsData.updateSeason(season);
+            fifaData.updateSeason(season);
 
-            Owner winner_owner = ownersData.getOwnerFromID(golden_winner.getClubOwner());
+            Owner winner_owner = fifaData.getOwnerFromID(golden_winner.getClubOwner());
             winner_owner.setOwnerTotalCups(winner_owner.getOwnerTotalCups() + 1);
-            ownersData.updateOwner(winner_owner);
+            fifaData.updateOwner(winner_owner);
 
-            cupsData.insertCup(new Cup(0, season.getSeasonID(),
+            fifaData.insertCup(new Cup(0, season.getSeasonID(),
                     league.getLeagueID(), golden_winner.getClubID()));
 
             finishSeason();
@@ -565,8 +547,8 @@ public class PlayPage extends AppCompatActivity {
                 0,
                 0,
                 0);
-        seasonsData.insertSeason(newSeason);
-        ranksData.refreshRanksData();
+        fifaData.insertSeason(newSeason);
+        fifaData.refreshRanksData();
 
         preferences.setMtCreated(false);
         preferences.setTmCreated(false);
@@ -646,7 +628,7 @@ public class PlayPage extends AppCompatActivity {
         currentMatch.setHomeGoals(home_goals);
         currentMatch.setAwayGoals(away_goals);
         currentMatch.setMatchPlayed(1);
-        resultsData.updateMatch(currentMatch);
+        fifaData.updateMatch(currentMatch);
 
         // Choose the winner and loser.
         if (home.getClubOwner() != away.getClubOwner()) {
@@ -661,12 +643,12 @@ public class PlayPage extends AppCompatActivity {
                 home_owner.setOwnerTotalDraw(home_owner.getOwnerTotalDraw() + 1);
             }
         }
-        ownersData.updateOwner(home_owner);
-        ownersData.updateOwner(away_owner);
+        fifaData.updateOwner(home_owner);
+        fifaData.updateOwner(away_owner);
 
         int mp = season.getSeasonMatchesPlayed() + 1;
         season.setSeasonMatchesPlayed(mp);
-        seasonsData.updateSeason(season);
+        fifaData.updateSeason(season);
 
         if (mp == 116)
             finishGolden();

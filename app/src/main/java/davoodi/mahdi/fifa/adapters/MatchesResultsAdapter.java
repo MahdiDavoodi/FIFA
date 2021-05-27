@@ -19,10 +19,7 @@ import davoodi.mahdi.fifa.components.Club;
 import davoodi.mahdi.fifa.components.League;
 import davoodi.mahdi.fifa.components.Match;
 import davoodi.mahdi.fifa.components.Season;
-import davoodi.mahdi.fifa.data.ClubsData;
-import davoodi.mahdi.fifa.data.LeaguesData;
-import davoodi.mahdi.fifa.data.ResultsData;
-import davoodi.mahdi.fifa.data.SeasonsData;
+import davoodi.mahdi.fifa.data.FifaData;
 import davoodi.mahdi.fifa.preferences.AppPreferences;
 
 public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAdapter.ViewHolder> {
@@ -30,7 +27,7 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     Context context;
     ArrayList<Match> matches;
     AppPreferences preferences;
-    ClubsData clubsData;
+    FifaData fifaData;
     int matchesPlayed;
     Season season;
     League league;
@@ -42,25 +39,22 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
     }
 
     private void readData() {
-        // Clubs.
-        clubsData = new ClubsData(context);
+        fifaData = new FifaData(context);
 
         // Preferences.
         preferences = new AppPreferences(Objects.requireNonNull(context));
 
         // Season.
-        SeasonsData seasonsData = new SeasonsData(context);
-        season = seasonsData.getSeason(preferences.getCurrentSeason());
+
+        season = fifaData.getSeason(preferences.getCurrentSeason());
         matchesPlayed = season.getSeasonMatchesPlayed();
 
         // Leagues.
-        LeaguesData leaguesData = new LeaguesData(context);
-        league = leaguesData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
+        league = fifaData.getLeagueFromID(League.currentLeagueID(matchesPlayed));
     }
 
     private void setMatchesToShow() {
-        ResultsData resultsData = new ResultsData(context);
-        matches = resultsData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
+        matches = fifaData.getAllSeasonMatches(season.getSeasonID(), league.getLeagueID());
     }
 
 
@@ -78,8 +72,8 @@ public class MatchesResultsAdapter extends RecyclerView.Adapter<MatchesResultsAd
         Match match = matches.get(position);
 
         // set widgets information
-        Club home_team = clubsData.getClubFromID(match.getHomeTeamID());
-        Club away_team = clubsData.getClubFromID(match.getAwayTeamID());
+        Club home_team = fifaData.getClubFromID(match.getHomeTeamID());
+        Club away_team = fifaData.getClubFromID(match.getAwayTeamID());
 
         assert home_team != null;
         assert away_team != null;
