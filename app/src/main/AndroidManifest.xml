@@ -3,39 +3,30 @@
     package="davoodi.mahdi.fifa">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIFA">
-        <activity android:name=".pages.TransferHistoryPage"></activity>
+        <activity android:name=".pages.TransferHistoryPage" />
         <activity android:name=".pages.NewTransferPage" />
         <activity android:name=".pages.StatisticsPage" />
         <activity android:name=".pages.PlayPage" />
         <activity android:name=".pages.InfoPage" />
         <activity android:name=".pages.SlidesPage" />
-        <activity
-            android:name=".pages.SelectClubsPage"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".pages.CreateOwnersPage"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".pages.StartPage"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".pages.LoadingPage"
-            android:screenOrientation="portrait">
+        <activity android:name=".pages.SelectClubsPage" />
+        <activity android:name=".pages.CreateOwnersPage" />
+        <activity android:name=".pages.StartPage" />
+        <activity android:name=".pages.LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".pages.MainPage"
-            android:screenOrientation="portrait" />
+        <activity android:name=".pages.MainPage" />
     </application>
 
 </manifest>
