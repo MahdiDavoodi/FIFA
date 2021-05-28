@@ -8,3 +8,4 @@ Me and my brother soccer league!
 	3. Work with themes and make a better UI.
 	4. Add "setting" Activity.
 	5. Add edit option for match results.
+	6. Support both portrait and landscape.
