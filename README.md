@@ -9,3 +9,4 @@ Me and my brother soccer league!
 	4. Add "setting" Activity.
 	5. Add edit option for match results.
 	6. Support both portrait and landscape.
+	7. Support In-App dark theme (And improve current dark theme).
