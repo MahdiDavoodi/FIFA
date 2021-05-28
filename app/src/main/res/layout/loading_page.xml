@@ -10,11 +10,12 @@
 
     <TextView
         android:id="@+id/loadingAppNameText"
-        android:layout_width="wrap_content"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="30dp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/ethnocentric"
+        android:maxWidth="150dp"
         android:text="@string/appName"
         android:textAlignment="center"
         android:textAllCaps="true"
