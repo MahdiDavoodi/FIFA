@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "davoodi.mahdi.fifa"
+        applicationId "davoodi.mahdi.oufa"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1

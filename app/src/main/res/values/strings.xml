@@ -1,9 +1,9 @@
 <resources>
     // Total
-    <string name="appName">FIFA</string>
+    <string name="appName">OUFA</string>
     <string name="developerName">Zero Day</string>
-    <string name="appDescription">There is no limit for football.</string>
-    <string name="welcomeToFIFA">Welcome to FIFA!</string>
+    <string name="appDescription">There is no limit for playing football.</string>
+    <string name="welcomeToFIFA">Welcome to our FIFA!</string>
 
     // Start Page.
     <string name="startDescriptionText">You can create owners and then select teams for them to start the competition.</string>
@@ -31,7 +31,7 @@
     <string name="statisticsDescriptionText">All statistics about current season, owners and clubs.</string>
 
     // Info Page.
-    <string name="developer_info">Hey There! My name is Mahdi and I am a junior Android developer. I created this app for me and my brother. We play our league from 2016 :). Hope you can find it useful and enjoy it!</string>
+    <string name="developer_info">Hey There! My name is Mahdi and I am a junior Android developer. I created this app for me and my brother. We play our FIFA from 2016 :). Hope you can find it useful and enjoy it!</string>
 
     // Lists Titles.
     <string name="season_points">Pts</string>
