@@ -108,6 +108,8 @@
     <string name="slides_text16">Money Control</string>
     <string name="slides_text17">Every 5 Seasons, all clubs will lose 30% of their property.</string>
 
+    // Settings Page
+    <string name="settings_title">Settings</string>
 
     // Common Text
     <string name="history">History</string>

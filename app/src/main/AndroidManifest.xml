@@ -10,23 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FIFA">
-        <activity android:name="davoodi.mahdi.oufa.pages.TransferHistoryPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.NewTransferPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.StatisticsPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.PlayPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.InfoPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.SlidesPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.SelectClubsPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.CreateOwnersPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.StartPage" />
-        <activity android:name="davoodi.mahdi.oufa.pages.LoadingPage">
+        <activity android:name=".pages.SettingsPage"></activity>
+        <activity android:name=".pages.TransferHistoryPage" />
+        <activity android:name=".pages.NewTransferPage" />
+        <activity android:name=".pages.StatisticsPage" />
+        <activity android:name=".pages.PlayPage" />
+        <activity android:name=".pages.InfoPage" />
+        <activity android:name=".pages.SlidesPage" />
+        <activity android:name=".pages.SelectClubsPage" />
+        <activity android:name=".pages.CreateOwnersPage" />
+        <activity android:name=".pages.StartPage" />
+        <activity android:name=".pages.LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="davoodi.mahdi.oufa.pages.MainPage" />
+        <activity android:name=".pages.MainPage" />
     </application>
 
 </manifest>
