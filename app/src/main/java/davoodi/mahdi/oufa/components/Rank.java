@@ -2,6 +2,8 @@ package davoodi.mahdi.oufa.components;
 
 import android.content.ContentValues;
 
+import java.util.Objects;
+
 public class Rank {
     public static final String KEY_CLUB = "clubID";
     public static final String KEY_PLAYED = "matchesPlayed";
@@ -11,6 +13,20 @@ public class Rank {
     public static final String KEY_GD = "goalDifference";
     public static final String KEY_PTS = "points";
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rank rank = (Rank) o;
+        return win == rank.win &&
+                goalDifference == rank.goalDifference &&
+                points == rank.points;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(win, goalDifference, points);
+    }
 
     private final int clubID;
     private int matchesPlayed;

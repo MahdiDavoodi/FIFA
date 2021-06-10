@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import davoodi.mahdi.oufa.components.Club;
 import davoodi.mahdi.oufa.components.Cup;
@@ -451,6 +452,22 @@ public class FifaData extends SQLiteOpenHelper {
         } else Log.e("RanksData", "Error in getAllRanks!");
         cursor.close();
         if (database.isOpen()) database.close();
+
+        // Lottery for equals cases.
+        for (int i = 0; i < ranks.size() - 1; i++) {
+            int j = i + 1;
+            int rnd;
+            if (ranks.get(i).equals(ranks.get(j))) {
+                Random random = new Random();
+                rnd = random.nextInt(10) + 1;
+                if (rnd % 2 == 0) {
+                    // Swap by lottery if they are equal.
+                    Rank temp = ranks.get(j);
+                    ranks.set(j, ranks.get(i));
+                    ranks.set(i, temp);
+                }
+            }
+        }
         return ranks;
     }
 
