@@ -135,7 +135,7 @@
     <string name="match_result">%1$d - %2$d</string>
 
     // Version Control.
-    <string name="version">version 1.0</string>
+    <string name="version">version 1.1.1</string>
     <string name="last_update">Last Update: May, 2021.</string>
 
 </resources>
