@@ -34,6 +34,7 @@ public class StatisticsPage extends AppCompatActivity {
         description.setText(getResources().getString(R.string.season_description));
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new SeasonResultsAdapter(this));
+        list.setHasFixedSize(true);
     }
 
     private void makeThemeTransparent() {
@@ -53,7 +54,6 @@ public class StatisticsPage extends AppCompatActivity {
         makeThemeTransparent();
         season.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.season_description));
-        list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new SeasonResultsAdapter(this));
     }
 
@@ -61,7 +61,6 @@ public class StatisticsPage extends AppCompatActivity {
         makeThemeTransparent();
         owners.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.owner_description));
-        list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new OwnersAdapter(this));
     }
 
@@ -69,7 +68,6 @@ public class StatisticsPage extends AppCompatActivity {
         makeThemeTransparent();
         clubs.setBackgroundColor(getResources().getColor(R.color.mainButtonColor, getTheme()));
         description.setText(getResources().getString(R.string.club_description));
-        list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new ClubsAdapter(this));
     }
 }
