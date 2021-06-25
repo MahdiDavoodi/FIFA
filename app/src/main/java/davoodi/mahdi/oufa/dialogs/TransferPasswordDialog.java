@@ -53,8 +53,8 @@ public class TransferPasswordDialog extends AppCompatDialogFragment {
         owner_1_input = view.findViewById(R.id.tpd_owner_1_password);
         owner_2_input = view.findViewById(R.id.tpd_owner_2_password);
 
-        owner_1_input.setHint(owner_1.getOwnerName() + "'s Password");
-        owner_2_input.setHint(owner_2.getOwnerName() + "'s Password");
+        owner_1_input.setHint(owner_1.getOwnerName());
+        owner_2_input.setHint(owner_2.getOwnerName());
 
 
         return builder.create();
