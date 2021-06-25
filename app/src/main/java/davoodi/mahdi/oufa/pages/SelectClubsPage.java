@@ -158,22 +158,18 @@ public class SelectClubsPage extends AppCompatActivity {
                 firstOwnerSelected.add(currentClub);
                 firstOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
                 secondOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
-                Toast.makeText(this, "Its " + secondOwner.getOwnerName()
-                        + " 's turn!", Toast.LENGTH_SHORT).show();
                 turn = 2;
             } else {
                 secondOwnerSelected.add(currentClub);
                 secondOwnerName.setTextColor(getResources().getColor(R.color.mainDescriptionTextColor, getTheme()));
                 firstOwnerName.setTextColor(getResources().getColor(R.color.mainBigTextColor, getTheme()));
-                Toast.makeText(this, "Its " + firstOwner.getOwnerName()
-                        + " 's turn!", Toast.LENGTH_SHORT).show();
                 turn = 1;
             }
             clubs.remove(currentClub);
             refreshPage();
             refreshCardView();
         } else {
-            Toast.makeText(this, "You are good to go!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.done), Toast.LENGTH_SHORT).show();
         }
     }
 

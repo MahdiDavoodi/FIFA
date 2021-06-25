@@ -61,8 +61,8 @@
     <string name="next">بعدی</string>
     <string name="ok">تایید</string>
     <string name="overall">قدرت</string>
-    <string name="slides_text14" translatable="false">گلدن</string>
-    <string name="slides_text12" translatable="false">اروپا</string>
+    <string name="slides_text14">گلدن</string>
+    <string name="slides_text12">اروپا</string>
     <string name="dark_theme">تم تاریک</string>
     <string name="slides_text10">چمپیونز</string>
     <string name="to">به</string>
@@ -71,13 +71,13 @@
     <string name="version">"ورژن 1.1.1 "</string>
     <string name="slides_text4">انتقالات</string>
     <string name="winner">" %1s :برنده "</string>
-    <string name="developerName" translatable="false">مهدی داودی</string>
+    <string name="developerName">مهدی داودی</string>
     <string name="enter_password">لطفا رمز خود را وارد کنید</string>
     <string name="slides_text5">قیمت بازیکن با توجه به قدرت او مشخص می شود</string>
     <string name="save">ذخیره</string>
     <string name="rules">قوانین</string>
     <string name="season">"فصل %1$d  "</string>
-    <string name="slides_text2" translatable="false">باشگاه ها</string>
+    <string name="slides_text2">باشگاه ها</string>
     <string name="start">شروع</string>
     <string name="skip">رد شدن</string>
     <string name="settings_title">تنظیمات</string>
