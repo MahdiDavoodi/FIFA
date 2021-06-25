@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appDescription">محدودیتی برای فوتبال وجود ندارد.</string>
+    <string name="welcomeToFIFA">خوش آمدید!</string>
+    <string name="startDescriptionText">شما می توانید با ایجاد مالک، و انتخاب تیم برای آن از بازی کردن لذت ببرید.</string>
+    <string name="createOwnersDescriptionText">حالا باید اکانت خود را ایجاد کنید.</string>
+    <string name="createOwnersFirstOwnerText">مالک اول</string>
+    <string name="createOwnersSecondOwnerText">مالک دوم</string>
+    <string name="selectClubsDescriptionText">هر مالک فقط می تواند ده باشگاه را انتخاب کند. یک به یک انتخاب کنید.</string>
+    <string name="mainNavigationMatches">بازی ها</string>
+    <string name="mainNavigationTransfer">نقل و انتقالات</string>
+    <string name="mainNavigationCups">جام ها</string>
+    <string name="statisticsStandingsButton">فصل</string>
+    <string name="statisticsOwnersButton">مالک ها</string>
+    <string name="statisticsClubsButton">باشگاه ها</string>
+    <string name="statisticsDescriptionText">تمام آمار در مورد باشگاه ها، مالکین و فصل ها.</string>
+    <string name="developer_info">سلام! خوشحالم که از این برنامه استفاده می کنید. این برنامه برای خودم و برادرم طراحی شده اما امیدوارم شما هم به خوبی ازش بهره ببرید.</string>
+    <string name="createOwnersToast1">لطفا اطلاعات خود را وارد کنید.</string>
+    <string name="createOwnersToast2">پسورد ها متفاوت است.</string>
+    <string name="createOwnersToast3">حالا باید مالک دوم را بسازیم.</string>
+    <string name="createOwnersToast4">مالکین ایجاد شدند.</string>
+    <string name="playToast1">لطفا تعداد گل ها را وارد کنید.</string>
+    <string name="nameHint">نام</string>
+    <string name="passwordHint">رمز عبور</string>
+    <string name="numberHint">عدد</string>
+    <string name="confirmPasswordHint">تایید رمز عبور</string>
+    <string name="transferDescriptionText">شما به راحتی می توانید تاریخچه نقل و انتقالات خود را ذخیره کنید.</string>
+    <string name="matchesPlayNextButton">بازی</string>
+    <string name="matchesStatisticsButton">آمار</string>
+    <string name="matchesDescriptionText">شما می تولنید نتایج را وارد کنید و یا تماشا کنید.</string>
+    <string name="playDescriptionText">لطفا گل های باشگاه ها را وارد کنید.</string>
+    <string name="playHomeText">خانه</string>
+    <string name="playAwayText">مهمان</string>
+    <string name="playSeasonText">"فصل %1$d  "</string>
+    <string name="nt_descriptionText">لطفا اطلاعات را با دقت و به ترتیب وارد کنید.</string>
+    <string name="nt_descriptionText2">فراموش نکنید که ذخیره کنید.</string>
+    <string name="nt_playerInfo">اطلاعات باریکن</string>
+    <string name="th_descriptionText">شما می توانید تاریخچه انتقالات را در اینجا ببینید.</string>
+</resources>

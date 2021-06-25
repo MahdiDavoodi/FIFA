@@ -1,7 +1,7 @@
 <resources>
     // Total
-    <string name="appName">OUFA</string>
-    <string name="developerName">Zero Day</string>
+    <string name="appName" translatable="false">OUFA</string>
+    <string name="developerName" translatable="false">Zero Day</string>
     <string name="appDescription">There is no limit for playing football.</string>
     <string name="welcomeToFIFA">Welcome to our FIFA!</string>
 
@@ -15,9 +15,9 @@
 
     // Select Clubs Page.
     <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
-    <string name="selectClubsOfTenText">%1$d/10</string>
-    <string name="selectClubsClubBudgetText">Budget: %1$d million$</string>
-    <string name="selectClubsClassText">Class: %1$s</string>
+    <string name="selectClubsOfTenText" translatable="false">%1$d/10</string>
+    <string name="selectClubsClubBudgetText" translatable="false">Budget: %1$d million$</string>
+    <string name="selectClubsClassText" translatable="false">Class: %1$s</string>
 
     // Main Page.
     <string name="mainNavigationMatches">Matches</string>
@@ -34,17 +34,17 @@
     <string name="developer_info">Hey There! My name is Mahdi and I am a junior Android developer. I created this app for me and my brother. Our FIFA, established back in 2015 :). Hope you can find it useful and enjoy it!</string>
 
     // Lists Titles.
-    <string name="season_points">Pts</string>
-    <string name="season_goalDifference">GD</string>
-    <string name="season_draw">D</string>
-    <string name="season_loss">L</string>
-    <string name="season_win">W</string>
-    <string name="season_match_played">Pl</string>
-    <string name="season_team_name">Team</string>
+    <string name="season_points" translatable="false">Pts</string>
+    <string name="season_goalDifference" translatable="false">GD</string>
+    <string name="season_draw" translatable="false">D</string>
+    <string name="season_loss" translatable="false">L</string>
+    <string name="season_win" translatable="false">W</string>
+    <string name="season_match_played" translatable="false">Pl</string>
+    <string name="season_team_name" translatable="false">Team</string>
 
-    <string name="club_description">Club / Budget / MT / TM / Champions / Europe / Golden.</string>
-    <string name="owner_description">Owner / Win / Loss / Draw / Cups.</string>
-    <string name="season_description">Team / Pl / W / L / D / GD / Pts.</string>
+    <string name="club_description" translatable="false">Club / Budget / MT / TM / Champions / Europe / Golden.</string>
+    <string name="owner_description" translatable="false">Owner / Win / Loss / Draw / Cups.</string>
+    <string name="season_description" translatable="false">Team / Pl / W / L / D / GD / Pts.</string>
 
 
     // Toasts.
@@ -55,9 +55,9 @@
     <string name="playToast1">Please input the goals!</string>
 
     // Objects Descriptions
-    <string name="imageView">Image</string>
-    <string name="TextView">Text</string>
-    <string name="ImageButton">Image Button</string>
+    <string name="imageView" translatable="false">Image</string>
+    <string name="TextView" translatable="false">Text</string>
+    <string name="ImageButton" translatable="false">Image Button</string>
 
     // Hints.
     <string name="nameHint">Name</string>
@@ -70,7 +70,7 @@
 
     // Matches Page.
     <string name="matchesPlayNextButton">Play</string>
-    <string name="matchesNotPlayed">-TBD-</string>
+    <string name="matchesNotPlayed" translatable="false">-TBD-</string>
     <string name="matchesStatisticsButton">Statistics</string>
     <string name="matchesDescriptionText">You can add or see matches results here.</string>
 
