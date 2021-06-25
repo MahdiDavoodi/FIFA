@@ -115,6 +115,9 @@
     <string name="history">History</string>
     <string name="overall">Overall</string>
     <string name="age">Age</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="newText">New</string>
