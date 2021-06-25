@@ -64,6 +64,7 @@
                 android:textColor="@color/mainDescriptionTextColor"
                 android:textDirection="ltr"
                 android:textSize="@dimen/text_size_0_5"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/statistics_season_club_image"
                 app:layout_constraintTop_toTopOf="parent" />
