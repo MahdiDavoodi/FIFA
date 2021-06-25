@@ -17,7 +17,6 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/mainBigTextColor"
-        android:textDirection="ltr"
         android:textSize="@dimen/text_size_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

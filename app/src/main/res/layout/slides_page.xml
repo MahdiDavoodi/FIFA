@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     tools:context=".pages.SlidesPage">
 
     <ScrollView
@@ -30,7 +29,6 @@
                 android:text="@string/slides_text1"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -42,7 +40,6 @@
                 android:text="@string/slides_text2"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -54,7 +51,6 @@
                 android:text="@string/slides_text3"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -66,7 +62,6 @@
                 android:text="@string/slides_text4"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -78,7 +73,6 @@
                 android:text="@string/slides_text5"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -90,7 +84,6 @@
                 android:text="@string/slides_text6"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -102,7 +95,6 @@
                 android:text="@string/slides_text7"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -114,7 +106,6 @@
                 android:text="@string/slides_text8"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -126,7 +117,6 @@
                 android:text="@string/slides_text9"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -138,7 +128,6 @@
                 android:text="@string/slides_text10"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -150,7 +139,6 @@
                 android:text="@string/slides_text11"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -162,7 +150,6 @@
                 android:text="@string/slides_text12"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -174,7 +161,6 @@
                 android:text="@string/slides_text13"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -186,7 +172,6 @@
                 android:text="@string/slides_text14"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -198,7 +183,6 @@
                 android:text="@string/slides_text15"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
             <TextView
@@ -210,7 +194,6 @@
                 android:text="@string/slides_text16"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainBigTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_4" />
 
             <TextView
@@ -222,7 +205,6 @@
                 android:text="@string/slides_text17"
                 android:textAlignment="textStart"
                 android:textColor="@color/mainDescriptionTextColor"
-                android:textDirection="ltr"
                 android:textSize="@dimen/text_size_2" />
 
         </LinearLayout>
@@ -252,7 +234,6 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/mainButtonTextColor"
-        android:textDirection="ltr"
         android:textSize="@dimen/normalButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

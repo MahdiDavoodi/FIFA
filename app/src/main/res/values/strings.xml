@@ -1,7 +1,7 @@
 <resources>
     // Total
     <string name="appName" translatable="false">OUFA</string>
-    <string name="developerName" translatable="false">Zero Day</string>
+    <string name="developerName">Mahdi Davoodi</string>
     <string name="appDescription">There is no limit for playing football.</string>
     <string name="welcomeToFIFA">Welcome to our FIFA!</string>
 
@@ -15,7 +15,7 @@
 
     // Select Clubs Page.
     <string name="selectClubsDescriptionText">Each owner can only select 10 clubs.Choose one by one!</string>
-    <string name="selectClubsOfTenText" translatable="false">%1$d/10</string>
+    <string name="selectClubsOfTenText">%1$d/10</string>
     <string name="selectClubsClubBudgetText" translatable="false">Budget: %1$d million$</string>
     <string name="selectClubsClassText" translatable="false">Class: %1$s</string>
 
@@ -70,7 +70,7 @@
 
     // Matches Page.
     <string name="matchesPlayNextButton">Play</string>
-    <string name="matchesNotPlayed" translatable="false">-TBD-</string>
+    <string name="matchesNotPlayed">-TBD-</string>
     <string name="matchesStatisticsButton">Statistics</string>
     <string name="matchesDescriptionText">You can add or see matches results here.</string>
 
@@ -135,9 +135,9 @@
     <string name="start">Start</string>
     <string name="save">Save</string>
     <string name="info">Info</string>
-    <string name="dollar">%1$d$</string>
-    <string name="million_dollar">%1$d million$</string>
-    <string name="match_result">%1$d - %2$d</string>
+    <string name="dollar" translatable="false">%1$d$</string>
+    <string name="million_dollar" translatable="false">%1$d million$</string>
+    <string name="match_result" translatable="false">%1$d - %2$d</string>
 
     // Version Control.
     <string name="version">version 1.1.1</string>
