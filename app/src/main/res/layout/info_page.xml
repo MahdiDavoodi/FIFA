@@ -17,7 +17,7 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/mainBigTextColor"
-        android:textSize="@dimen/text_size_4"
+        android:textSize="@dimen/text_size_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,12 +32,9 @@
         android:text="@string/developer_info"
         android:textAlignment="center"
         android:textColor="@color/mainDescriptionTextColor"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_app_name"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/info_app_name" />
 
     <TextView
         android:id="@+id/info_tv_2"
@@ -85,4 +82,24 @@
         app:layout_constraintStart_toStartOf="@+id/info_tv_3"
         app:layout_constraintTop_toBottomOf="@+id/info_tv_3"
         app:srcCompat="@drawable/ic_github" />
+
+    <ImageButton
+        android:id="@+id/info_myket"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/ImageButton"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:minWidth="30dp"
+        android:minHeight="30dp"
+        android:onClick="openMyket"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/info_github"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/info_github"
+        app:layout_constraintTop_toBottomOf="@+id/info_github"
+        app:srcCompat="@drawable/ic_myket" />
 </androidx.constraintlayout.widget.ConstraintLayout>

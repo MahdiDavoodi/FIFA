@@ -2,14 +2,14 @@
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
-    android:viewportHeight="108">
-  <group android:scaleX="0.05589844"
-      android:scaleY="0.05589844"
-      android:translateX="25.38"
-      android:translateY="25.38">
+    android:viewportHeight="108"
+    android:tint="#388D3C">
+  <group android:scaleX="4.056322"
+      android:scaleY="4.056322"
+      android:translateX="5.3241367"
+      android:translateY="5.3241367">
     <path
-        android:pathData="M1031.05,741.97L642.07,189.13q-19.85,-28.46 -51.75,-48.3Q554.1,118.41 518.74,118.4q-34.5,0 -71.58,22.42 -33.64,20.7 -52.61,48.3L-3.92,741.97H234.98l280.3,-384.66L676.57,581.55H416.96L300.53,741.97h730.52Z"
-        android:fillColor="#448546"
-        android:fillType="evenOdd"/>
+        android:fillColor="@android:color/white"
+        android:pathData="M19.58,3.08L3.15,19.51c0.09,0.34 0.27,0.65 0.51,0.9 0.25,0.24 0.56,0.42 0.9,0.51L21,4.49c-0.19,-0.69 -0.73,-1.23 -1.42,-1.41zM11.95,3l-8.88,8.88v2.83L14.78,3h-2.83zM5.07,3c-1.1,0 -2,0.9 -2,2v2l4,-4h-2zM19.07,21c0.55,0 1.05,-0.22 1.41,-0.59 0.37,-0.36 0.59,-0.86 0.59,-1.41v-2l-4,4h2zM9.36,21h2.83l8.88,-8.88L21.07,9.29L9.36,21z"/>
   </group>
 </vector>
