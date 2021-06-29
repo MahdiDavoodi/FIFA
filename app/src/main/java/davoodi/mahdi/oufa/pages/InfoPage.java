@@ -3,12 +3,14 @@ package davoodi.mahdi.oufa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+
+import java.util.List;
 
 import davoodi.mahdi.oufa.R;
 
@@ -37,14 +39,12 @@ public class InfoPage extends AppCompatActivity {
 
     // Myket OnClick.
     public void openMyket(View view) {
-        PackageManager packageManager = getPackageManager();
-        try {
-            PackageInfo info = packageManager.getPackageInfo("ir.mservices.market", 0);
-            if (info != null)
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MYKET_VOTE)));
-        } catch (PackageManager.NameNotFoundException e) {
-            Toast.makeText(this, getResources().getString(R.string.infoToast), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<ResolveInfo> pkgAppsList = getPackageManager().queryIntentActivities( mainIntent, 0);
+
+        for (ResolveInfo packageInfo : pkgAppsList) {
+            Log.d("ZZZ", "Installed package :" + packageInfo.resolvePackageName);
         }
     }
 }
