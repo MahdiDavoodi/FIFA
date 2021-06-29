@@ -53,6 +53,7 @@
     <string name="createOwnersToast3">Now, lets create second owner!</string>
     <string name="createOwnersToast4">Owners Created.</string>
     <string name="playToast1">Please input the goals!</string>
+    <string name="infoToast">You don\'t have Myket installed!</string>
 
     // Objects Descriptions
     <string name="imageView" translatable="false">Image</string>

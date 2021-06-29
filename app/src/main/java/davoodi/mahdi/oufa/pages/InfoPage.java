@@ -3,9 +3,12 @@ package davoodi.mahdi.oufa.pages;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import davoodi.mahdi.oufa.R;
 
@@ -34,6 +37,14 @@ public class InfoPage extends AppCompatActivity {
 
     // Myket OnClick.
     public void openMyket(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MYKET_VOTE)));
+        PackageManager packageManager = getPackageManager();
+        try {
+            PackageInfo info = packageManager.getPackageInfo("ir.mservices.market", 0);
+            if (info != null)
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(MYKET_VOTE)));
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(this, getResources().getString(R.string.infoToast), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
     }
 }

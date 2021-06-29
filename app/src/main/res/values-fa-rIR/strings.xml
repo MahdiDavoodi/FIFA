@@ -11,6 +11,7 @@
     <string name="mainNavigationTransfer">نقل و انتقالات</string>
     <string name="mainNavigationCups">جام ها</string>
     <string name="statisticsStandingsButton">فصل</string>
+    <string name="infoToast">شما مایکت را بر روی این دستگاه ندارید!</string>
     <string name="statisticsOwnersButton">مالک ها</string>
     <string name="statisticsClubsButton">باشگاه ها</string>
     <string name="statisticsDescriptionText">تمام آمار در مورد باشگاه ها، مالکین و فصل ها</string>
