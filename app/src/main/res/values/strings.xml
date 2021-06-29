@@ -141,6 +141,6 @@
 
     // Version Control.
     <string name="version">version 1.1.1</string>
-    <string name="last_update">Last Update: May, 2021.</string>
+    <string name="last_update">Last Update: June, 2021.</string>
 
 </resources>
