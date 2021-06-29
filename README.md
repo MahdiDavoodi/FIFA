@@ -1,7 +1,7 @@
 # OUFA
 Me and my brother soccer league!
 
----> Version 1.1.2 finished. My To-do list for next version:
+---> Version 1.1.3 finished. My To-do list for next version:
 
 	1. Create a setting activity for changing the theme and language in runtime.
 	2. Improve the performance of the app(For reading data and creating lists).
